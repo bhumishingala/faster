@@ -32,6 +32,9 @@ function Header(props) {
                             <a className="text-white pl-2" href>
                                 <i className="fab fa-youtube" />
                             </a>
+                            <a className="text-white pl-2" href>
+                                <NavLink href className="btn btn-primary d-none d-lg-block" to="/login">Login</NavLink>
+                            </a>
                         </div>
                     </div>
                 </div>

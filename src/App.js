@@ -11,20 +11,26 @@ import Bloggrid from './Container/blog-grid/Bloggrid';
 import Blogdetail from './Container/blog-detail/Blogdetail';
 import Contact from './Container/contact/Contact';
 import Refexample from './Container/refexample/Refexample';
+import Search from './Container/search/Search';
+import Login from './Container/login/Login';
+import PublicRoute from './route/PublicRoute';
+import PrivateRoute from './route/PrivateRoute';
 
 function App() {
   return (
     <div className="App">
         <Header />
         <Switch>
-            <Route path={"/"} exact component={Home}></Route>
-            <Route path={"/aboutus"} exact component={AboutUs}></Route>
-            <Route path={"/services"} exact component={Services}></Route>
-            <Route path={"/price"} exact component={Price}></Route>
-            <Route path={"/blog-grid"} exact component={Bloggrid}></Route>
-            <Route path={"/blog-detail"} exact component={Blogdetail}></Route>
-            <Route path={"/contact"} exact component={Contact}></Route>
+            <PublicRoute path={"/"} exact component={Home}></PublicRoute>
+            <PublicRoute path={"/aboutus"} exact component={AboutUs}></PublicRoute>
+            <PrivateRoute path={"/services"} exact component={Services}></PrivateRoute>
+            <PublicRoute path={"/price"} exact component={Price}></PublicRoute>
+            <PublicRoute path={"/blog-grid"} exact component={Bloggrid}></PublicRoute>
+            <PublicRoute path={"/blog-detail"} exact component={Blogdetail}></PublicRoute>
+            <PrivateRoute path={"/contact"} exact component={Contact}></PrivateRoute>
             <Route path={"/rexexample"} exact component={Refexample}></Route>
+            <PublicRoute path={"/search"} exact component={Search}></PublicRoute>
+            <PublicRoute path={"/login"} exact resticted="true" component={Login}></PublicRoute>
         </Switch>
         <Footer />
     </div>
