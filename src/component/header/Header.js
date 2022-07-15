@@ -65,9 +65,9 @@ function Header(props) {
                             </div>
                             <NavLink className="nav-item nav-link" to="/contact">Contact</NavLink>
                         </div>
-                        <a className="text-primary px-2" href>
+                        <NavLink className="text-primary px-2" to="/search">
                             <SearchIcon />
-                        </a>
+                        </NavLink>
                         <a href className="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</a>
                     </div>
                 </nav>

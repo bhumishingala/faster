@@ -1,45 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { TextField } from '@mui/material';
 
 function Search(props) {
+    const [search, setSearch] = useState([])
+
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'firstName', headerName: 'First name', width: 130 },
-        { field: 'lastName', headerName: 'Last name', width: 130 },
-        {
-            field: 'age',
-            headerName: 'Age',
-            type: 'number',
-            width: 90,
-        },
-        {
-            field: 'fullName',
-            headerName: 'Full name',
-            description: 'This column has a value getter and is not sortable.',
-            sortable: false,
-            width: 160,
-            valueGetter: (params) =>
-                `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-        },
+        { field: 'name', headerName: 'Name', width: 170 },
+        { field: 'email', headerName: 'Email', width: 240 },
+        { field: 'price', headerName: 'Price', width: 130 },
+        { field: 'quntity', headerName: 'Quntity', width: 130 }
     ];
 
     const rows = [
-        { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-        { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-        { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-        { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-        { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-        { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-        { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-        { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-        { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+        { id: 1174, name: "Air Freight", email: "manish@gamil.com", price: "9999", quntity: "2" },
+        { id: 5923, name: "Ocean Freight", email: "mansi@gmail.com", price: "8888", quntity: "3" },
+        { id: 8527, name: " Land Transport", email: "arpit@gmail.com", price: "9899", quntity: "2" },
+        { id: 9210, name: "Cargo Storage", email: "bhumi@gamil.com", price: "6666", quntity: "4" },
+        { id: 1487, name: "Logistics Services", email: "bansi@gmail.com", price: "8989", quntity: "2" }
     ];
 
     const handleSerach = (val) => {
-        let LocalData = JSON.parse(localStorage.getItem("Products"));
-        console.log(val, LocalData);
+        let sData = rows.filter((s) => (
+            s.id.toString().includes(val) ||
+            s.name.toLowerCase().includes(val.toLowerCase()) ||
+            s.email.toLowerCase().includes(val.toLowerCase()) ||
+            s.price.toString().includes(val) ||
+            s.quntity.toString().includes(val)
+        ))
+        setSearch(sData)
+        console.log(sData);
     }
+
+    const finalData = search.length > 0 ? search : rows;
 
     return (
         <div>
@@ -57,7 +51,7 @@ function Search(props) {
                         />
                         <div style={{ height: 400, width: '100%' }}>
                             <DataGrid
-                                rows={rows}
+                                rows={finalData}
                                 columns={columns}
                                 pageSize={5}
                                 rowsPerPageOptions={[5]}
