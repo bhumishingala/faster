@@ -1,9 +1,13 @@
 import { Form, Formik, useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Footer(props) {
+    const value = useContext(themeContext);
+
+    console.log(value);
     let schema = yup.object().shape({
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
     });
@@ -23,7 +27,7 @@ function Footer(props) {
 
     return (
         <div>
-            <div className="container-fluid bg-dark text-white mr-5 mt-5 py-5 px-sm-3 px-md-5">
+            <div className={`container-fluid bg-dark mr-5 mt-5 py-5 px-sm-3 px-md-5 ${value.theme}`}>
                 <div className="row pt-5">
                     <div className="col-lg-7 col-md-6">
                         <div className="row">
@@ -33,21 +37,21 @@ function Footer(props) {
                                 <p><i className="fa fa-phone-alt mr-2" />+012 345 67890</p>
                                 <p><i className="fa fa-envelope mr-2" />info@example.com</p>
                                 <div className="d-flex justify-content-start mt-4">
-                                    <a className="btn btn-outline-light btn-social mr-2" href="#"><i className="fab fa-twitter" /></a>
-                                    <a className="btn btn-outline-light btn-social mr-2" href="#"><i className="fab fa-facebook-f" /></a>
-                                    <a className="btn btn-outline-light btn-social mr-2" href="#"><i className="fab fa-linkedin-in" /></a>
-                                    <a className="btn btn-outline-light btn-social" href="#"><i className="fab fa-instagram" /></a>
+                                    <a className={`btn btn-outline-light btn-social mr-2 ${value.theme}`} href="#"><i className="fab fa-twitter" /></a>
+                                    <a className={`btn btn-outline-light btn-social mr-2 ${value.theme}`}  href="#"><i className="fab fa-facebook-f" /></a>
+                                    <a className={`btn btn-outline-light btn-social mr-2 ${value.theme}`}  href="#"><i className="fab fa-linkedin-in" /></a>
+                                    <a className={`btn btn-outline-light btn-social mr-2 ${value.theme}`}  href="#"><i className="fab fa-instagram" /></a>
                                 </div>
                             </div>
                             <div className="col-md-6 mb-5z">
                                 <h3 className="text-primary mb-4">Quick Links</h3>
                                 <div className="d-flex flex-column justify-content-start">
-                                    <a className="text-white mb-2" href="#"><i className="fa fa-angle-right mr-2" />Home</a>
-                                    <a className="text-white mb-2" href="#"><i className="fa fa-angle-right mr-2" />About Us</a>
-                                    <a className="text-white mb-2" href="#"><i className="fa fa-angle-right mr-2" />Our Services</a>
-                                    <a className="text-white mb-2" href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</a>
-                                    <a className="text-white mb-2" href="#"><i className="fa fa-angle-right mr-2" />Contact Us</a>
-                                    <Link className="nav-link text-white py-0 mb-2" to="/rexexample"><i className="fa fa-angle-right mr-2" />Ref Example</Link>
+                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Home</a>
+                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />About Us</a>
+                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Our Services</a>
+                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</a>
+                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Contact Us</a>
+                                    <Link className={`nav-link py-0 mb-2 ${value.theme}`} to="/rexexample"><i className="fa fa-angle-right mr-2" />Ref Example</Link>
                                 </div>
                             </div>
                         </div>
@@ -69,10 +73,10 @@ function Footer(props) {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style={{ borderColor: '#3E3E4E !important' }}>
+            <div className={`container-fluid bg-dark  border-top py-4 px-sm-3 px-md-5 ${value.theme}`} style={{ borderColor: '#3E3E4E !important' }}>
                 <div className="row">
                     <div className="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                        <p className="m-0 text-white">© <a href="#">Your Site Name</a>. All Rights Reserved.
+                        <p className={`m-0 ${value.theme}`}>© <a href="#">Your Site Name</a>. All Rights Reserved.
                             {/*/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. *** /*/}
                             Designed by <a href="https://htmlcodex.com">HTML Codex</a>
                             <br />Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
@@ -81,16 +85,16 @@ function Footer(props) {
                     <div className="col-lg-6 text-center text-md-right">
                         <ul className="nav d-inline-flex">
                             <li className="nav-item">
-                                <a className="nav-link text-white py-0" href="#">Privacy</a>
+                                <a className={`nav-link py-0 ${value.theme}`} href="#">Privacy</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white py-0" href="#">Terms</a>
+                                <a className={`nav-link py-0 ${value.theme}`} href="#">Terms</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white py-0" href="#">FAQs</a>
+                                <a className={`nav-link py-0 ${value.theme}`} href="#">FAQs</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white py-0" href="#">Help</a>
+                                <a className={`nav-link py-0 ${value.theme}`} href="#">Help</a>
                             </li>
                         </ul>
                     </div>

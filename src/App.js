@@ -15,12 +15,14 @@ import Search from './Container/search/Search';
 import Login from './Container/login/Login';
 import PublicRoute from './route/PublicRoute';
 import PrivateRoute from './route/PrivateRoute';
+import ThemeContext from './contextapi/ThemeContext';
 
 function App() {
   return (
     <div className="App">
+      <ThemeContext>
         <Header />
-        <Switch>
+          <Switch>
             <PublicRoute path={"/"} exact component={Home}></PublicRoute>
             <PublicRoute path={"/aboutus"} exact component={AboutUs}></PublicRoute>
             <PrivateRoute path={"/services"} exact component={Services}></PrivateRoute>
@@ -31,8 +33,9 @@ function App() {
             <Route path={"/rexexample"} exact component={Refexample}></Route>
             <PublicRoute path={"/search"} exact component={Search}></PublicRoute>
             <PublicRoute path={"/login"} exact resticted="true" component={Login}></PublicRoute>
-        </Switch>
+          </Switch>
         <Footer />
+      </ThemeContext>
     </div>
   );
 }

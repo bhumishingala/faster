@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function Login(props) {
     const [usertype, setUsertype] = useState("Login");
-    const [reset, setReset] = useState("false");
+    const [reset, setReset] = useState(false);
 
     let schemaObj, initval;
 
@@ -29,7 +29,7 @@ function Login(props) {
             email: '',
             password: ''
         }
-    } else if (reset == "true") {
+    } else if (reset === true) {
         schemaObj = {
             email: yup.string().required("Please Enter Email Id.").email("Please Enter Vaild email Id.")
         }
@@ -51,7 +51,7 @@ function Login(props) {
         }
 
         console.log(values);
-        formik.resetForm(   )
+        formik.resetForm()
     }
 
     const handleLogin = () => {
@@ -74,12 +74,14 @@ function Login(props) {
 
     const { handleChange, errors, handleSubmit, handleBlur, touched } = formik;
 
+    console.log(errors);
+
     return (
-        <section id="appointment" className="appointment ">
+        <section id="appointment" className="appointment margin">
             <div className="container">
                 <div className="section-title">
                     {
-                        reset === "true" ?
+                        reset === true ?
                             <h2>Forgot Password</h2>
                             :
                             usertype === "Login" ?
@@ -89,16 +91,16 @@ function Login(props) {
                     }
                 </div>
                 <Formik values={formik}>
-                    <Form onSubmit={handleSubmit} className="php-email-form text-center ">
+                    <Form onSubmit={handleSubmit} className="php-email-form">
                         <div className="row">
                             {
-                                reset === "true" ?
+                                reset === true ?
                                     null
                                     :
                                     usertype === "Login" ?
                                         null
                                         :
-                                        <div className="col-md-4 form-group">
+                                        <div className="col-md-4 form-group text-center ">
                                             <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars"
                                                 onChange={handleChange} onBlur={handleBlur} />
                                             <p className='text-danger'>{errors.name && touched.name ? errors.name : ''}</p>
@@ -112,7 +114,7 @@ function Login(props) {
                             </div>
                         </div>
                         {
-                            reset === "true" ?
+                            reset === true ?
                                 null
                                 :
                                 <div className='row'>
@@ -123,7 +125,7 @@ function Login(props) {
                                 </div>
                         }
                         {
-                            reset === "true" ?
+                            reset === true ?
                                 <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Submit</button></div>
                                 :
                                 usertype === "Login" ?
@@ -133,11 +135,11 @@ function Login(props) {
                         }
                         {
                             usertype === "Login" ?
-                                <p className='mt-4'>create an account ?<a class="sign-up" onClick={() => { setReset("false"); setUsertype("Signup") }}>Signup</a></p>
+                                <p className='mt-4'>create an account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Signup") }}>Signup</a></p>
                                 :
-                                <p className='mt-4'>allready account ?<a class="sign-up" onClick={() => { setReset("false"); setUsertype("Login") }}>Login</a></p>
+                                <p className='mt-4'>allready account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Login") }}>Login</a></p>
                         }
-                        <a class='text-orange' onClick={() => setReset("true")}>Forgot Your Password ?</a>
+                        <a class='text-orange' onClick={() => setReset(true)}>Forgot Your Password ?</a>
                     </Form>
                 </Formik>
             </div>

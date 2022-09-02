@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Header(props) {
+    const value = useContext(themeContext);
+
+    console.log(value);
+
     return (
         <div>
             {/* Topbar Start */}
-            <div className="container-fluid bg-dark">
+            <div class="line"></div>
+            <div className={`container-fluid bg-dark ${value.theme}`}>
                 <div className="row py-2 px-lg-5">
                     <div className="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                        <div className="d-inline-flex align-items-center text-white">
+                        <div className={`d-inline-flex align-items-center ${value.theme}`}>
                             <small><i className="fa fa-phone-alt mr-2" />+012 345 6789</small>
                             <small className="px-3">|</small>
                             <small><i className="fa fa-envelope mr-2" />info@example.com</small>
@@ -17,32 +23,36 @@ function Header(props) {
                     </div>
                     <div className="col-lg-6 text-center text-lg-right">
                         <div className="d-inline-flex align-items-center">
-                            <a className="text-white px-2" href>
+                            <a className={`px-2 ${value.theme}`} href>
                                 <i className="fab fa-facebook-f" />
                             </a>
-                            <a className="text-white px-2" href>
+                            <a className={`px-2 ${value.theme}`} href>
                                 <i className="fab fa-twitter" />
                             </a>
-                            <a className="text-white px-2" href>
+                            <a className={`px-2 ${value.theme}`} href>
                                 <i className="fab fa-linkedin-in" />
                             </a>
-                            <a className="text-white px-2" href>
+                            <a className={`px-2 ${value.theme}`} href>
                                 <i className="fab fa-instagram" />
                             </a>
-                            <a className="text-white pl-2" href>
+                            <a className={`px-2 ${value.theme}`} href>
                                 <i className="fab fa-youtube" />
                             </a>
-                            <a className="text-white pl-2" href>
-                                <NavLink href className="btn btn-primary d-none d-lg-block" to="/login">Login</NavLink>
+                            <a className={`px-2 ${value.theme}`} href>
+                                <NavLink  className="btn btn-primary d-none d-lg-block" to="/login">Login</NavLink>
+                            </a>
+                            <a className={`px-2 ${value.theme}`} href>
+                                <button className="btn btn-primary d-none d-lg-block"  onClick={() => value.toggle_theme(value.theme)}>change Theme</button>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="line"></div>
             {/* Topbar End */}
             {/* Navbar Start */}
             <div className="container-fluid p-0">
-                <nav className="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+                <nav className={`navbar navbar-expand-lg  py-3 py-lg-0 px-lg-5 ${value.theme}`}>
                     <a href="index.html" className="navbar-brand ml-lg-3">
                         <h1 className="m-0 display-5 text-uppercase text-primary"><i className="fa fa-truck mr-2" />Faster</h1>
                     </a>
@@ -73,6 +83,7 @@ function Header(props) {
                 </nav>
             </div>
             {/* Navbar End */}
+            <div class="line"></div>
         </div>
 
     );
