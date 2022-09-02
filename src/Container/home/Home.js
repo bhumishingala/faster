@@ -1,8 +1,10 @@
 import { Form, Formik, useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Home(props) {
+    const value = useContext(themeContext);
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -25,7 +27,7 @@ function Home(props) {
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
     return (
-        <div>
+        <div class={`${value.theme}`}>
             <div className="jumbotron jumbotron-fluid mb-5">
                 <div className="container text-center py-5">
                     <h1 className="text-primary mb-4">Safe &amp; Faster</h1>
@@ -53,7 +55,7 @@ function Home(props) {
                         </div>
                         <div className="col-lg-7 justify-content-start">
                             <h6 className="text-primary text-uppercase font-weight-bold mr-auto">About Us</h6>
-                            <h1 className="mb-4">Trusted &amp; Faster Logistic Service Provider</h1>
+                            <h1 className={`mb-4 ${value.theme}`}>Trusted &amp; Faster Logistic Service Provider</h1>
                             <p className="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
                             <div className="d-flex align-items-center pt-2">
                                 <button type="button" className="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -83,25 +85,25 @@ function Home(props) {
             </div>
             {/* About End */}
             {/*  Quote Request Start */}
-            <div className="container-fluid bg-secondary my-5">
+            <div className="container-fluid  my-5">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7 py-5 py-lg-0">
                             <h6 className="text-primary text-uppercase font-weight-bold">Get A Quote</h6>
-                            <h1 className="mb-4">Request A Free Quote</h1>
+                            <h1 className={`mb-4 ${value.theme}`}>Request A Free Quote</h1>
                             <p className="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
                             <div className="row">
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">225</h1>
-                                    <h6 className="font-weight-bold mb-4">SKilled Experts</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>SKilled Experts</h6>
                                 </div>
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">1050</h1>
-                                    <h6 className="font-weight-bold mb-4">Happy Clients</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>Happy Clients</h6>
                                 </div>
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">2500</h1>
-                                    <h6 className="font-weight-bold mb-4">Complete Projects</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>Complete Projects</h6>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +144,7 @@ function Home(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Our Services</h6>
-                        <h1 className="mb-4">Best Logistic Services</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Best Logistic Services</h1>
                     </div>
                     <div className="row pb-3">
                         <div className="col-lg-3 col-md-6 text-center mb-5">
@@ -182,7 +184,7 @@ function Home(props) {
             </div>
             {/* Services End */}
             {/* Features Start */}
-            <div className="container-fluid bg-secondary my-5">
+            <div className="container-fluid my-5">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-5">
@@ -190,12 +192,12 @@ function Home(props) {
                         </div>
                         <div className="col-lg-7 py-5 py-lg-0">
                             <h6 className="text-primary text-uppercase font-weight-bold">Why Choose Us</h6>
-                            <h1 className="mb-4">Faster, Safe and Trusted Logistics Services</h1>
+                            <h1 className={`mb-4 ${value.theme}`}>Faster, Safe and Trusted Logistics Services</h1>
                             <p className="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
                             <ul className="list-inline">
-                                <li><h6><i className="far fa-dot-circle text-primary mr-3" />Best In Industry</h6>
-                                </li><li><h6><i className="far fa-dot-circle text-primary mr-3" />Emergency Services</h6></li>
-                                <li><h6><i className="far fa-dot-circle text-primary mr-3" />24/7 Customer Support</h6></li>
+                                <li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3" />Best In Industry</h6>
+                                </li><li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3" />Emergency Services</h6></li>
+                                <li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3"/>24/7 Customer Support</h6></li>
                             </ul>
                             <a href className="btn btn-primary mt-3 py-2 px-4">Learn More</a>
                         </div>
@@ -208,13 +210,13 @@ function Home(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Pricing Plan</h6>
-                        <h1 className="mb-4">Affordable Pricing Packages</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Affordable Pricing Packages</h1>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>49<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -230,10 +232,10 @@ function Home(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>99<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -249,10 +251,10 @@ function Home(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>149<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -277,15 +279,15 @@ function Home(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Delivery Team</h6>
-                        <h1 className="mb-4">Meet Our Delivery Team</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Meet Our Delivery Team</h1>
                     </div>
                     <div className="row">
                         <div className="col-lg-3 col-md-6">
                             <div className="team card position-relative overflow-hidden border-0 mb-5">
                                 <img className="card-img-top" src="img/team-1.jpg" alt />
                                 <div className="card-body text-center p-0">
-                                    <div className="team-text d-flex flex-column justify-content-center bg-secondary">
-                                        <h5 className="font-weight-bold">Full Name</h5>
+                                    <div className={`team-text d-flex flex-column justify-content-center ${value.theme}`}>
+                                        <h5 className={`font-weight-bold ${value.theme}`}>Full Name</h5>
                                         <span>Designation</span>
                                     </div>
                                     <div className="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -301,8 +303,8 @@ function Home(props) {
                             <div className="team card position-relative overflow-hidden border-0 mb-5">
                                 <img className="card-img-top" src="img/team-2.jpg" alt />
                                 <div className="card-body text-center p-0">
-                                    <div className="team-text d-flex flex-column justify-content-center bg-secondary">
-                                        <h5 className="font-weight-bold">Full Name</h5>
+                                    <div className={`team-text d-flex flex-column justify-content-center ${value.theme}`}>
+                                        <h5 className={`font-weight-bold ${value.theme}`}>Full Name</h5>
                                         <span>Designation</span>
                                     </div>
                                     <div className="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -318,8 +320,8 @@ function Home(props) {
                             <div className="team card position-relative overflow-hidden border-0 mb-5">
                                 <img className="card-img-top" src="img/team-3.jpg" alt />
                                 <div className="card-body text-center p-0">
-                                    <div className="team-text d-flex flex-column justify-content-center bg-secondary">
-                                        <h5 className="font-weight-bold">Full Name</h5>
+                                    <div className={`team-text d-flex flex-column justify-content-center ${value.theme}`}>
+                                        <h5 className={`font-weight-bold ${value.theme}`}>Full Name</h5>
                                         <span>Designation</span>
                                     </div>
                                     <div className="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -335,8 +337,8 @@ function Home(props) {
                             <div className="team card position-relative overflow-hidden border-0 mb-5">
                                 <img className="card-img-top" src="img/team-4.jpg" alt />
                                 <div className="card-body text-center p-0">
-                                    <div className="team-text d-flex flex-column justify-content-center bg-secondary">
-                                        <h5 className="font-weight-bold">Full Name</h5>
+                                    <div className={`team-text d-flex flex-column justify-content-center ${value.theme}`}>
+                                        <h5 className={`font-weight-bold ${value.theme}`}>Full Name</h5>
                                         <span>Designation</span>
                                     </div>
                                     <div className="team-social d-flex align-items-center justify-content-center bg-primary">
@@ -413,10 +415,10 @@ function Home(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Our Blog</h6>
-                        <h1 className="mb-4">Latest From Blog</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Latest From Blog</h1>
                     </div>
                     <div className="row">
-                        <div className="col-md-6 mb-5">
+                        <div className="col-md-6 mb-5 shadow-lg p-3 mb-5 bg-body rounded ">
                             <div className="position-relative">
                                 <img className="img-fluid w-100" src="img/blog-1.jpg" alt />
                                 <div className="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle" style={{ width: 60, height: 60, bottom: '-30px', right: 30 }}>
@@ -424,7 +426,7 @@ function Home(props) {
                                     <small className="text-white text-uppercase">Jan</small>
                                 </div>
                             </div>
-                            <div className="bg-secondary" style={{ padding: 30 }}>
+                            <div className={`${value.theme}`} style={{ padding: 30 }}>
                                 <div className="d-flex mb-3">
                                     <div className="d-flex align-items-center">
                                         <img className="rounded-circle" style={{ width: 40, height: 40 }} src="img/user.jpg" alt />
@@ -435,12 +437,12 @@ function Home(props) {
                                         <a className="text-muted ml-2" href>Web Design</a>
                                     </div>
                                 </div>
-                                <h4 className="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
+                                <h4 className={`font-weight-bold mb-3 ${value.theme}`}>Kasd tempor diam sea justo dolor</h4>
                                 <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
                                 <a className="border-bottom border-primary text-uppercase text-decoration-none" href>Read More <i className="fa fa-angle-right" /></a>
                             </div>
                         </div>
-                        <div className="col-md-6 mb-5">
+                        <div className="col-md-6 mb-5 shadow-lg p-3 mb-5 bg-body rounded ">
                             <div className="position-relative">
                                 <img className="img-fluid w-100" src="img/blog-2.jpg" alt />
                                 <div className="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle" style={{ width: 60, height: 60, bottom: '-30px', right: 30 }}>
@@ -448,7 +450,7 @@ function Home(props) {
                                     <small className="text-white text-uppercase">Jan</small>
                                 </div>
                             </div>
-                            <div className="bg-secondary" style={{ padding: 30 }}>
+                            <div className={`${value.theme}`} style={{ padding: 30 }}>
                                 <div className="d-flex mb-3">
                                     <div className="d-flex align-items-center">
                                         <img className="rounded-circle" style={{ width: 40, height: 40 }} src="img/user.jpg" alt />
@@ -459,7 +461,7 @@ function Home(props) {
                                         <a className="text-muted ml-2" href>Web Design</a>
                                     </div>
                                 </div>
-                                <h4 className="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
+                                <h4 className={`font-weight-bold mb-3 ${value.theme}`}>Kasd tempor diam sea justo dolor</h4>
                                 <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
                                 <a className="border-bottom border-primary text-uppercase text-decoration-none" href>Read More <i className="fa fa-angle-right" /></a>
                             </div>

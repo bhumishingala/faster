@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Price(props) {
+    const value = useContext(themeContext)
     return (
-        <div>
+        <div class={`${value.theme}`}>
             {/* Header Start */}
             <div className="jumbotron jumbotron-fluid mb-5">
                 <div className="container text-center py-5">
@@ -20,13 +22,13 @@ function Price(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Pricing Plan</h6>
-                        <h1 className="mb-4">Affordable Pricing Packages</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Affordable Pricing Packages</h1>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>49<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -42,10 +44,10 @@ function Price(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>99<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -61,10 +63,10 @@ function Price(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
-                            <div className="bg-secondary">
+                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div>
                                 <div className="text-center p-4">
-                                    <h1 className="display-4 mb-0">
+                                    <h1 className={`display-4 mb-0 ${value.theme}`}>
                                         <small className="align-top text-muted font-weight-medium" style={{ fontSize: 22, lineHeight: 2 }}>$</small>149<small className="align-bottom text-muted font-weight-medium" style={{ fontSize: 16, lineHeight: 0 }}>/Mo</small>
                                     </h1>
                                 </div>
@@ -89,7 +91,7 @@ function Price(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Testimonial</h6>
-                        <h1 className="mb-4">Our Clients Say</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Our Clients Say</h1>
                     </div>
                     <div className="owl-carousel testimonial-carousel">
                         <div className="position-relative bg-secondary p-4">

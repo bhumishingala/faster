@@ -1,9 +1,11 @@
 import { Form, Formik, useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import List from '../../component/list/List';
 import * as yup from 'yup';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Services(props) {
+    const value = useContext(themeContext);
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -62,7 +64,7 @@ function Services(props) {
     }
 
     return (
-        <div>
+        <div class={`${value.theme}`}>
             {/* Header Start */}
             <div className="jumbotron jumbotron-fluid mb-5">
                 <div className="container text-center py-5">
@@ -80,7 +82,7 @@ function Services(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Our Services</h6>
-                        <h1 className="mb-4">Best Logistic Services</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Best Logistic Services</h1>
                     </div>
                     <div className="row pb-3">
                         <div className="col-lg-3 col-md-6 text-center mb-5">
@@ -120,31 +122,31 @@ function Services(props) {
             </div>
             {/* Services End */}
             {/*  Quote Request Start */}
-            <div className="container-fluid bg-secondary my-5">
+            <div className="container-fluid  my-5">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7 py-5 py-lg-0">
                             <h6 className="text-primary text-uppercase font-weight-bold">Get A Quote</h6>
-                            <h1 className="mb-4">Request A Free Quote</h1>
+                            <h1 className={`mb-4 ${value.theme}`}>Request A Free Quote</h1>
                             <p className="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
                             <div className="row">
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">225</h1>
-                                    <h6 className="font-weight-bold mb-4">SKilled Experts</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>SKilled Experts</h6>
                                 </div>
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">1050</h1>
-                                    <h6 className="font-weight-bold mb-4">Happy Clients</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>Happy Clients</h6>
                                 </div>
                                 <div className="col-sm-4">
                                     <h1 className="text-primary mb-2" data-toggle="counter-up">2500</h1>
-                                    <h6 className="font-weight-bold mb-4">Complete Projects</h6>
+                                    <h6 className={`font-weight-boldmb-4 ${value.theme}`}>Complete Projects</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-5">
                             <div className="bg-primary py-5 px-4 px-sm-5">
-                            <Formik values={formik}>
+                                <Formik values={formik}>
                                     <Form className="py-5" onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <input type="text" name="name" className="form-control border-0 p-4" placeholder="Your Name" onChange={handleChange} onBlur={handleBlur} />
@@ -179,7 +181,7 @@ function Services(props) {
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Testimonial</h6>
-                        <h1 className="mb-4">Our Clients Say</h1>
+                        <h1 className={`mb-4 ${value.theme}`}>Our Clients Say</h1>
                     </div>
                     <div>
                         <List 
