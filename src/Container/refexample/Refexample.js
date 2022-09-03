@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Refexample(props) {
+    const value = useContext(themeContext)
     const nameRef = useRef();
     const emailRef = useRef();
 
@@ -12,7 +14,7 @@ function Refexample(props) {
     }
     
     return (
-        <div>
+        <div class={`${value.theme}`}>
             <input ref={nameRef} type="text" placeholder='Please Enter Your Name' name='name' />
             <input ref={emailRef} type="text" placeholder='Please Enter Your Email' name='email' />
             <button onClick={() => handleSubmit()}>submit</button>

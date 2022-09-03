@@ -1,8 +1,10 @@
 import { Form, Formik, useFormik } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Blogdetail(props) {
+    const value = useContext(themeContext); 
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -27,7 +29,7 @@ function Blogdetail(props) {
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
     return (
-        <div>
+        <div class={`${value.theme}`}>
             {/* Header Start */}
             <div className="jumbotron jumbotron-fluid mb-5">
                 <div className="container text-center py-5">
@@ -45,7 +47,7 @@ function Blogdetail(props) {
                 <div className="row">
                     <div className="col-lg-8">
                         {/* Blog Detail Start */}
-                        <div className="pb-3">
+                        <div className="pb-3 shadow-lg p-3 mb-5 bg-body rounded">
                             <div className="position-relative">
                                 <img className="img-fluid w-100" src="img/blog-1.jpg" alt />
                                 <div className="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle" style={{ width: 60, height: 60, bottom: '-30px', right: 30 }}>
@@ -53,7 +55,7 @@ function Blogdetail(props) {
                                     <small className="text-white text-uppercase">Jan</small>
                                 </div>
                             </div>
-                            <div className="bg-secondary mb-3" style={{ padding: 30 }}>
+                            <div className={`mb-3 ${value.theme}`} style={{ padding: 30 }}>
                                 <div className="d-flex mb-3">
                                     <div className="d-flex align-items-center">
                                         <img className="rounded-circle" style={{ width: 40, height: 40 }} src="img/user.jpg" alt />
@@ -64,7 +66,7 @@ function Blogdetail(props) {
                                         <a className="text-muted ml-2" href>Web Design</a>
                                     </div>
                                 </div>
-                                <h4 className="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
+                                <h4 className={`font-weight-bold mb-3 ${value.theme}`}>Kasd tempor diam sea justo dolor</h4>
                                 <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
                                     magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
                                     amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
@@ -77,7 +79,7 @@ function Blogdetail(props) {
                                     ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
                                     clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
                                     justo dolore sit invidunt.</p>
-                                <h4 className="mb-3">Est dolor lorem et ea</h4>
+                                <h4 className={`mb-3 ${value.theme}`}>Est dolor lorem et ea</h4>
                                 <img className="img-fluid w-50 float-left mr-4 mb-2" src="img/blog-1.jpg" />
                                 <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
                                     invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
@@ -89,7 +91,7 @@ function Blogdetail(props) {
                                     dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
                                     sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
                                     duo tempor sea kasd clita ipsum et.</p>
-                                <h5 className="mb-3">Est dolor lorem et ea</h5>
+                                <h5 className={`mb-3 ${value.theme}`}>Est dolor lorem et ea</h5>
                                 <img className="img-fluid w-50 float-right ml-4 mb-2" src="img/blog-2.jpg" />
                                 <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
                                     invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
@@ -106,12 +108,12 @@ function Blogdetail(props) {
                         </div>
                         {/* Blog Detail End */}
                         {/* Comment List Start */}
-                        <div className="bg-secondary" style={{ padding: 30, marginBottom: 30 }}>
-                            <h3 className="mb-4">3 Comments</h3>
+                        <div className={` shadow-lg p-3 mb-5 bg-body rounded ${value.theme}`} style={{ padding: 30, marginBottom: 30 }}>
+                            <h3 className={`mb-4 ${value.theme}`}>3 Comments</h3>
                             <div className="media mb-4">
                                 <img src="img/user.jpg" alt="Image" className="img-fluid mr-3 mt-1" style={{ width: 45 }} />
                                 <div className="media-body">
-                                    <h6><a href>John Doe</a> <small><i>01 Jan 2045</i></small></h6>
+                                    <h6 class={`${value.theme}`}><a href>John Doe</a> <small><i>01 Jan 2045</i></small></h6>
                                     <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
                                         accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.
                                         Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor
@@ -122,7 +124,7 @@ function Blogdetail(props) {
                             <div className="media">
                                 <img src="img/user.jpg" alt="Image" className="img-fluid mr-3 mt-1" style={{ width: 45 }} />
                                 <div className="media-body">
-                                    <h6><a href>John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
+                                    <h6 class={`${value.theme}`}><a href>John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
                                     <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
                                         accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.
                                         Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor
@@ -131,7 +133,7 @@ function Blogdetail(props) {
                                     <div className="media mt-4">
                                         <img src="img/user.jpg" alt="Image" className="img-fluid mr-3 mt-1" style={{ width: 45 }} />
                                         <div className="media-body">
-                                            <h6><a href>John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
+                                            <h6 class={`${value.theme}`}><a href>John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
                                             <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
                                                 labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed
                                                 eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet
@@ -144,8 +146,8 @@ function Blogdetail(props) {
                         </div>
                         {/* Comment List End */}
                         {/* Comment Form Start */}
-                        <div className="bg-secondary mb-3" style={{ padding: 30 }}>
-                            <h3 className="mb-4">Leave a comment</h3>
+                        <div className={`mb-3 shadow-lg p-3 mb-5 bg-body rounded ${value.theme}`} style={{ padding: 30 }}>
+                            <h3 className={`mb-4 ${value.theme}`}>Leave a comment</h3>
                             <Formik values={formik}>
                                 <Form onSubmit={handleSubmit}>
                                     <div className="form-group">
@@ -179,8 +181,8 @@ function Blogdetail(props) {
                     {/* Sidebar Start */}
                     <div className="col-lg-4 mt-5 mt-lg-0">
                         {/* Search Form Start */}
-                        <div className="mb-5">
-                            <div className="bg-secondary" style={{ padding: 30 }}>
+                        <div className="mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                            <div className={`${value.theme}`} style={{ padding: 30 }}>
                                 <div className="input-group">
                                     <input type="text" className="form-control border-0 p-4" placeholder="Keyword" />
                                     <div className="input-group-append">
@@ -192,27 +194,27 @@ function Blogdetail(props) {
                         {/* Search Form End */}
                         {/* Category Start */}
                         <div className="mb-5">
-                            <h3 className="mb-4">Categories</h3>
-                            <div className="bg-secondary" style={{ padding: 30 }}>
-                                <ul className="list-inline m-0">
-                                    <li className="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                        <a className="text-dark" href="#"><i className="fa fa-angle-right text-primary mr-2" />Web Design</a>
+                            <h3 className={`mb-4 ${value.theme}`}>Categories</h3>
+                            <div className={`bg-secondary ${value.theme}`} style={{ padding: 30 }}>
+                                <ul className="list-inline m-0 shadow-lg p-3 mb-5 bg-body rounded">
+                                    <li className={`mb-1 py-2 px-3 d-flex justify-content-between align-items-center ${value.theme}`}>
+                                        <a className={`${value.theme}`} href="#"><i className="fa fa-angle-right text-primary mr-2" />Web Design</a>
                                         <span className="badge badge-secondary badge-pill">150</span>
                                     </li>
-                                    <li className="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                        <a className="text-dark" href="#"><i className="fa fa-angle-right text-primary mr-2" />Web Development</a>
+                                    <li className={`mb-1 py-2 px-3 d-flex justify-content-between align-items-center ${value.theme}`}>
+                                        <a className={`${value.theme}`} href="#"><i className="fa fa-angle-right text-primary mr-2" />Web Development</a>
                                         <span className="badge badge-secondary badge-pill">131</span>
                                     </li>
-                                    <li className="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                        <a className="text-dark" href="#"><i className="fa fa-angle-right text-primary mr-2" />Online Marketing</a>
+                                    <li className={`mb-1 py-2 px-3 d-flex justify-content-between align-items-center ${value.theme}`}>
+                                        <a className={`${value.theme}`} href="#"><i className="fa fa-angle-right text-primary mr-2" />Online Marketing</a>
                                         <span className="badge badge-secondary badge-pill">78</span>
                                     </li>
-                                    <li className="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                        <a className="text-dark" href="#"><i className="fa fa-angle-right text-primary mr-2" />Keyword Research</a>
+                                    <li className={`mb-1 py-2 px-3 d-flex justify-content-between align-items-center ${value.theme}`}>
+                                        <a className={`${value.theme}`} href="#"><i className="fa fa-angle-right text-primary mr-2" />Keyword Research</a>
                                         <span className="badge badge-secondary badge-pill">56</span>
                                     </li>
-                                    <li className="py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                        <a className="text-dark" href="#"><i className="fa fa-angle-right text-primary mr-2" />Email Marketing</a>
+                                    <li className={`py-2 px-3 bg-light d-flex justify-content-between align-items-center ${value.theme}`}>
+                                        <a className={`${value.theme}`} href="#"><i className="fa fa-angle-right text-primary mr-2" />Email Marketing</a>
                                         <span className="badge badge-secondary badge-pill">98</span>
                                     </li>
                                 </ul>
@@ -221,34 +223,34 @@ function Blogdetail(props) {
                         {/* Category End */}
                         {/* Recent Post Start */}
                         <div className="mb-5">
-                            <h3 className="mb-4">Recent Post</h3>
-                            <div className="d-flex mb-3">
+                            <h3 className={`mb-4 ${value.theme}`}>Recent Post</h3>
+                            <div className="d-flex mb-3 shadow-lg p-3 mb-5 bg-body rounded">
                                 <img className="img-fluid" src="img/blog-1.jpg" style={{ width: 80, height: 80, objectFit: 'cover' }} alt />
-                                <a href className="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style={{ height: 80 }}>
+                                <a href className={`d-flex align-items-center text-decoration-none px-3 ${value.theme}`} style={{ height: 80 }}>
                                     Lorem ipsum dolor sit amet consec adipis elit
                                 </a>
                             </div>
-                            <div className="d-flex mb-3">
+                            <div className="d-flex mb-3 shadow-lg p-3 mb-5 bg-body rounded">
                                 <img className="img-fluid" src="img/blog-2.jpg" style={{ width: 80, height: 80, objectFit: 'cover' }} alt />
-                                <a href className="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style={{ height: 80 }}>
+                                <a href className={`d-flex align-items-center text-decoration-none px-3 ${value.theme}`} style={{ height: 80 }}>
                                     Lorem ipsum dolor sit amet consec adipis elit
                                 </a>
                             </div>
-                            <div className="d-flex mb-3">
+                            <div className="d-flex mb-3 shadow-lg p-3 mb-5 bg-body rounded">
                                 <img className="img-fluid" src="img/blog-1.jpg" style={{ width: 80, height: 80, objectFit: 'cover' }} alt />
-                                <a href className="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style={{ height: 80 }}>
+                                <a href className={`d-flex align-items-center text-decoration-none px-3 ${value.theme}`} style={{ height: 80 }}>
                                     Lorem ipsum dolor sit amet consec adipis elit
                                 </a>
                             </div>
-                            <div className="d-flex mb-3">
+                            <div className="d-flex mb-3 shadow-lg p-3 mb-5 bg-body rounded">
                                 <img className="img-fluid" src="img/blog-2.jpg" style={{ width: 80, height: 80, objectFit: 'cover' }} alt />
-                                <a href className="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style={{ height: 80 }}>
+                                <a href className={`d-flex align-items-center text-decoration-none px-3 ${value.theme}`} style={{ height: 80 }}>
                                     Lorem ipsum dolor sit amet consec adipis elit
                                 </a>
                             </div>
-                            <div className="d-flex mb-3">
+                            <div className="d-flex mb-3 shadow-lg p-3 mb-5 bg-body rounded">
                                 <img className="img-fluid" src="img/blog-1.jpg" style={{ width: 80, height: 80, objectFit: 'cover' }} alt />
-                                <a href className="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style={{ height: 80 }}>
+                                <a href className={`d-flex align-items-center text-decoration-none px-3 ${value.theme}`} style={{ height: 80 }}>
                                     Lorem ipsum dolor sit amet consec adipis elit
                                 </a>
                             </div>
@@ -261,14 +263,14 @@ function Blogdetail(props) {
                         {/* Image End */}
                         {/* Tags Start */}
                         <div className="mb-5">
-                            <h3 className="mb-4">Tag Cloud</h3>
+                            <h3 className={`mb-4 ${value.theme}`}>Tag Cloud</h3>
                             <div className="d-flex flex-wrap m-n1">
-                                <a href className="btn btn-secondary m-1">Design</a>
-                                <a href className="btn btn-secondary m-1">Development</a>
-                                <a href className="btn btn-secondary m-1">Marketing</a>
-                                <a href className="btn btn-secondary m-1">SEO</a>
-                                <a href className="btn btn-secondary m-1">Writing</a>
-                                <a href className="btn btn-secondary m-1">Consulting</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>Design</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>Development</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>Marketing</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>SEO</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>Writing</a>
+                                <a href className={`btn m-1 shadow-lg bg-body rounded ${value.theme}`}>Consulting</a>
                             </div>
                         </div>
                         {/* Tags End */}
@@ -279,8 +281,8 @@ function Blogdetail(props) {
                         {/* Image End */}
                         {/* Plain Text Start */}
                         <div>
-                            <h3 className="mb-4">Plain Text</h3>
-                            <div className="bg-secondary text-center" style={{ padding: 30 }}>
+                            <h3 className={`mb-4 ${value.theme}`}>Plain Text</h3>
+                            <div className={`text-center shadow-lg p-3 mb-5 bg-body rounded ${value.theme}`} style={{ padding: 30 }}>
                                 <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
                                 <a href className="btn btn-primary py-2 px-4">Read More</a>
                             </div>

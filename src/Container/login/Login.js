@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { useState } from 'react';
+import { themeContext } from '../../contextapi/ThemeContext';
 
 function Login(props) {
+    const value = useContext(themeContext)
     const [usertype, setUsertype] = useState("Login");
     const [reset, setReset] = useState(false);
 
@@ -77,7 +79,7 @@ function Login(props) {
     console.log(errors);
 
     return (
-        <section id="appointment" className="appointment margin">
+        <section id="appointment" className={`appointment margin ${value.theme}`}>
             <div className="container">
                 <div className="section-title">
                     {
