@@ -2,11 +2,17 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { themeContext } from '../../contextapi/ThemeContext';
+import Alert from '../alert/Alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOutAction } from '../../redux/action/auth_action';
 
 function Header(props) {
     const value = useContext(themeContext);
 
-    console.log(value);
+    const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth)
+
+    console.log(auth);
 
     return (
         <div>
@@ -39,15 +45,13 @@ function Header(props) {
                                 <i className="fab fa-youtube" />
                             </a>
                             <a className={`px-2 ${value.theme}`} href>
-                                <NavLink  className="btn btn-primary d-none d-lg-block" to="/login">Login</NavLink>
-                            </a>
-                            <a className={`px-2 ${value.theme}`} href>
-                                <button className="btn btn-primary d-none d-lg-block"  onClick={() => value.toggle_theme(value.theme)}>change Theme</button>
+                                <button className="btn btn-primary d-none d-lg-block" onClick={() => value.toggle_theme(value.theme)}>change Theme</button>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <Alert />
             <div class="line"></div>
             {/* Topbar End */}
             {/* Navbar Start */}
@@ -79,6 +83,16 @@ function Header(props) {
                             <SearchIcon />
                         </NavLink>
                         <a href className="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</a>
+                        {
+                            auth.user === null ?
+                                <NavLink to="/login" className="ml-3 btn btn-primary py-2 d-none d-lg-block">
+                                    <span>Login/ Signup</span>
+                                </NavLink>
+                                :
+                                <NavLink to="/" className="ml-3 btn btn-primary py-2 d-none d-lg-block">
+                                    <span onClick={() => { dispatch(signOutAction()) }}>Logout</span>
+                                </NavLink>
+                        }
                     </div>
                 </nav>
             </div>

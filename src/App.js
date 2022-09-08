@@ -16,27 +16,35 @@ import Login from './Container/login/Login';
 import PublicRoute from './route/PublicRoute';
 import PrivateRoute from './route/PrivateRoute';
 import ThemeContext from './contextapi/ThemeContext';
+import { Provider } from 'react-redux';
+import { persistor, store } from './redux/Store';
+import { SnackbarProvider } from 'notistack';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
   return (
-    <div className="App">
-      <ThemeContext>
-        <Header />
-          <Switch>
-            <PublicRoute path={"/"} exact component={Home}></PublicRoute>
-            <PublicRoute path={"/aboutus"} exact component={AboutUs}></PublicRoute>
-            <PrivateRoute path={"/services"} exact component={Services}></PrivateRoute>
-            <PublicRoute path={"/price"} exact component={Price}></PublicRoute>
-            <PublicRoute path={"/blog-grid"} exact component={Bloggrid}></PublicRoute>
-            <PublicRoute path={"/blog-detail"} exact component={Blogdetail}></PublicRoute>
-            <PrivateRoute path={"/contact"} exact component={Contact}></PrivateRoute>
-            <Route path={"/rexexample"} exact component={Refexample}></Route>
-            <PublicRoute path={"/search"} exact component={Search}></PublicRoute>
-            <PublicRoute path={"/login"} exact resticted="true" component={Login}></PublicRoute>
-          </Switch>
-        <Footer />
-      </ThemeContext>
-    </div>
+    <SnackbarProvider maxSnack={3}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeContext>
+            <Header />
+            <Switch>
+              <Route path={"/"} exact component={Home} />
+              <Route path={"/aboutus"} exact component={AboutUs} />
+              <Route path={"/services"} exact component={Services} />
+              <Route path={"/price"} exact component={Price} />
+              <Route path={"/blog-grid"} exact component={Bloggrid} />
+              <Route path={"/blog-detail"} exact component={Blogdetail} />
+              <Route path={"/contact"} exact component={Contact} />
+              <Route path={"/rexexample"} exact component={Refexample} />
+              <Route path={"/search"} exact component={Search} />
+              <Route path={"/login"} exact resticted="true" component={Login} />
+            </Switch>
+            <Footer />
+          </ThemeContext>
+        </PersistGate>
+      </Provider>
+    </SnackbarProvider>
   );
 }
 

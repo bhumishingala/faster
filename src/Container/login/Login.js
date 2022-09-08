@@ -3,8 +3,11 @@ import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { useState } from 'react';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { useDispatch } from 'react-redux';
+import { signInAction, signUpAction } from '../../redux/action/auth_action';
 
 function Login(props) {
+    const dispatch = useDispatch();
     const value = useContext(themeContext)
     const [usertype, setUsertype] = useState("Login");
     const [reset, setReset] = useState(false);
@@ -43,21 +46,25 @@ function Login(props) {
     let schema = yup.object().shape(schemaObj);
 
     const insertData = (values) => {
-        let LocalData = JSON.parse(localStorage.getItem("user"));
+        // let LocalData = JSON.parse(localStorage.getItem("user"));
 
-        if (LocalData === null) {
-            localStorage.setItem("user", JSON.stringify([values]));
-        } else {
-            LocalData.push(values);
-            localStorage.setItem("user", JSON.stringify(LocalData));
-        }
+        // if (LocalData === null) {
+        //     localStorage.setItem("user", JSON.stringify([values]));
+        // } else {
+        //     LocalData.push(values);
+        //     localStorage.setItem("user", JSON.stringify(LocalData));
+        // }
+
+        dispatch(signUpAction(values));
 
         console.log(values);
         formik.resetForm()
     }
 
-    const handleLogin = () => {
-        localStorage.setItem("User", "123");
+    const handleLogin = (values) => {
+        // localStorage.setItem("User", "123");
+        dispatch(signInAction(values));
+        formik.resetForm()
     }
 
     const formik = useFormik({
@@ -65,7 +72,7 @@ function Login(props) {
         validationSchema: schema,
         onSubmit: values => {
             if (usertype === "Login") {
-                handleLogin();
+                handleLogin(values);
             } else {
                 insertData(values);
             }
@@ -76,7 +83,7 @@ function Login(props) {
 
     const { handleChange, errors, handleSubmit, handleBlur, touched } = formik;
 
-    console.log(errors);
+    // console.log(errors);
 
     return (
         <section id="appointment" className={`appointment margin ${value.theme}`}>
@@ -131,7 +138,10 @@ function Login(props) {
                                 <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Submit</button></div>
                                 :
                                 usertype === "Login" ?
-                                    <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
+                                    <>
+                                        <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
+                                        <div className="text-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign With Google</button></div>
+                                    </>
                                     :
                                     <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign UP</button></div>
                         }
