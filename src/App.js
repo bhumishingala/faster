@@ -29,16 +29,16 @@ function App() {
           <ThemeContext>
             <Header />
             <Switch>
-              <Route path={"/"} exact component={Home} />
-              <Route path={"/aboutus"} exact component={AboutUs} />
-              <Route path={"/services"} exact component={Services} />
-              <Route path={"/price"} exact component={Price} />
-              <Route path={"/blog-grid"} exact component={Bloggrid} />
-              <Route path={"/blog-detail"} exact component={Blogdetail} />
-              <Route path={"/contact"} exact component={Contact} />
-              <Route path={"/rexexample"} exact component={Refexample} />
-              <Route path={"/search"} exact component={Search} />
-              <Route path={"/login"} exact resticted="true" component={Login} />
+              <PublicRoute path={"/"} exact component={Home}/>
+              <PublicRoute path={"/aboutus"} exact component={AboutUs}/>
+              <PrivateRoute path={"/services"} exact component={Services}/>
+              <PublicRoute path={"/price"} exact component={Price}/>
+              <PublicRoute path={"/blog-grid"} exact component={Bloggrid}/>
+              <PublicRoute path={"/blog-detail"} exact component={Blogdetail}/>
+              <PrivateRoute path={"/contact"} exact component={Contact}/>
+              <Route path={"/rexexample"} exact component={Refexample}/>
+              <PublicRoute path={"/search"} exact component={Search}/>
+              <PublicRoute path={"/login"} exact resticted="true" component={Login}/>
             </Switch>
             <Footer />
           </ThemeContext>

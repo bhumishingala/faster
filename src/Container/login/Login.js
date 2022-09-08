@@ -4,7 +4,7 @@ import { Form, Formik, useFormik } from 'formik';
 import { useState } from 'react';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { useDispatch } from 'react-redux';
-import { signInAction, signUpAction } from '../../redux/action/auth_action';
+import { forgotPassAction, signInAction, signUpAction, SignWithGoogle } from '../../redux/action/auth_action';
 
 function Login(props) {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function Login(props) {
 
     let schemaObj, initval;
 
-    if (usertype === "Login") {
+    if (usertype === "Login" && reset === false) {
         schemaObj = {
             email: yup.string().required("Please Enter Email Id.").email("Please Enter Vaild email Id."),
             password: yup.string().required("Please Enter Password.")
@@ -23,7 +23,7 @@ function Login(props) {
             email: '',
             password: ''
         }
-    } else if (usertype === "Signup") {
+    }else if (usertype === "Signup"  && reset === false) {
         schemaObj = {
             name: yup.string().required("Please enter Name."),
             email: yup.string().required("Please Enter Email Id.").email("Please Enter Vaild email Id."),
@@ -61,6 +61,10 @@ function Login(props) {
         formik.resetForm()
     }
 
+    const handleSignWithGoogle = () => {
+        dispatch(SignWithGoogle())
+    }
+
     const handleLogin = (values) => {
         // localStorage.setItem("User", "123");
         dispatch(signInAction(values));
@@ -71,10 +75,12 @@ function Login(props) {
         initialValues: initval,
         validationSchema: schema,
         onSubmit: values => {
-            if (usertype === "Login") {
+            if (usertype === "Login" && reset === false) {
                 handleLogin(values);
-            } else {
+            } else if(usertype === "Signup" && reset == false){
                 insertData(values);
+            }else if(reset === true){
+                dispatch(forgotPassAction(values));
             }
         },
 
@@ -140,7 +146,7 @@ function Login(props) {
                                 usertype === "Login" ?
                                     <>
                                         <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
-                                        <div className="text-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign With Google</button></div>
+                                        <div className="text-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
                                     </>
                                     :
                                     <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign UP</button></div>

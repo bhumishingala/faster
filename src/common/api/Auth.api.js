@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 export const SignUpApi = (data) => {
@@ -66,13 +66,52 @@ export const SignInApi = (data) => {
 export const SignOutApi = () => {
     console.log("SignOutApi");
 
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         signOut(auth)
             .then(() => {
-                resolve({payload : "Logout SuccessFully" })
+                resolve({ payload: "Logout SuccessFully" })
             })
             .catch(() => {
-                reject({payload : "SomeThing Is Worng" });
+                reject({ payload: "SomeThing Is Worng" });
             })
+    })
+}
+
+export const SigninWithGoogle = () => {
+    console.log("data");
+
+    return new Promise((resolve, reject) => {
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                resolve({ payload: user })
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                reject({ payload: error })
+            });
+    })
+}
+
+export const forGotPasswordApi = (data) => {
+    console.log(data);
+
+    return new Promise((resolve, reject) => {
+        sendPasswordResetEmail(auth, data.email)
+            .then(() => {
+                resolve({ payload: "Check Your Email And ForgotpassWord" })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                reject({ payload: "Email is wrong" })
+            });
     })
 }

@@ -19,3 +19,11 @@ export const signOutAction = () => (dispatch) => {
 export const signedOutAction = () => (dispatch) => {
     dispatch({type : ActionType.SIGNEDOUT_USER})
 }
+
+export const SignWithGoogle = () => (dispatch) => {
+    dispatch({type : ActionType.SIGNINWITHGOOGLE})
+}
+
+export const forgotPassAction = (data) => (dispatch) => {
+    dispatch({type : ActionType.FORGOTPASS_USER , payload : data})
+}

@@ -3,6 +3,8 @@ export const SIGNIN_USER = "SIGNIN_USER";
 export const SIGNEDIN_USER = "SIGNEDIN_USER";
 export const SIGNOUT_USER = "SIGNOUT_USER";
 export const SIGNEDOUT_USER = "SIGNEDOUT_USER";
+export const FORGOTPASS_USER = "FORGOTPASS_USER";
+export const SIGNINWITHGOOGLE = "SIGNINWITHGOOGLE";
 
 export const SET_ALERT = "SET_ALERT";
 export const RESET_ALERT = "RESET_ALERT";
