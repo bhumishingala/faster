@@ -38,7 +38,7 @@ function OrderNowServices(props) {
                                         </div>
                                     </td>
                                     <td className="align-middle">$150</td>
-                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-shopping-cart text-dark"></i></NavLink></td>
+                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-regular fa-xmark text-dark"></i></NavLink></td>
                                 </tr>
                                 <tr>
                                     <td className="align-middle"><img src="img/ser2.jpg" alt style={{ width: 80 }} /> Ocean Fr.</td>

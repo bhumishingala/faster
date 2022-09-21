@@ -21,7 +21,7 @@ function Air_services(props) {
                                 </li><li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3" />Emergency Services</h6></li>
                                 <li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3" />24/7 Customer Support</h6></li>
                             </ul>
-                            <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                            <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Leran More</NavLink>
                         </div>
                     </div>
                 </div>
