@@ -57,9 +57,9 @@ function Header(props) {
             {/* Navbar Start */}
             <div className="container-fluid p-0">
                 <nav className={`navbar navbar-expand-lg  py-3 py-lg-0 px-lg-5 ${value.theme}`}>
-                    <a href="index.html" className="navbar-brand ml-lg-3">
+                    <NavLink to={"/"} href="index.html" className="navbar-brand ml-lg-3">
                         <h1 className="m-0 display-5 text-uppercase text-primary"><i className="fa fa-truck mr-2" />Faster</h1>
-                    </a>
+                    </NavLink>
                     <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span className="navbar-toggler-icon" />
                     </button>

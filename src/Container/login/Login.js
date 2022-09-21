@@ -92,7 +92,7 @@ function Login(props) {
 
     return (
         <section id="appointment" className={`appointment margin ${value.theme}`}>
-            <div className="container">
+            <div className="container py-5">
                 <div className="section-title text-center">
                     {
                         reset === true ?
@@ -145,7 +145,6 @@ function Login(props) {
                                 usertype === "Login" ?
                                     <>
                                         <div className="row justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
-                                        <div className="row justify-content-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
                                     </>
                                     :
                                     <div className="row justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign UP</button></div>
@@ -159,6 +158,7 @@ function Login(props) {
                         <a class='text-orange row justify-content-center' onClick={() => setReset(true)}>Forgot Your Password ?</a>
                     </Form>
                 </Formik>
+                <div className="row justify-content-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
             </div>
             
             <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>

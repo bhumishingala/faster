@@ -6,6 +6,9 @@ import { themeContext } from '../../contextapi/ThemeContext';
 
 function Home(props) {
     const value = useContext(themeContext);
+    const Click = () => {
+        window.scrollTo({top : 0,left : 0,behavior : 'smooth'})
+    }
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -75,7 +78,6 @@ function Home(props) {
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
-                                {/* 16:9 aspect ratio */}
                                 <div className="embed-responsive embed-responsive-16by9">
                                     <iframe className="embed-responsive-item" src id="video" allowscriptaccess="always" allow="autoplay" />
                                 </div>
@@ -155,7 +157,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Air Freight</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/AirSevices" className="border-bottom text-decoration-none" href>Read More</NavLink>
+                            <NavLink to="/AirSevices" onClick={() => Click()} className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -163,7 +165,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Ocean Freight</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/OcenSerivces" className="border-bottom text-decoration-none" href>Read More</NavLink>
+                            <NavLink to="/OcenSerivces" onClick={() => Click()} className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -171,7 +173,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Land Transport</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/LandServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
+                            <NavLink to="/LandServices" onClick={() => Click()} className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -179,7 +181,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Cargo Storage</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/cargoServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
+                            <NavLink to="/cargoServices" onClick={() => Click()} className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                     </div>
                 </div>
@@ -230,7 +232,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +251,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +270,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>

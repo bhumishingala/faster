@@ -7,6 +7,10 @@ import { themeContext } from '../../contextapi/ThemeContext';
 function Footer(props) {
     const value = useContext(themeContext);
 
+    const Click = () => {
+        window.scrollTo({top:0,left:0,behavior:'smooth'})
+    }
+
     console.log(value);
     let schema = yup.object().shape({
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -27,7 +31,7 @@ function Footer(props) {
 
     return (
         <div>
-            <div className={`container-fluid bg-dark mr-5 mt-5 py-5 px-sm-3 px-md-5 ${value.theme}`}>
+            <div className={`container-fluid bg-dark mr-5 py-5 px-sm-3 px-md-5 ${value.theme}`}>
                 <div className="row pt-5">
                     <div className="col-lg-7 col-md-6">
                         <div className="row">
@@ -46,11 +50,11 @@ function Footer(props) {
                             <div className="col-md-6 mb-5z">
                                 <h3 className="text-primary mb-4">Quick Links</h3>
                                 <div className="d-flex flex-column justify-content-start">
-                                    <NavLink to="/" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Home</NavLink>
-                                    <NavLink to="/aboutus" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />About Us</NavLink>
-                                    <NavLink to="/services" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Our Services</NavLink>
-                                    <NavLink to="/price" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</NavLink>
-                                    <NavLink to="/contact" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Contact Us</NavLink>
+                                    <NavLink to="/" onClick={() => Click()} className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Home</NavLink>
+                                    <NavLink to="/aboutus" onClick={() => Click()} className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />About Us</NavLink>
+                                    <NavLink to="/services" onClick={() => Click()} className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Our Services</NavLink>
+                                    <NavLink to="/price" onClick={() => Click()} className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</NavLink>
+                                    <NavLink to="/contact" onClick={() => Click()} className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Contact Us</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +80,6 @@ function Footer(props) {
                 <div className="row">
                     <div className="col-lg-6 text-center text-md-left mb-3 mb-md-0">
                         <p className={`m-0 ${value.theme}`}>© <a href="#">Your Site Name</a>. All Rights Reserved.
-                            {/*/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. *** /*/}
                             Designed by <a href="https://htmlcodex.com">HTML Codex</a>
                             <br />Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </p>
