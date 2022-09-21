@@ -1,6 +1,6 @@
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 
@@ -46,12 +46,11 @@ function Footer(props) {
                             <div className="col-md-6 mb-5z">
                                 <h3 className="text-primary mb-4">Quick Links</h3>
                                 <div className="d-flex flex-column justify-content-start">
-                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Home</a>
-                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />About Us</a>
-                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Our Services</a>
-                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</a>
-                                    <a className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Contact Us</a>
-                                    <Link className={`nav-link py-0 mb-2 ${value.theme}`} to="/rexexample"><i className="fa fa-angle-right mr-2" />Ref Example</Link>
+                                    <NavLink to="/" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Home</NavLink>
+                                    <NavLink to="/aboutus" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />About Us</NavLink>
+                                    <NavLink to="/services" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Our Services</NavLink>
+                                    <NavLink to="/price" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Pricing Plan</NavLink>
+                                    <NavLink to="/contact" className={`mb-2 ${value.theme}`} href="#"><i className="fa fa-angle-right mr-2" />Contact Us</NavLink>
                                 </div>
                             </div>
                         </div>

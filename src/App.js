@@ -20,6 +20,13 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './redux/Store';
 import { SnackbarProvider } from 'notistack';
 import { PersistGate } from 'redux-persist/integration/react';
+import Air_services from './Container/services/Air_services';
+import Ocen_services from './Container/services/Ocen_services';
+import Land_services from './Container/services/Land_services';
+import Cargo_services from './Container/services/Cargo_services';
+import Getquote from './Container/quote/Getquote';
+import OrderNowServices from './Container/checkOut/OrderNowServices';
+import CheckOutServices from './Container/checkOut/CheckOutServices';
 
 function App() {
   return (
@@ -31,13 +38,20 @@ function App() {
             <Switch>
               <PublicRoute path={"/"} exact component={Home}/>
               <PublicRoute path={"/aboutus"} exact component={AboutUs}/>
-              <PrivateRoute path={"/services"} exact component={Services}/>
-              <PublicRoute path={"/price"} exact component={Price}/>
+              <PublicRoute path={"/services"} exact component={Services}/>
+              <PrivateRoute path={"/price"} exact component={Price}/>
               <PublicRoute path={"/blog-grid"} exact component={Bloggrid}/>
               <PublicRoute path={"/blog-detail"} exact component={Blogdetail}/>
               <PrivateRoute path={"/contact"} exact component={Contact}/>
               <Route path={"/rexexample"} exact component={Refexample}/>
               <PublicRoute path={"/search"} exact component={Search}/>
+              <PublicRoute path={"/AirSevices"} exact component={Air_services }/>
+              <PublicRoute path={"/OcenSerivces"} exact component={Ocen_services}/>
+              <PublicRoute path={"/LandServices"} exact component={Land_services}/>
+              <PublicRoute path={"/cargoServices"} exact component={Cargo_services}/>
+              <PublicRoute path={"/getquote"} exact component={Getquote}/>
+              <PrivateRoute path={"/orderNow"} exact component={OrderNowServices}/>
+              <PrivateRoute path={"/checkOut"} exact component={CheckOutServices}/>
               <PublicRoute path={"/login"} exact resticted="true" component={Login}/>
             </Switch>
             <Footer />

@@ -1,11 +1,10 @@
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext } from 'react';
-import List from '../../component/list/List';
+import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
-import { NavLink } from 'react-router-dom';
 
-function Services(props) {
+function Getquote(props) {
     const value = useContext(themeContext);
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
@@ -27,67 +26,9 @@ function Services(props) {
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
-
     return (
         <div class={`${value.theme}`}>
-            {/* Header Start */}
-            <div className="jumbotron jumbotron-fluid mb-5">
-                <div className="container text-center py-5">
-                    <h1 className="text-white display-3">Service</h1>
-                    <div className="d-inline-flex align-items-center text-white">
-                        <p className="m-0"><a className="text-white" href>Home</a></p>
-                        <i className="fa fa-circle px-3" />
-                        <p className="m-0">Service</p>
-                    </div>
-                </div>
-            </div>
-            {/* Header End */}
-            {/* Services Start */}
-            <div className="container-fluid pt-5">
-                <div className="container">
-                    <div className="text-center pb-2">
-                        <h6 className="text-primary text-uppercase font-weight-bold">Our Services</h6>
-                        <h1 className={`mb-4 ${value.theme}`}>Best Logistic Services</h1>
-                    </div>
-                    <div className="row pb-3">
-                        <div className="col-lg-3 col-md-6 text-center mb-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
-                                <i className="fa fa-2x fa-plane text-dark pr-3" />
-                                <h6 className="text-white font-weight-medium m-0">Air Freight</h6>
-                            </div>
-                            <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/AirSevices" className="border-bottom text-decoration-none" href>Read More</NavLink>
-                        </div>
-                        <div className="col-lg-3 col-md-6 text-center mb-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
-                                <i className="fa fa-2x fa-ship text-dark pr-3" />
-                                <h6 className="text-white font-weight-medium m-0">Ocean Freight</h6>
-                            </div>
-                            <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/OcenSerivces" className="border-bottom text-decoration-none" href>Read More</NavLink>
-                        </div>
-                        <div className="col-lg-3 col-md-6 text-center mb-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
-                                <i className="fa fa-2x fa-truck text-dark pr-3" />
-                                <h6 className="text-white font-weight-medium m-0">Land Transport</h6>
-                            </div>
-                            <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/LandServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
-                        </div>
-                        <div className="col-lg-3 col-md-6 text-center mb-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
-                                <i className="fa fa-2x fa-store text-dark pr-3" />
-                                <h6 className="text-white font-weight-medium m-0">Cargo Storage</h6>
-                            </div>
-                            <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <NavLink to="/cargoServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* Services End */}
-            {/*  Quote Request Start */}
-            <div className="container-fluid  mt-5 pb-5">
+            <div className="container-fluid  py-5">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7 py-5 py-lg-0">
@@ -124,9 +65,10 @@ function Services(props) {
                                         <div className="form-group">
                                             <select name="services" className="custom-select border-0 px-4" onChange={handleChange} onBlur={handleBlur} style={{ height: 47 }}>
                                                 <option selected>Select A Service</option>
-                                                <option value={1}>Service 1</option>
-                                                <option value={2}>Service 1</option>
-                                                <option value={3}>Service 1</option>
+                                                <option value={1}>Air Freight Service</option>
+                                                <option value={2}>Ocean Freight Service</option>
+                                                <option value={3}>Land Transport Service</option>
+                                                <option value={4}>Cargo Storage Service</option>
                                             </select>
                                             <p className='text-white'>{errors.services && touched.services ? errors.services : ''}</p>
                                         </div>
@@ -140,10 +82,9 @@ function Services(props) {
                     </div>
                 </div>
             </div>
-            <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
+            {/* Quote Request Start */}
         </div>
-
     );
 }
 
-export default Services;
+export default Getquote;

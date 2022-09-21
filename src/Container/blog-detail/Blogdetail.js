@@ -293,6 +293,7 @@ function Blogdetail(props) {
                 </div>
             </div>
             {/* Blog End */}
+            <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
 
     );

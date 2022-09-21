@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
 
 function Price(props) {
@@ -40,7 +41,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +60,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -142,6 +143,7 @@ function Price(props) {
                 </div>
             </div>
             {/* Testimonial End */}
+            <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
 
     );

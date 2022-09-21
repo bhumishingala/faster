@@ -1,5 +1,6 @@
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 
@@ -61,7 +62,7 @@ function Home(props) {
                                 <button type="button" className="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
                                     <span />
                                 </button>
-                                <h5 className="font-weight-bold m-0 ml-4">Play Video</h5>
+                                <h5 className={`font-weight-bold m-0 ml-4 ${value.theme}`}>Play Video</h5>
                             </div>
                         </div>
                     </div>
@@ -122,9 +123,10 @@ function Home(props) {
                                         <div className="form-group">
                                             <select name="services" className="custom-select border-0 px-4" onChange={handleChange} onBlur={handleBlur} style={{ height: 47 }}>
                                                 <option selected>Select A Service</option>
-                                                <option value={1}>Service 1</option>
-                                                <option value={2}>Service 1</option>
-                                                <option value={3}>Service 1</option>
+                                                <option value={1}>Air Freight Service</option>
+                                                <option value={2}>Ocean Freight Service</option>
+                                                <option value={3}>Land Transport Service</option>
+                                                <option value={4}>Cargo Storage Service</option>
                                             </select>
                                             <p className='text-white'>{errors.services && touched.services ? errors.services : ''}</p>
                                         </div>
@@ -153,7 +155,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Air Freight</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <a className="border-bottom text-decoration-none" href>Read More</a>
+                            <NavLink to="/AirSevices" className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -161,7 +163,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Ocean Freight</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <a className="border-bottom text-decoration-none" href>Read More</a>
+                            <NavLink to="/OcenSerivces" className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -169,7 +171,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Land Transport</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <a className="border-bottom text-decoration-none" href>Read More</a>
+                            <NavLink to="/LandServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                         <div className="col-lg-3 col-md-6 text-center mb-5">
                             <div className="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -177,7 +179,7 @@ function Home(props) {
                                 <h6 className="text-white font-weight-medium m-0">Cargo Storage</h6>
                             </div>
                             <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                            <a className="border-bottom text-decoration-none" href>Read More</a>
+                            <NavLink to="/cargoServices" className="border-bottom text-decoration-none" href>Read More</NavLink>
                         </div>
                     </div>
                 </div>
@@ -228,7 +230,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +249,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +268,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <a href className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -354,122 +356,6 @@ function Home(props) {
                 </div>
             </div>
             {/* Team End */}
-            {/* Testimonial Start */}
-            {/* <div className="container-fluid py-5">
-                <div className="container">
-                    <div className="text-center pb-2">
-                        <h6 className="text-primary text-uppercase font-weight-bold">Testimonial</h6>
-                        <h1 className="mb-4">Our Clients Say</h1>
-                    </div>
-                    <div className="owl-carousel testimonial-carousel">
-                        <div className="position-relative bg-secondary p-4">
-                            <i className="fa fa-3x fa-quote-right text-primary position-absolute" style={{ top: '-6px', right: 0 }} />
-                            <div className="d-flex align-items-center mb-3">
-                                <img className="img-fluid rounded-circle" src="img/testimonial-1.jpg" style={{ width: 60, height: 60 }} alt />
-                                <div className="ml-3">
-                                    <h6 className="font-weight-semi-bold m-0">Client Name</h6>
-                                    <small>- Profession</small>
-                                </div>
-                            </div>
-                            <p className="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
-                        </div>
-                        <div className="position-relative bg-secondary p-4">
-                            <i className="fa fa-3x fa-quote-right text-primary position-absolute" style={{ top: '-6px', right: 0 }} />
-                            <div className="d-flex align-items-center mb-3">
-                                <img className="img-fluid rounded-circle" src="img/testimonial-2.jpg" style={{ width: 60, height: 60 }} alt />
-                                <div className="ml-3">
-                                    <h6 className="font-weight-semi-bold m-0">Client Name</h6>
-                                    <small>- Profession</small>
-                                </div>
-                            </div>
-                            <p className="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
-                        </div>
-                        <div className="position-relative bg-secondary p-4">
-                            <i className="fa fa-3x fa-quote-right text-primary position-absolute" style={{ top: '-6px', right: 0 }} />
-                            <div className="d-flex align-items-center mb-3">
-                                <img className="img-fluid rounded-circle" src="img/testimonial-3.jpg" style={{ width: 60, height: 60 }} alt />
-                                <div className="ml-3">
-                                    <h6 className="font-weight-semi-bold m-0">Client Name</h6>
-                                    <small>- Profession</small>
-                                </div>
-                            </div>
-                            <p className="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
-                        </div>
-                        <div className="position-relative bg-secondary p-4">
-                            <i className="fa fa-3x fa-quote-right text-primary position-absolute" style={{ top: '-6px', right: 0 }} />
-                            <div className="d-flex align-items-center mb-3">
-                                <img className="img-fluid rounded-circle" src="img/testimonial-4.jpg" style={{ width: 60, height: 60 }} alt />
-                                <div className="ml-3">
-                                    <h6 className="font-weight-semi-bold m-0">Client Name</h6>
-                                    <small>- Profession</small>
-                                </div>
-                            </div>
-                            <p className="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            {/* Testimonial End */}
-            {/* Blog Start */}
-            <div className="container-fluid pt-5">
-                <div className="container">
-                    <div className="text-center pb-2">
-                        <h6 className="text-primary text-uppercase font-weight-bold">Our Blog</h6>
-                        <h1 className={`mb-4 ${value.theme}`}>Latest From Blog</h1>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-6 mb-5 shadow-lg p-3 mb-5 bg-body rounded ">
-                            <div className="position-relative">
-                                <img className="img-fluid w-100" src="img/blog-1.jpg" alt />
-                                <div className="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle" style={{ width: 60, height: 60, bottom: '-30px', right: 30 }}>
-                                    <h4 className="font-weight-bold mb-n1">01</h4>
-                                    <small className="text-white text-uppercase">Jan</small>
-                                </div>
-                            </div>
-                            <div className={`${value.theme}`} style={{ padding: 30 }}>
-                                <div className="d-flex mb-3">
-                                    <div className="d-flex align-items-center">
-                                        <img className="rounded-circle" style={{ width: 40, height: 40 }} src="img/user.jpg" alt />
-                                        <a className="text-muted ml-2" href>John Doe</a>
-                                    </div>
-                                    <div className="d-flex align-items-center ml-4">
-                                        <i className="far fa-bookmark text-primary" />
-                                        <a className="text-muted ml-2" href>Web Design</a>
-                                    </div>
-                                </div>
-                                <h4 className={`font-weight-bold mb-3 ${value.theme}`}>Kasd tempor diam sea justo dolor</h4>
-                                <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                                <a className="border-bottom border-primary text-uppercase text-decoration-none" href>Read More <i className="fa fa-angle-right" /></a>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mb-5 shadow-lg p-3 mb-5 bg-body rounded ">
-                            <div className="position-relative">
-                                <img className="img-fluid w-100" src="img/blog-2.jpg" alt />
-                                <div className="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle" style={{ width: 60, height: 60, bottom: '-30px', right: 30 }}>
-                                    <h4 className="font-weight-bold mb-n1">01</h4>
-                                    <small className="text-white text-uppercase">Jan</small>
-                                </div>
-                            </div>
-                            <div className={`${value.theme}`} style={{ padding: 30 }}>
-                                <div className="d-flex mb-3">
-                                    <div className="d-flex align-items-center">
-                                        <img className="rounded-circle" style={{ width: 40, height: 40 }} src="img/user.jpg" alt />
-                                        <a className="text-muted ml-2" href>John Doe</a>
-                                    </div>
-                                    <div className="d-flex align-items-center ml-4">
-                                        <i className="far fa-bookmark text-primary" />
-                                        <a className="text-muted ml-2" href>Web Design</a>
-                                    </div>
-                                </div>
-                                <h4 className={`font-weight-bold mb-3 ${value.theme}`}>Kasd tempor diam sea justo dolor</h4>
-                                <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                                <a className="border-bottom border-primary text-uppercase text-decoration-none" href>Read More <i className="fa fa-angle-right" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* Blog End */}
             <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
 

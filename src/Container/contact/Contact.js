@@ -87,6 +87,7 @@ function Contact(props) {
                 </div>
             </div>
             {/* Contact End */}
+            <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
 
     );

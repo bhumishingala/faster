@@ -65,7 +65,6 @@ function Header(props) {
                     </button>
                     <div className="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                         <div className="navbar-nav m-auto py-0">
-                            {/* <a href="index.html" className="nav-item nav-link active">Home</a> */}
                             <NavLink className="nav-item nav-link active" to="/">Home</NavLink>
                             <NavLink className="nav-item nav-link" to="/aboutus">About</NavLink>
                             <NavLink className="nav-item nav-link" to="/services">Service</NavLink>
@@ -82,7 +81,7 @@ function Header(props) {
                         <NavLink className="text-primary px-2" to="/search">
                             <SearchIcon />
                         </NavLink>
-                        <a href className="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</a>
+                        <NavLink href to="/getquote" className="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</NavLink>
                         {
                             auth.user === null ?
                                 <NavLink to="/login" className="ml-3 btn btn-primary py-2 d-none d-lg-block">

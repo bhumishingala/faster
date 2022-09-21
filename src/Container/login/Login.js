@@ -66,7 +66,6 @@ function Login(props) {
     }
 
     const handleLogin = (values) => {
-        // localStorage.setItem("User", "123");
         dispatch(signInAction(values));
         formik.resetForm()
     }
@@ -94,20 +93,20 @@ function Login(props) {
     return (
         <section id="appointment" className={`appointment margin ${value.theme}`}>
             <div className="container">
-                <div className="section-title">
+                <div className="section-title text-center">
                     {
                         reset === true ?
-                            <h2>Forgot Password</h2>
+                            <h2 class={`${value.theme} mb-5 pt-5`}>Forgot Password</h2>
                             :
                             usertype === "Login" ?
-                                <h2>Login</h2>
+                                <h2 class={`${value.theme} mb-5 pt-5`}>Login</h2>
                                 :
-                                <h2>Sign Up</h2>
+                                <h2 class={`${value.theme} mb-5 pt-5`}>Sign Up</h2>
                     }
                 </div>
                 <Formik values={formik}>
                     <Form onSubmit={handleSubmit} className="php-email-form">
-                        <div className="row">
+                        <div className="row justify-content-center">
                             {
                                 reset === true ?
                                     null
@@ -122,7 +121,7 @@ function Login(props) {
                                         </div>
                             }
                         </div>
-                        <div className='row'>
+                        <div className='row justify-content-center'>
                             <div className="col-md-4 form-group mt-3 mt-md-0">
                                 <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} onBlur={handleBlur} />
                                 <p className='text-danger'>{errors.email && touched.email ? errors.email : ''}</p>
@@ -132,7 +131,7 @@ function Login(props) {
                             reset === true ?
                                 null
                                 :
-                                <div className='row'>
+                                <div className='row justify-content-center'>
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
                                         <input type="password" className="form-control" name="password" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
                                         <p className='text-danger'>{errors.password && touched.password ? errors.password : ''}</p>
@@ -141,26 +140,28 @@ function Login(props) {
                         }
                         {
                             reset === true ?
-                                <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Submit</button></div>
+                                <div className="row justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Submit</button></div>
                                 :
                                 usertype === "Login" ?
                                     <>
-                                        <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
-                                        <div className="text-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
+                                        <div className="row justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Login</button></div>
+                                        <div className="row justify-content-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
                                     </>
                                     :
-                                    <div className="text-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign UP</button></div>
+                                    <div className="row justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Sign UP</button></div>
                         }
                         {
                             usertype === "Login" ?
-                                <p className='mt-4'>create an account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Signup") }}>Signup</a></p>
+                                <p className='mt-4 text-center'>create an account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Signup") }}>Signup</a></p>
                                 :
-                                <p className='mt-4'>allready account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Login") }}>Login</a></p>
+                                <p className='mt-4 text-center'>allready account ?<a class="sign-up" onClick={() => { setReset(false); setUsertype("Login") }}>Login</a></p>
                         }
-                        <a class='text-orange' onClick={() => setReset(true)}>Forgot Your Password ?</a>
+                        <a class='text-orange row justify-content-center' onClick={() => setReset(true)}>Forgot Your Password ?</a>
                     </Form>
                 </Formik>
             </div>
+            
+            <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </section>
     );
 }
