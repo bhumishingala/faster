@@ -42,9 +42,9 @@ export const SignInApi = (data) => {
                 const user = userCredential.user;
 
                 if (user.emailVerified) {
-                    resolve({ payload: "Signin successFully." })
+                    resolve({ payload: user });
                 } else {
-                    resolve({ payload: "First is Email varifiyed." })
+                    reject({ payload: "First Is Email Varify." });
                 }
                 console.log(user);
             })
