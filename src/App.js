@@ -38,29 +38,29 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <ThemeContext>
             <Header />
-            {/* <Layout> */}
-              <Switch>
-                <PublicRoute path={"/"} exact component={Home} />
-                <PublicRoute path={"/aboutus"} exact component={AboutUs} />
-                <PublicRoute path={"/services"} exact component={Services} />
-                <PrivateRoute path={"/price"} exact component={Price} />
-                <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
-                <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
-                <PrivateRoute path={"/contact"} exact component={Contact} />
-                <Route path={"/rexexample"} exact component={Refexample} />
-                <PublicRoute path={"/search"} exact component={Search} />
-                <PublicRoute path={"/AirSevices"} exact component={Air_services} />
-                <PublicRoute path={"/OcenSerivces"} exact component={Ocen_services} />
-                <PublicRoute path={"/LandServices"} exact component={Land_services} />
-                <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
-                <PublicRoute path={"/getquote"} exact component={Getquote} />
-                <PrivateRoute path={"/orderNow"} exact component={OrderNowServices} />
-                <PrivateRoute path={"/checkOut"} exact component={CheckOutServices} />
-                <PrivateRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
-                <PublicRoute path={"/login"} exact resticted="true" component={Login} />
-                <PublicRoute path={"/Categary"} exact component={Category} />
-              </Switch>
-              {/* </Layout> */}
+            <Switch>
+              <PublicRoute path={"/"} exact component={Home} />
+              <PublicRoute path={"/aboutus"} exact component={AboutUs} />
+              <PublicRoute path={"/services"} exact component={Services} />
+              <PrivateRoute path={"/price"} exact component={Price} />
+              <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
+              <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
+              <PrivateRoute path={"/contact"} exact component={Contact} />
+              <Route path={"/rexexample"} exact component={Refexample} />
+              <PublicRoute path={"/search"} exact component={Search} />
+              <PublicRoute path={"/AirSevices"} exact component={Air_services} />
+              <PublicRoute path={"/OcenSerivces"} exact component={Ocen_services} />
+              <PublicRoute path={"/LandServices"} exact component={Land_services} />
+              <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
+              <PublicRoute path={"/getquote"} exact component={Getquote} />
+              <PrivateRoute path={"/orderNow"} exact component={OrderNowServices} />
+              <PrivateRoute path={"/checkOut"} exact component={CheckOutServices} />
+              <PrivateRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
+              <PublicRoute path={"/login"} exact resticted="true" component={Login} />
+              <Layout>
+                <PrivateRoute path={"/Categary"} exact component={Category} />
+              </Layout>
+            </Switch>
             <Footer />
           </ThemeContext>
         </PersistGate>

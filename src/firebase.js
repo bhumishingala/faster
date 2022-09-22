@@ -5,13 +5,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-qh3s2HnGCRULrqKGz5DSGbcKXjy5KsQ",
-  authDomain: "faster-46224.firebaseapp.com",
-  projectId: "faster-46224",
-  storageBucket: "faster-46224.appspot.com",
-  messagingSenderId: "11554822407",
-  appId: "1:11554822407:web:ef0d709ed3625846f30da2",
-  measurementId: "G-4ESE5RR3MN"
+  apiKey: "AIzaSyDxexTF2y1g6rUWUhe8yT-2exbQJbxUR-s",
+  authDomain: "faster-admin-5d308.firebaseapp.com",
+  projectId: "faster-admin-5d308",
+  storageBucket: "faster-admin-5d308.appspot.com",
+  messagingSenderId: "447962212390",
+  appId: "1:447962212390:web:c66398ba0092217a349ee7",
+  measurementId: "G-KYSW7FTMRL"
 };
 
 const app = initializeApp(firebaseConfig);

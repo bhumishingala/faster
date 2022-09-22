@@ -5,7 +5,7 @@ import * as ActionType from '../ActionType';
 
 export const getCategory = () => async (dispatch) => {
     try {
-        const querySnapshot = await getDocs(collection(db, "Category-services"));
+        const querySnapshot = await getDocs(collection(db, "Category"));
         let data = [];
         querySnapshot.forEach((doc) => {
             data.push({ id: doc.id, ...doc.data() })
@@ -21,12 +21,12 @@ export const addCategory = (data) => async (dispatch) => {
 
         let radomNum = Math.floor(Math.random() * 1000000).toString();
 
-        const categoryRef = ref(storage, 'Category-services/' + radomNum);
+        const categoryRef = ref(storage, 'Category/' + radomNum);
         uploadBytes(categoryRef, data.Prof_img)
             .then((snapshot) => {
                 getDownloadURL(ref(storage, snapshot.ref))
                     .then(async (url) => {
-                        const docRef = await addDoc(collection(db, "Category-services"), {
+                        const docRef = await addDoc(collection(db, "Category"), {
                             ...data,
                             Prof_img: url,
                             fileName: radomNum
@@ -48,11 +48,11 @@ export const addCategory = (data) => async (dispatch) => {
 
 export const deleteCategory = (data) => async (dispatch) => {
     try {
-        const deletetRef = ref(storage, "Category-services/" + data.fileName);
+        const deletetRef = ref(storage, "Category/" + data.fileName);
 
         deleteObject(deletetRef)
             .then(async () => {
-                await deleteDoc(doc(db, "Category-services", data.id));
+                await deleteDoc(doc(db, "Category", data.id));
                 dispatch({ type: ActionType.DETETE_CATEGORY, payload: data.id })
             }).catch((error) => {
                 dispatch(error_category(error.message))
@@ -66,16 +66,16 @@ export const deleteCategory = (data) => async (dispatch) => {
 export const updateCategory = (data) => async(dispatch) => {
     console.log(data);
     try {
-        const CategoryRef = doc(db, "Category-services", data.id);
+        const CategoryRef = doc(db, "Category", data.id);
         if (typeof data.Prof_img === "string") {
             await updateDoc(CategoryRef, {
                 name: data.name,
             });
             dispatch({ type: ActionType.UPDATE_CATEGORY, payload: data })
         } else {
-            const delcategorytRef = ref(storage, "Category-services/" + data.fileName);
+            const delcategorytRef = ref(storage, "Category/" + data.fileName);
             let radomNum = Math.floor(Math.random() * 1000000).toString();
-            const upcategoryRef = ref(storage, 'Category-services/' + radomNum);
+            const upcategoryRef = ref(storage, 'Category/' + radomNum);
 
             deleteObject(delcategorytRef)
                 .then(() => {

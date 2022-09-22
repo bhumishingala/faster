@@ -7,7 +7,7 @@ const initval = {
 }
 
 export const categoryReducer = (state = initval, action) => {
-    console.log(action.tyoe, action);
+    console.log(action.type, action);
     switch (action.type) {
         case ActionType.GET_CATEGORY:
             return {

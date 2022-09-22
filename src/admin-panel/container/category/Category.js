@@ -13,7 +13,6 @@ import { Form, Formik, useFormik } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCategory, deleteCategory, getCategory, updateCategory } from '../../../redux/action/Category_action';
-// import { addCategory, deleteCategory, getCategory, updateCategory } from '../../reduex/action/Category_action';
 
 function Category(props) {
     const dispatch = useDispatch();
@@ -96,6 +95,7 @@ function Category(props) {
 
     const handleClickUpdate = (values) => {
         dispatch(updateCategory(values));
+        console.log(values);
         handleClose();
     }
 
@@ -108,6 +108,7 @@ function Category(props) {
     }
     const handleDelete = (params) => {
         dispatch(deleteCategory(did));
+        console.log(params);
         handleClose();
     }
 
