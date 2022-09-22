@@ -41,7 +41,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>

@@ -15,7 +15,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';   
+import ListItemText from '@mui/material/ListItemText';
+import MedicationIcon from '@mui/icons-material/Medication';
+import PersonIcon from '@mui/icons-material/Person';
+import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
 import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
@@ -79,7 +82,7 @@ export default function Layout({ children }) {
     };
 
     const data = [
-        { lable: 'category', icon: <ShoppingCartIcon />, to: "/category" }
+        { lable: 'Categary', icon: <ShoppingCartIcon />, to: "/Categary" },
     ]
 
     return (

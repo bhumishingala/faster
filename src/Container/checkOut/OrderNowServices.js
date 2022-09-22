@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
 
 function OrderNowServices(props) {
     const value = useContext(themeContext);
+    const dispatch = useDispatch()
     return (
         <div class={`${value.theme}`}>
             <div className="container-fluid py-5">
@@ -25,75 +28,81 @@ function OrderNowServices(props) {
                                     <td className="align-middle"><img src="img/ser1.jpg" alt style={{ width: 80 }} /> Air Freight</td>
                                     <td className="align-middle">$200</td>
                                     <td className="align-middle">
-                                        <div className="form-group ml-5" style={{ width: 170 }}>
-                                            <select name="services" className="custom-select border-0 py-2" style={{ height: 47 }}>
-                                                <option selected>Select A Service</option>
-                                                <option value={1}>DOOR-TO-DOOR SERVICES</option>
-                                                <option value={2}>TOP URGENT DIRECT CONSIGNMENTS</option>
-                                                <option value={3}>WORLDWIDE CONSOLIDATIONS</option>
-                                                <option value={4}>COMBINED SEA/AIR AND AIR/SEA SERVICES</option>
-                                                <option value={5}>MULTIMODAL</option>
-                                                <option value={6}>HAND CARRY/MESSENGER SERVICES</option>
-                                            </select>
+                                        <div className="input-group quantity mx-auto" style={{ width: 100 }}>
+                                            <FormGroup style={{ width: 100 }}>
+                                                <Input
+                                                    id="exampleNumber"
+                                                    name="number"
+                                                    placeholder="number"
+                                                    defaultValue={1}
+                                                    type="number"
+                                                />
+                                            </FormGroup>
                                         </div>
+
                                     </td>
                                     <td className="align-middle">$150</td>
-                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-regular fa-xmark text-dark"></i></NavLink></td>
+                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td className="align-middle"><img src="img/ser2.jpg" alt style={{ width: 80 }} /> Ocean Fr.</td>
                                     <td className="align-middle">$200</td>
                                     <td className="align-middle">
-                                        <div className="form-group ml-5" style={{ width: 170 }}>
-                                            <select name="services" className="custom-select border-0 py-2" style={{ height: 47 }}>
-                                                <option selected>Select A Service</option>
-                                                <option value={1}>FULL CONTAINER LOAD (FCL)</option>
-                                                <option value={2}>LESS THAN CONTAINER LOAD (LCL)</option>
-                                                <option value={3}>OUT OF GAUGE (OOG) FLAT RACKS</option>
-                                                <option value={4}>PROJECT CARGO ON-SITE DELIVERIES</option>
-                                                <option value={5}>DOOR-TO-DOOR SERVICES</option>
-                                                <option value={6}>CUSTOMS PROCESSING FORMALITIES</option>
-                                                <option value={6}>PICK-UPS AND DELIVERIES</option>
-                                                <option value={6}>WAREHOUSING & DOMESTIC DISTRIBUTIONL</option>
-                                            </select>
+                                        <div className="input-group quantity mx-auto" style={{ width: 100 }}>
+                                            <FormGroup style={{ width: 100 }}>
+                                                <Input
+                                                    id="exampleNumber"
+                                                    name="number"
+                                                    placeholder="number"
+                                                    defaultValue={1}
+                                                    type="number"
+                                                />
+                                            </FormGroup>
                                         </div>
+
                                     </td>
                                     <td className="align-middle">$150</td>
-                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-shopping-cart text-dark"></i></NavLink></td>
+                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td className="align-middle "><img src="img/ser3.jpg" alt style={{ width: 80 }} /> Land Tras.</td>
                                     <td className="align-middle">$200</td>
                                     <td className="align-middle">
-                                        <div className="form-group ml-5" style={{ width: 170 }}>
-                                            <select name="services" className="custom-select border-0 py-2" style={{ height: 47 }}>
-                                                <option selected>Select A Service</option>
-                                                <option value={1}>FULL CONTAINER LOAD (FCL)</option>
-                                                <option value={2}>CROSS-BORDER</option>
-                                                <option value={3}>DOMESTIC DISTRIBUTION</option>
-                                            </select>
+                                        <div className="input-group quantity mx-auto" style={{ width: 100 }}>
+                                            <FormGroup style={{ width: 100 }}>
+                                                <Input
+                                                    id="exampleNumber"
+                                                    name="number"
+                                                    placeholder="number"
+                                                    defaultValue={1}
+                                                    type="number"
+                                                />
+                                            </FormGroup>
                                         </div>
+
                                     </td>
                                     <td className="align-middle">$150</td>
-                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-shopping-cart text-dark"></i></NavLink></td>
+                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                                 </tr>
                                 <tr>
                                     <td className="align-middle"><img src="img/ser4.jpg" alt style={{ width: 80 }} /> Cargo Sto.</td>
                                     <td className="align-middle">$200</td>
                                     <td className="align-middle">
-                                        <div className="form-group ml-5" style={{ width: 170 }}>
-                                            <select name="services" className="custom-select border-0 py-2" style={{ height: 47 }}>
-                                                <option selected>Select A Service</option>
-                                                <option value={1}>VALUE ADDED WAREHOUSING</option>
-                                                <option value={2}>INVENTORY CONTROL</option>
-                                                <option value={3}>E-FULFILLMENT</option>
-                                                <option value={4}>REVERSE LOGISTICS</option>
-                                                <option value={5}>MULTIMODAL</option>
-                                            </select>
+                                        <div className="input-group quantity mx-auto" style={{ width: 100 }}>
+                                            <FormGroup style={{ width: 100 }}>
+                                                <Input
+                                                    id="exampleNumber"
+                                                    name="number"
+                                                    placeholder="number"
+                                                    defaultValue={1}
+                                                    type="number"
+                                                />
+                                            </FormGroup>
                                         </div>
+
                                     </td>
                                     <td className="align-middle">$150</td>
-                                    <td className="align-middle"><NavLink to="/checkOut" className="btn btn-sm btn-primary"><i class="fas fa-shopping-cart text-dark"></i></NavLink></td>
+                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                                 </tr>
                             </tbody>
                         </table>

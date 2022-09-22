@@ -77,6 +77,7 @@ function Header(props) {
                                 </div>
                             </div>
                             <NavLink className="nav-item nav-link" to="/contact">Contact</NavLink>
+                            <NavLink className="nav-item nav-link" to="/Categary">Add CAtegory</NavLink>
                         </div>
                         <NavLink className="text-primary px-2" to="/search">
                             <SearchIcon />
