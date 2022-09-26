@@ -3,7 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
 
 function Price(props) {
-    const value = useContext(themeContext)
+    const value = useContext(themeContext);
+    const Click = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
     return (
         <div class={`${value.theme}`}>
             {/* Header Start */}
@@ -41,7 +44,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +63,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis"  onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +82,7 @@ function Price(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis"  onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>

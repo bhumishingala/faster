@@ -30,6 +30,7 @@ import CheckOutServices from './Container/checkOut/CheckOutServices';
 import Layout from './admin-panel/compoent/layout/Layout';
 import Category from './admin-panel/container/category/Category';
 import ProductsDetalis from './Container/services/ProductsDetalis';
+import Products from './admin-panel/container/products/Products';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
               <PublicRoute path={"/login"} exact resticted="true" component={Login} />
               <Layout>
                 <PrivateRoute path={"/Categary"} exact component={Category} />
+                <PrivateRoute path={"/Products"} exact component={Products} />
               </Layout>
             </Switch>
             <Footer />

@@ -11,6 +11,9 @@ function Login(props) {
     const value = useContext(themeContext)
     const [usertype, setUsertype] = useState("Login");
     const [reset, setReset] = useState(false);
+    const Click = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
 
     let schemaObj, initval;
 
@@ -158,7 +161,7 @@ function Login(props) {
                         <a class='text-orange row justify-content-center' onClick={() => setReset(true)}>Forgot Your Password ?</a>
                     </Form>
                 </Formik>
-                <div className="row justify-content-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => handleSignWithGoogle()}>Sign With Google</button></div>
+                <div className="row justify-content-center mt-3 "><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block" onClick={() => {handleSignWithGoogle();Click()}}>Sign With Google</button></div>
             </div>
             
             <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>

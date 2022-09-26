@@ -11,20 +11,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Form, Formik, useFormik } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
-import Autocomplete from '@mui/material/Autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCategory, deleteCategory, getCategory, updateCategory } from '../../../redux/action/Category_action';
+import { addProducts, deleteProducts, getProducts, updateProducts } from '../../../redux/action/Products_action';
 
-function Category(props) {
+function Products(props) {
     const dispatch = useDispatch();
-    const category = useSelector(state => state.category)
+    const products = useSelector(state => state.products)
     const [open, setOpen] = React.useState(false);
     const [update, setUpdate] = useState(false);
     const [data, setData] = useState([]);
     const [dopen, setDOpen] = React.useState(false);
     const [did, setDid] = useState(0);
-    const products = useSelector(state => state.products)
-    
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -39,16 +37,6 @@ function Category(props) {
         setUpdate(false);
         formik.resetForm();
     };
-
-    const top100Films = [
-        { title: products.Products, year: 1999 },
-    ]
-
-    const defaultProps = {
-        options: top100Films,
-        getOptionLabel: (option) => option.title,
-    };
-
 
     const columns = [
         { field: "name", headerName: 'Name', width: 170 },
@@ -74,6 +62,10 @@ function Category(props) {
                 </>
             )
         }
+    ];
+
+    const rows = [
+        { id: 1, name: 'Snow', Prof_img: '' },
     ];
 
     let schema = yup.object().shape({
@@ -106,20 +98,20 @@ function Category(props) {
     }
 
     const handleClickUpdate = (values) => {
-        dispatch(updateCategory(values));
+        dispatch(updateProducts(values));
         console.log(values);
         handleClose();
     }
 
     const handleInsert = (values) => {
-        dispatch(addCategory(values));
+        dispatch(addProducts(values));
         console.log(values);
 
         handleClose();
         formik.resetForm()
     }
     const handleDelete = (params) => {
-        dispatch(deleteCategory(did));
+        dispatch(deleteProducts(did));
         console.log(params);
         handleClose();
     }
@@ -127,11 +119,8 @@ function Category(props) {
     const { handleSubmit, handleChange, handleBlur, errors, values, touched, setFieldValue } = formik;
 
     useEffect(() => {
-        dispatch(getCategory());
+        dispatch(getProducts());
     }, [])
-
-    console.log(products.Products);
-    console.log(category.category);
 
     return (
         <div>
@@ -159,7 +148,7 @@ function Category(props) {
                 <Formik values={formik}>
                     <Form onSubmit={handleSubmit}>
                         <DialogContent>
-                            {/* <TextField
+                            <TextField
                                 margin="dense"
                                 id="name"
                                 label="Category Name"
@@ -169,22 +158,8 @@ function Category(props) {
                                 variant="standard"
                                 value={values.name}
                                 onChange={handleChange}
-                                onBlur={handleBlur} */}
-                            <Autocomplete
-                                {...defaultProps}
-                                id="auto-complete"
-                                autoComplete
-                                name="name"
-                                fullWidth
-                                variant="standard"
-                                value={values.name}
-                                onChange={handleChange}
                                 onBlur={handleBlur}
-                                renderInput={(params) => (
-                                    <TextField {...params} label="autoComplete" variant="standard" />
-                                )}
                             />
-                            {/* /> */}
                             {errors.name && touched.name ? <p>{errors.name}</p> : ''}
                             <input
                                 id="name"
@@ -203,7 +178,7 @@ function Category(props) {
             </Dialog>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
-                    rows={category.category}
+                    rows={products.Products}
                     columns={columns}
                     pageSize={5}
                     rowsPerPageOptions={[5]}
@@ -214,4 +189,4 @@ function Category(props) {
     );
 }
 
-export default Category;
+export default Products;

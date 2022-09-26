@@ -1,20 +1,17 @@
-import { TextField } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
-// import { Datagrid, TextField} from 'react-admin';
 
-function Home(props) {
+function Home() {
     const value = useContext(themeContext);
     const category = useSelector(state => state.category)
-    // let data = [category.category];
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
+
     let schema = yup.object().shape({
         name: yup.string().required("Please Enter Name."),
         email: yup.string().email("Please Enter Vaild Email Id.").required("Please Enter Email Id."),
@@ -53,10 +50,7 @@ function Home(props) {
                     </div>
                 </div>
             </div>
-            {/* <DataGrid
-                    rows={category.category}n
-                /> */}
-            {/* <p class={`${value.theme}`}>{category.category}</p> */}
+           <p>{category.category}</p>
             {/* Header End */}
             {/* About Start */}
             <div className="container-fluid py-5">
@@ -243,7 +237,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +256,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +275,7 @@ function Home(props) {
                                     <p>Bootstrap 4</p>
                                     <p>Responsive Layout</p>
                                     <p>Compatible With All Browsers</p>
-                                    <NavLink href to="/orderNow" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    <NavLink href to="/ProductDetalis" onClick={() => Click()} className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                 </div>
                             </div>
                         </div>
