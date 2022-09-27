@@ -122,6 +122,8 @@ function Products(props) {
         dispatch(getProducts());
     }, [])
 
+    console.log(products.Products);
+
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>

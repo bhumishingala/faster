@@ -23,8 +23,9 @@ function Category(props) {
     const [data, setData] = useState([]);
     const [dopen, setDOpen] = React.useState(false);
     const [did, setDid] = useState(0);
-    const products = useSelector(state => state.products)
-    
+    const products = useSelector(state => state.products);
+    const [value, setValue] = React.useState(null);
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -41,13 +42,14 @@ function Category(props) {
     };
 
     const top100Films = [
-        { title: products.Products, year: 1999 },
+        { title: products.Products},
     ]
 
     const defaultProps = {
         options: top100Films,
         getOptionLabel: (option) => option.title,
     };
+
 
 
     const columns = [
@@ -185,6 +187,17 @@ function Category(props) {
                                 )}
                             />
                             {/* /> */}
+                            {/* <Autocomplete
+                                {...defaultProps}
+                                id="controlled-demo"
+                                value={value}
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Catgory" variant="standard" />
+                                )}
+                            /> */}
                             {errors.name && touched.name ? <p>{errors.name}</p> : ''}
                             <input
                                 id="name"
