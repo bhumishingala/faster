@@ -132,7 +132,6 @@ function Category(props) {
         dispatch(getCategory());
     }, [])
 
-    console.log(products.Products);
     console.log(category.category);
 
     return (
@@ -161,7 +160,7 @@ function Category(props) {
                 <Formik values={formik}>
                     <Form onSubmit={handleSubmit}>
                         <DialogContent>
-                            {/* <TextField
+                            <TextField
                                 margin="dense"
                                 id="name"
                                 label="Category Name"
@@ -171,8 +170,9 @@ function Category(props) {
                                 variant="standard"
                                 value={values.name}
                                 onChange={handleChange}
-                                onBlur={handleBlur} */}
-                            <Autocomplete
+                                onBlur={handleBlur}
+                            />
+                            {/* <Autocomplete
                                 {...defaultProps}
                                 id="auto-complete"
                                 autoComplete
@@ -185,8 +185,7 @@ function Category(props) {
                                 renderInput={(params) => (
                                     <TextField {...params} label="autoComplete" variant="standard" />
                                 )}
-                            />
-                            {/* /> */}
+                            /> */}
                             {/* <Autocomplete
                                 {...defaultProps}
                                 id="controlled-demo"

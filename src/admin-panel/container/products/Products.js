@@ -146,7 +146,7 @@ function Products(props) {
                 </DialogActions>
             </Dialog>
             <Dialog open={open} onClose={handleClose} fullWidth>
-                <DialogTitle>Add category</DialogTitle>
+                <DialogTitle>Add Products</DialogTitle>
                 <Formik values={formik}>
                     <Form onSubmit={handleSubmit}>
                         <DialogContent>
