@@ -14,47 +14,47 @@ function Products(props) {
 
     useEffect(() => {
         dispatch(getProducts())
-    },[])
+    }, [])
 
     return (
         <div>
-            {/* <div className='container-fluid'>
-                <div className="row">
-                    <div className="col-lg-8 p-5"> */}
-                        {
-                            products.Products.map((p) => {
-                                return (
-                                    <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box1 mt-3">
-                                                <img src={p.Prof_img} width={90} height={90} className="mt-3" />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <NavLink href="#" to={"/ProductDetalis"} onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></NavLink>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
-                                                <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
+            {/* <div className='container-fluid'> */}
+            <div className="row">
+                {/* <div className="col-lg-8 p-5"> */}
+                {
+                    products.Products.map((p) => {
+                        return (
+                            <div className="col-md-4 mb-5 height shadow-sm p-5 bg-body rounded">
+                                <div>
+                                    <div className="product-title">
+                                        <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
+                                        <div className="ratting text-center mt-3">
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
                                         </div>
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
-        //         </div>
+                                    <div className="text-center mt-3">
+                                        <img src={p.Prof_img} width={90} height={90} className="mt-3" />
+                                    </div>
+                                    <div className="d-flex flex-column align-items-center py-4">
+                                        <div className="product-action p-1 mb-2">
+                                            <NavLink href="#" to={"/ProductDetalis"} onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></NavLink>
+                                            <a href="#" className="m-2"><i className="fa fa-heart" /></a>
+                                            <a href="#" className="m-2"><i className="fa fa-search" /></a>
+                                        </div>
+                                        <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
+                                        <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
         //     </div>
         // </div >
     );
