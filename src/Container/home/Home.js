@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { getCategory } from '../../redux/action/Category_action';
+import Services from '../services/servicesAdd.js/Services';
 
 function Home() {
     const value = useContext(themeContext);
-    const dispatch = useDispatch();
     const category = useSelector(state => state.category)
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -36,9 +36,6 @@ function Home() {
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
     console.log(category.category.length);
 
-    useEffect(() => {
-        dispatch(getCategory())
-    }, [])
 
     return (
         <div class={`${value.theme}`}>
@@ -154,30 +151,7 @@ function Home() {
             </div>
             {/* Quote Request Start */}
             {/* Services Start */}
-            <div className="container-fluid pt-5">
-                <div className="container">
-                    <div className="text-center pb-2">
-                        <h6 className="text-primary text-uppercase font-weight-bold">Our Services</h6>
-                        <h1 className={`mb-4 ${value.theme}`}>Best Logistic Services</h1>
-                    </div>
-                    <div className="row justifu-content-center">
-                        {
-                            category.category.map((c) => {
-                                return (
-                                    <div className="col-lg-3 col-md-6 text-center mb-5 border shadow-lg p-4 mb-5 mt-3 ml-5 bg-body rounded">
-                                        <div className="d-flex align-items-center justify-content-center mb-3">
-                                            <img src={c.Prof_img} width={90} height={90} />
-                                            <h6 className="font-weight-medium m-0 text-primary ml-2">{c.name}</h6>
-                                        </div>
-                                        <p>Diam amet eos at no eos sit lorem, amet rebum ipsum clita stet diam sea est diam</p>
-                                        <NavLink to="/AirSevices" onClick={() => Click()} className="border-bottom text-decoration-none" href>Read More</NavLink>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
+            <Services />
             {/* Services End */}
             {/* Features Start */}
             <div className="container-fluid my-5">
@@ -209,7 +183,7 @@ function Home() {
                         <h1 className={`mb-4 ${value.theme}`}>Affordable Pricing Packages</h1>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                        <div className="col-md-4 mb-5">
                             <div>
                                 <div className="text-center p-4">
                                     <h1 className={`display-4 mb-0 ${value.theme}`}>
@@ -228,7 +202,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                        <div className="col-md-4 mb-5">
                             <div>
                                 <div className="text-center p-4">
                                     <h1 className={`display-4 mb-0 ${value.theme}`}>
@@ -247,7 +221,7 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-3 mb-5 bg-body rounded">
+                        <div className="col-md-4 mb-5">
                             <div>
                                 <div className="text-center p-4">
                                     <h1 className={`display-4 mb-0 ${value.theme}`}>

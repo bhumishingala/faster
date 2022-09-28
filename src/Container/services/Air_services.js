@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { getProducts } from '../../redux/action/Products_action';
+import Products from './servicesAdd.js/Products';
 
 function Air_services(props) {
     const value = useContext(themeContext);
@@ -90,7 +91,8 @@ function Air_services(props) {
                                         </div>
                                     </div>
                                 </div>
-                                {
+                                <Products />
+                                {/* {
                                     products.Products.map((p) => {
                                         return (
                                             <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
@@ -106,7 +108,7 @@ function Air_services(props) {
                                                         </div>
                                                     </div>
                                                     <div className="text-center box1 mt-3">
-                                                    <img src={p.Prof_img} width={90} height={90} className=""/>
+                                                    <img src={p.Prof_img} width={90} height={90} className="mt-3"/>
                                                     </div>
                                                     <div className="d-flex flex-column align-items-center py-4">
                                                         <div className="product-action p-1 mb-2">
@@ -121,7 +123,7 @@ function Air_services(props) {
                                             </div>
                                         )
                                     })
-                                }
+                                } */}
                                 {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">

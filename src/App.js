@@ -10,7 +10,6 @@ import Price from './Container/price/Price';
 import Bloggrid from './Container/blog-grid/Bloggrid';
 import Blogdetail from './Container/blog-detail/Blogdetail';
 import Contact from './Container/contact/Contact';
-import Refexample from './Container/refexample/Refexample';
 import Search from './Container/search/Search';
 import Login from './Container/login/Login';
 import PublicRoute from './route/PublicRoute';
@@ -47,7 +46,6 @@ function App() {
               <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
               <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
               <PrivateRoute path={"/contact"} exact component={Contact} />
-              <Route path={"/rexexample"} exact component={Refexample} />
               <PublicRoute path={"/search"} exact component={Search} />
               <PublicRoute path={"/AirSevices"} exact component={Air_services} />
               <PublicRoute path={"/OcenSerivces"} exact component={Ocen_services} />

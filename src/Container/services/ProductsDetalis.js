@@ -13,10 +13,7 @@ function ProductsDetalis(props) {
     }
 
     const increment = () => {
-        // if (counter < 0) {
-            setCounter(counter + 1)
-            console.log("increnent");
-        // }
+        setCounter(counter + 1)
     }
 
     let schema = yup.object().shape({
@@ -182,7 +179,7 @@ function ProductsDetalis(props) {
                                                     <i className="fa fa-star" />
                                                 </div>
                                             </div>
-                                            <div className="text-center box mt-3">
+                                            <div className="text-center box2 mt-3">
                                                 <img className="air1 color" src="img/air1.png" alt />
                                             </div>
                                             <div className="d-flex flex-column align-items-center py-4">
@@ -208,7 +205,7 @@ function ProductsDetalis(props) {
                                                     <i className="fa fa-star" />
                                                 </div>
                                             </div>
-                                            <div className="text-center box mt-3">
+                                            <div className="text-center box2 mt-3">
                                                 <img className="air1 color" src="img/air2.png" alt />
                                             </div>
                                             <div className="d-flex flex-column align-items-center py-4">
@@ -234,7 +231,7 @@ function ProductsDetalis(props) {
                                                     <i className="fa fa-star" />
                                                 </div>
                                             </div>
-                                            <div className="text-center box mt-3">
+                                            <div className="text-center box2 mt-3">
                                                 <img className="air1 color" src="img/air3.png" alt />
                                             </div>
                                             <div className="d-flex flex-column align-items-center py-4">
@@ -260,7 +257,7 @@ function ProductsDetalis(props) {
                                                     <i className="fa fa-star" />
                                                 </div>
                                             </div>
-                                            <div className="text-center box mt-3">
+                                            <div className="text-center box2 mt-3">
                                                 <img className="air1 color" src="img/air5.png" alt />
                                             </div>
                                             <div className="d-flex flex-column align-items-center py-4">
@@ -286,7 +283,7 @@ function ProductsDetalis(props) {
                                                     <i className="fa fa-star" />
                                                 </div>
                                             </div>
-                                            <div className="text-center box mt-3">
+                                            <div className="text-center box2 mt-3">
                                                 <img className="air1 color" src="img/air6.png" alt />
                                             </div>
                                             <div className="d-flex flex-column align-items-center py-4">

@@ -5,13 +5,13 @@ import { TOGGLE_THEME } from "./ActionType";
 export const themeContext = createContext();
 
 const initval = {
-    theme : 'drak'
+    theme : 'light'
 }
 
 function ThemeContext({children}) {
     const [state,dispatch] =  useReducer(themeReducer , initval);
     const toggle_theme = (val) => {
-        let newTheme = val === 'drak' ? 'light' : 'drak';
+        let newTheme = val === 'light' ? 'drak' : 'light';
         dispatch({type : TOGGLE_THEME, payload : newTheme});
     }
     return (
