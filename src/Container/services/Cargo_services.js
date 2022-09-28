@@ -1,12 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { getProducts } from '../../redux/action/Products_action';
+import Products from './servicesAdd.js/Products';
 
 function Cargo_services(props) {
     const value = useContext(themeContext);
+    const products = useSelector(state => state.products);
+    const dispatch = useDispatch();
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
+
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
+
     return (
         <div class={`${value.theme}`}>
             {/* Features Start */}
@@ -78,9 +88,21 @@ function Cargo_services(props) {
                                                 </div>
                                             </div>
                                         </div>
+                                        {
+                                            products.Products.map((p) => {
+                                                return (
+                                                    // products.Products.filter((p1) => {
+                                                    //     if (p1.name === "Cargo Storage") {
+                                                            console.log(p.category)
+                                                    //     }
+                                                    // })
+                                                )
+                                        })
+                                        }
+                                        <Products />
                                     </div>
                                 </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
+                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">
                                             <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>VALUE ADDED WAREHOUSING</h5>
@@ -105,8 +127,8 @@ function Cargo_services(props) {
                                             <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
+                                </div> */}
+                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">
                                             <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>INVENTORY CONTROL</h5>
@@ -131,8 +153,8 @@ function Cargo_services(props) {
                                             <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
+                                </div> */}
+                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">
                                             <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>E-FULFILLMENT</h5>
@@ -157,8 +179,8 @@ function Cargo_services(props) {
                                             <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
+                                </div> */}
+                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">
                                             <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>REVERSE LOGISTICS</h5>
@@ -183,8 +205,8 @@ function Cargo_services(props) {
                                             <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
+                                </div> */}
+                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
                                     <div>
                                         <div className="product-title">
                                             <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>MULTIMODAL</h5>
@@ -209,7 +231,7 @@ function Cargo_services(props) {
                                             <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         {/* Side Bar Start */}

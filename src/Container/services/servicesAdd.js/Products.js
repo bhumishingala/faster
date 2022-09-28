@@ -18,9 +18,7 @@ function Products(props) {
 
     return (
         <div>
-            {/* <div className='container-fluid'> */}
             <div className="row">
-                {/* <div className="col-lg-8 p-5"> */}
                 {
                     products.Products.map((p) => {
                         return (
@@ -55,8 +53,6 @@ function Products(props) {
                 }
             </div>
         </div>
-        //     </div>
-        // </div >
     );
 }
 

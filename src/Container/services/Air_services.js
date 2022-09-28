@@ -19,7 +19,7 @@ function Air_services(props) {
     },[])
 
     return (
-        <div class={`${value.theme}`}>
+        <div class={`${value.theme}`} onChange={() => ProductView()}>
             {/* Features Start */}
             <div className="container-fluid py-5">
                 <div className="container">
@@ -92,194 +92,6 @@ function Air_services(props) {
                                     </div>
                                 </div>
                                 <Products />
-                                {/* {
-                                    products.Products.map((p) => {
-                                        return (
-                                            <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                                <div>
-                                                    <div className="product-title">
-                                                        <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
-                                                        <div className="ratting text-center mt-3">
-                                                            <i className="fa fa-star" />
-                                                            <i className="fa fa-star" />
-                                                            <i className="fa fa-star" />
-                                                            <i className="fa fa-star" />
-                                                            <i className="fa fa-star" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-center box1 mt-3">
-                                                    <img src={p.Prof_img} width={90} height={90} className="mt-3"/>
-                                                    </div>
-                                                    <div className="d-flex flex-column align-items-center py-4">
-                                                        <div className="product-action p-1 mb-2">
-                                                            <NavLink href="#" to={"/ProductDetalis"} onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></NavLink>
-                                                            <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                            <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                        </div>
-                                                        <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
-                                                        <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                } */}
-                                {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>Door-to-Door Services</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air1.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>TOP URGENT DIRECT CONSIGNMENTS</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air2.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>WORLDWIDE CONSOLIDATIONS</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air3.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>COMBINED SEA/AIR AND AIR/SEA SERVICES</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air4.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>MULTIMODAL</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air5.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
-                                    <div>
-                                        <div className="product-title">
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>HAND CARRY/MESSENGER SERVICES</h5>
-                                            <div className="ratting text-center mt-3">
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                                <i className="fa fa-star" />
-                                            </div>
-                                        </div>
-                                        <div className="text-center box1 mt-3">
-                                            <img className="air1 color" src="img/air6.png" alt />
-                                        </div>
-                                        <div className="d-flex flex-column align-items-center py-4">
-                                            <div className="product-action p-1 mb-2">
-                                                <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                            </div>
-                                            <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                            <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                        </div>
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
                         {/* Side Bar Start */}
@@ -287,7 +99,7 @@ function Air_services(props) {
                             <div className="sidebar-widget category">
                                 <h2 className={`title text-primary`}>Category</h2>
                                 <nav className="navbar">
-                                    <ul className="navbar-nav shadow-lg p-5 bg-body rounded">
+                                    <ul className="navbar-nav shadow p-5 bg-body rounded">
                                         <li className="nav-item">
                                             <NavLink to="/AirSevices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
                                         </li>
@@ -305,7 +117,7 @@ function Air_services(props) {
                             </div>
                             <div className="sidebar-widget widget-slider">
                                 <div className="sidebar-slider normal-slider">
-                                    <div className="col-md-12 mb-5 shadow-lg p-5 bg-body rounded">
+                                    <div className="col-md-12 mb-5 shadow p-5 bg-body rounded">
                                         <div>
                                             <div className="text-center box3 mb-4">
                                                 <img className="air1 color" src="img/air1.png" alt />
@@ -325,93 +137,6 @@ function Air_services(props) {
                 </div>
             </div>
             {/* Product List End */}
-
-            {/*Pricing Plan Start */}
-            {/* <div className="container-fluid pt-5">
-                <div className="container">
-                    <div className="text-center pb-2">
-                        <h6 className="text-primary text-uppercase font-weight-bold">FLEXIBLE & DEPENDABLE</h6>
-                        <h1 className={`mb-4 ${value.theme}`}>AIR FREIGHT</h1>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1 color" src="img/air1.png" alt />
-                                </div>
-                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>Door-to-Door Services</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1" src="img/air2.png" alt />
-                                </div>
-                                <h5 className={` text-center text-primary text-uppercase font-weight-bold`}>Top Urgent Direct Consignments</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1" src="img/air3.png" alt />
-                                </div>
-                                <h5 className={` text-center text-primary text-uppercase font-weight-bold`}>Worldwide Consolidations</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1" src="img/air4.png" alt />
-                                </div>
-                                <h5 className={` text-center text-primary text-uppercase font-weight-bold`}>Combined Sea/Air and Air/Sea Services</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1" src="img/air5.png" alt />
-                                </div>
-                                <h5 className={` text-center text-primary text-uppercase font-weight-bold`}>Multimodal</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-5 shadow-lg p-5 bg-body rounded">
-                            <div>
-                                <div className="text-center box mb-4">
-                                    <img className="air1" src="img/air6.png" alt />
-                                </div>
-                                <h5 className={` text-center text-primary text-uppercase font-weight-bold`}>Hand Carry/Messenger Services</h5>
-                                <div className="d-flex flex-column align-items-center py-4">
-                                    <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                    <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-            {/* Pricing Plan End */}
             <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
     );
