@@ -13,10 +13,12 @@ import { Form, Formik, useFormik } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts, deleteProducts, getProducts, updateProducts } from '../../../redux/action/Products_action';
+import { MenuItem, Select } from '@mui/material';
 
 function Products(props) {
     const dispatch = useDispatch();
     const products = useSelector(state => state.products)
+    const category = useSelector(state => state.category)
     const [open, setOpen] = React.useState(false);
     const [update, setUpdate] = useState(false);
     const [data, setData] = useState([]);
@@ -40,6 +42,8 @@ function Products(props) {
 
     const columns = [
         { field: "name", headerName: 'Name', width: 170 },
+        { field: "category", headerName: 'Category name', width: 170 },
+        { field: "price", headerName: 'Category price', width: 170 },
         {
             field: "Prof_img",
             headerName: 'Profile Image',
@@ -64,19 +68,19 @@ function Products(props) {
         }
     ];
 
-    const rows = [
-        { id: 1, name: 'Snow', Prof_img: '' },
-    ];
-
     let schema = yup.object().shape({
         name: yup.string().required("Plaese Enter Name"),
-        Prof_img: yup.string().required("Please Select Any Profile Image")
+        Prof_img: yup.string().required("Please Select Any Profile Image"),
+        category: yup.string().required("Please Select any category."),
+        price : yup.number("Please Enter Valid Number.").required("Please Enter Price."),
     });
 
     const formik = useFormik({
         initialValues: {
             name: '',
-            Prof_img: ''
+            Prof_img: '',
+            category: '',
+            price: ''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -122,12 +126,12 @@ function Products(props) {
         dispatch(getProducts());
     }, [])
 
-    console.log(products.Products);
+    console.log(products.Products.length);
 
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
-                Add category
+                Add Products
             </Button>
             <Dialog
                 open={dopen}
@@ -150,6 +154,26 @@ function Products(props) {
                 <Formik values={formik}>
                     <Form onSubmit={handleSubmit}>
                         <DialogContent>
+                            <Select
+                                value={values.category}
+                                name="category"
+                                fullWidth
+                                variant='standard'
+                                onBlur={handleBlur}
+                                onChange={(e) => setFieldValue('category', e.target.value)}
+                            >
+                                {
+                                    category.category.length > 0 ?
+                                        category.category.map((c) => {
+                                            return (
+                                                <MenuItem value={c.name}>{c.name}</MenuItem>
+                                            )
+                                        })
+                                        :
+                                        null
+                                }
+                            </Select>
+                            {errors.category_name && touched.category_name ? <p>{errors.category_name}</p> : ''}
                             <TextField
                                 margin="dense"
                                 id="name"
@@ -163,6 +187,19 @@ function Products(props) {
                                 onBlur={handleBlur}
                             />
                             {errors.name && touched.name ? <p>{errors.name}</p> : ''}
+                            <TextField
+                                margin="dense"
+                                id="name"
+                                label="Category Price"
+                                type="text"
+                                name="price"
+                                fullWidth
+                                variant="standard"
+                                value={values.price}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.price && touched.price ? <p>{errors.price}</p> : ''}
                             <input
                                 id="name"
                                 type='file'

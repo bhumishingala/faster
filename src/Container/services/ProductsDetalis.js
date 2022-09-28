@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { increment } from 'firebase/firestore';
 
 function ProductsDetalis(props) {
+    const [counter, setCounter] = useState(0);
     const value = useContext(themeContext);
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
+
+    const increment = () => {
+        // if (counter < 0) {
+            setCounter(counter + 1)
+            console.log("increnent");
+        // }
     }
 
     let schema = yup.object().shape({
@@ -64,7 +73,7 @@ function ProductsDetalis(props) {
                                                 <div className="qty mt-3">
                                                     <button className="btn-minus"><i className="fa fa-minus" /></button>
                                                     <input type="text" defaultValue={1} />
-                                                    <button className="btn-plus"><i className="fa fa-plus" /></button>
+                                                    <button className="btn-plus" onClick={() => increment()}><i className="fa fa-plus" /></button>
                                                 </div>
                                             </div>
                                             <div className="action mt-4">
@@ -147,6 +156,7 @@ function ProductsDetalis(props) {
                                                                     {errors.phone && touched.phone ? <p>{errors.phone}</p> : ''}
                                                                 </div>
                                                             </div>
+                                                            <button type='submit' className='btn btn-primary'>Submit</button>
                                                         </Form>
                                                     </Formik>
                                                 </div>
