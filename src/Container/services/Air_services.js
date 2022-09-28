@@ -19,7 +19,7 @@ function Air_services(props) {
     },[])
 
     return (
-        <div class={`${value.theme}`} onChange={() => ProductView()}>
+        <div class={`${value.theme}`}>
             {/* Features Start */}
             <div className="container-fluid py-5">
                 <div className="container">
