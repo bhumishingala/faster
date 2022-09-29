@@ -1,19 +1,27 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { increment } from 'firebase/firestore';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function ProductsDetalis(props) {
-    const [counter, setCounter] = useState(0);
+    const dispatch = useDispatch();
+    const c = useSelector(state => state.counter);
+    const products = useSelector(state => state.products);
     const value = useContext(themeContext);
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
 
     const increment = () => {
-        setCounter(counter + 1)
+        dispatch(incrementACtion())
+    }
+
+    const decrement = () => {
+        dispatch(decrementAction())
     }
 
     let schema = yup.object().shape({
@@ -37,6 +45,11 @@ function ProductsDetalis(props) {
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
+
+    // let productsFilter = products.Products.filter((p) => p.category === props.location.state)
+    // console.log(productsFilter);
+    console.log(props.location.state.id);
+
     return (
         <div>
             {/* Product Detail Start */}
@@ -45,40 +58,54 @@ function ProductsDetalis(props) {
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="product-detail-top">
-                                <div className="row align-items-center col-12">
-                                    <div className="col-md-5">
-                                        <div className="product-slider-single normal-slider">
-                                            <img src="img/ser1.jpg" alt="Product Image" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-5 margin1 pl-3">
-                                        <div className="product-content">
-                                            <div className="title"><h2 className={`${value.theme}`}>Air Freight</h2></div>
-                                            <div className="ratting">
-                                                <i className="fa fa-star text-primary" />
-                                                <i className="fa fa-star text-primary" />
-                                                <i className="fa fa-star text-primary" />
-                                                <i className="fa fa-star text-primary" />
-                                                <i className="fa fa-star text-primary" />
-                                            </div>
-                                            <div className="price">
-                                                <h4 className={`mt-3 ${value.theme}`}>Price:</h4>
-                                                <p className='text-primary'>$99 <span>$149</span></p>
-                                            </div>
-                                            <div className="quantity mt-3">
-                                                <h4 class={`${value.theme}`}>Quantity:</h4>
-                                                <div className="qty mt-3">
-                                                    <button className="btn-minus"><i className="fa fa-minus" /></button>
-                                                    <input type="text" defaultValue={1} />
-                                                    <button className="btn-plus" onClick={() => increment()}><i className="fa fa-plus" /></button>
+                                {/* {
+                                    productsFilter.map((pd) => {
+                                        return ( */}
+                                            <div className="row align-items-center col-12">
+                                                <div className="col-md-5">
+                                                    <div className="product-slider-single normal-slider">
+                                                        <img alt="Product Image" />
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-5 margin1 pl-3">
+                                                    <div className="product-content">
+                                                        <div className="title"><h2 className={`${value.theme}`}></h2></div>
+                                                        <div className="ratting">
+                                                            <i className="fa fa-star text-primary" />
+                                                            <i className="fa fa-star text-primary" />
+                                                            <i className="fa fa-star text-primary" />
+                                                            <i className="fa fa-star text-primary" />
+                                                            <i className="fa fa-star text-primary" />
+                                                        </div>
+                                                        <div className="price">
+                                                            <h4 className={`mt-3 ${value.theme}`}>Price:</h4>
+                                                            <p className='text-primary'>$99 <span>$149</span></p>
+                                                        </div>
+                                                        <div className="quantity mt-3">
+                                                            <h4 class={`${value.theme}`}>Quantity:</h4>
+                                                            <div class="input-group quantity mx-auto">
+                                                                <div class="input-group-btn">
+                                                                    <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                                        <i class="fa fa-minus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                                <div class="input-group-btn">
+                                                                    <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="action mt-4">
+                                                            <NavLink to="/orderNow" className="btn" href="#"><i className="fa fa-shopping-cart" />Add to Cart</NavLink>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="action mt-4">
-                                                <NavLink to="/orderNow" className="btn" href="#"><i className="fa fa-shopping-cart" />Add to Cart</NavLink>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        {/* )
+                                    })
+                                } */}
                             </div>
                             <div className="row product-detail-bottom py-5">
                                 <div className="col-lg-12">

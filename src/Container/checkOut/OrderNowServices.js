@@ -1,12 +1,23 @@
 import React, { useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function OrderNowServices(props) {
     const value = useContext(themeContext);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const c = useSelector(state => state.counter);;
+
+    const increment = () => {
+        dispatch(incrementACtion())
+    }
+
+    const decrement = () => {
+        dispatch(decrementAction())
+    }
+
     return (
         <div class={`${value.theme}`}>
             <div className="container-fluid py-5">
@@ -30,13 +41,19 @@ function OrderNowServices(props) {
                                     <td className="align-middle">
                                         <div className="input-group quantity mx-auto" style={{ width: 100 }}>
                                             <FormGroup style={{ width: 100 }}>
-                                                <Input
-                                                    id="exampleNumber"
-                                                    name="number"
-                                                    placeholder="number"
-                                                    defaultValue={1}
-                                                    type="number"
-                                                />
+                                                <div class="input-group quantity mx-auto">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </FormGroup>
                                         </div>
 
@@ -50,13 +67,19 @@ function OrderNowServices(props) {
                                     <td className="align-middle">
                                         <div className="input-group quantity mx-auto" style={{ width: 100 }}>
                                             <FormGroup style={{ width: 100 }}>
-                                                <Input
-                                                    id="exampleNumber"
-                                                    name="number"
-                                                    placeholder="number"
-                                                    defaultValue={1}
-                                                    type="number"
-                                                />
+                                                <div class="input-group quantity mx-auto">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </FormGroup>
                                         </div>
 
@@ -70,13 +93,19 @@ function OrderNowServices(props) {
                                     <td className="align-middle">
                                         <div className="input-group quantity mx-auto" style={{ width: 100 }}>
                                             <FormGroup style={{ width: 100 }}>
-                                                <Input
-                                                    id="exampleNumber"
-                                                    name="number"
-                                                    placeholder="number"
-                                                    defaultValue={1}
-                                                    type="number"
-                                                />
+                                                <div class="input-group quantity mx-auto">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </FormGroup>
                                         </div>
 
@@ -90,13 +119,19 @@ function OrderNowServices(props) {
                                     <td className="align-middle">
                                         <div className="input-group quantity mx-auto" style={{ width: 100 }}>
                                             <FormGroup style={{ width: 100 }}>
-                                                <Input
-                                                    id="exampleNumber"
-                                                    name="number"
-                                                    placeholder="number"
-                                                    defaultValue={1}
-                                                    type="number"
-                                                />
+                                                <div class="input-group quantity mx-auto">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </FormGroup>
                                         </div>
 

@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../../contextapi/ThemeContext';
 import { history } from '../../../history';
 import { getCategory } from '../../../redux/action/Category_action';
-import Cargo_services from '../Cargo_services';
 
 function Services(props) {
     const value = useContext(themeContext);

@@ -18,10 +18,10 @@ function Header(props) {
         <div>
             {/* Topbar Start */}
             <div class="line"></div>
-            <div className={`container-fluid bg-dark ${value.theme}`}>
+            <div className={`container-fluid bg-dark`}>
                 <div className="row py-2 px-lg-5">
                     <div className="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                        <div className={`d-inline-flex align-items-center ${value.theme}`}>
+                        <div className={`d-inline-flex align-items-center`}>
                             <small><i className="fa fa-phone-alt mr-2" />+012 345 6789</small>
                             <small className="px-3">|</small>
                             <small><i className="fa fa-envelope mr-2" />info@example.com</small>
@@ -29,22 +29,22 @@ function Header(props) {
                     </div>
                     <div className="col-lg-6 text-center text-lg-right">
                         <div className="d-inline-flex align-items-center">
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2`} href>
                                 <i className="fab fa-facebook-f" />
                             </a>
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2`} href>
                                 <i className="fab fa-twitter" />
                             </a>
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2`} href>
                                 <i className="fab fa-linkedin-in" />
                             </a>
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2`} href>
                                 <i className="fab fa-instagram" />
                             </a>
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2}`} href>
                                 <i className="fab fa-youtube" />
                             </a>
-                            <a className={`px-2 ${value.theme}`} href>
+                            <a className={`px-2`} href>
                                 <button className="btn btn-primary d-none d-lg-block" onClick={() => value.toggle_theme(value.theme)}>change Theme</button>
                             </a>
                         </div>

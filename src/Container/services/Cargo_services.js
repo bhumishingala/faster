@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { history } from '../../history';
 import { getProducts } from '../../redux/action/Products_action';
 
 function Cargo_services(props) {
@@ -17,7 +18,12 @@ function Cargo_services(props) {
     }, [])
 
     let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)
-    console.log(productsFilter);
+    console.log(props.location.state.name);
+
+    const productsDetails = (Prodetalis) => {
+        history.push('/ProductDetalis' , {Prodetalis:Prodetalis})
+        console.log(Prodetalis);
+    }
 
     return (
         <div class={`${value.theme}`}>
@@ -113,12 +119,12 @@ function Cargo_services(props) {
                                                                 </div>
                                                                 <div className="d-flex flex-column align-items-center py-4">
                                                                     <div className="product-action p-1 mb-2">
-                                                                        <NavLink href="#" to={"/ProductDetalis"} onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></NavLink>
+                                                                        <a href="#" onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></a>
                                                                         <a href="#" className="m-2"><i className="fa fa-heart" /></a>
                                                                         <a href="#" className="m-2"><i className="fa fa-search" /></a>
                                                                     </div>
                                                                     <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
-                                                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                                                    <a href  onClick={() =>{Click();productsDetails(p)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
                                                                 </div>
                                                             </div>
                                                         </div>
