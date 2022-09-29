@@ -16,6 +16,8 @@ function Products(props) {
         dispatch(getProducts())
     }, [])
 
+    console.log(props);
+
     return (
         <div>
             <div className="row">
@@ -25,6 +27,7 @@ function Products(props) {
                             <div className="col-md-4 mb-5 height shadow-sm p-5 bg-body rounded">
                                 <div>
                                     <div className="product-title">
+                                        <span className='text-center d-block mb-2'>{p.category}</span>
                                         <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
                                         <div className="ratting text-center mt-3">
                                             <i className="fa fa-star" />

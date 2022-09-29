@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../../contextapi/ThemeContext';
 import { history } from '../../../history';
 import { getCategory } from '../../../redux/action/Category_action';
+import Cargo_services from '../Cargo_services';
 
 function Services(props) {
     const value = useContext(themeContext);
@@ -18,7 +19,7 @@ function Services(props) {
     }, [])
 
     const ProductView = (name) => {
-        history.push('/AirSevices' , {name:name})
+        history.push('/cargoServices' , {name:name})
         console.log(name);
     }
 

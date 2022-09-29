@@ -17,6 +17,8 @@ function Cargo_services(props) {
         dispatch(getProducts())
     }, [])
 
+    // console.log(props.location.state.name);
+
     return (
         <div class={`${value.theme}`}>
             {/* Features Start */}
@@ -89,17 +91,42 @@ function Cargo_services(props) {
                                             </div>
                                         </div>
                                         {
-                                            products.Products.map((p) => {
-                                                return (
-                                                    // products.Products.filter((p1) => {
-                                                    //     if (p1.name === "Cargo Storage") {
-                                                            console.log(p.category)
-                                                    //     }
-                                                    // })
-                                                )
-                                        })
+                                            // products.Products.filter((p) => {
+                                            //     if(p.category === "Cargo Storage"){
+                                            //         return(
+                                            //             console.log(p.name)
+                                            //         )
+                                            //     }
+                                            // })
+                                            // products.Products.map((p) => {
+                                            //     return (
+                                            // products.Products.filter((p1) => {
+                                            //     if (p1.name === "Cargo Storage") {
+                                            // console.log(p.category)
+                                            //     }
+                                            // })
+                                            // )
+                                            // })
+                                            // products.Products.filter((p) => {
+                                            //     return (
+                                                    // console.log(name)
+                                            //     )
+                                            // })
+                                            products.Products.filter((p,i) => {
+                                                if( p.category === props.location.state.name){
+                                                //    return(
+                                                    // return  <Products key={i} />;
+                                                    console.log(i,p.category);
+                                                    // console.log(p)
+                                                //    )
+                                                }else{
+                                                    // return(
+                                                        <Products />
+                                                    // )
+                                                }
+                                            })
                                         }
-                                        <Products />
+                                        {/* <Products /> */}
                                     </div>
                                 </div>
                                 {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">
