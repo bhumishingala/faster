@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { getProducts } from '../../redux/action/Products_action';
-import Products from './servicesAdd.js/Products';
 
 function Cargo_services(props) {
     const value = useContext(themeContext);
@@ -17,7 +16,8 @@ function Cargo_services(props) {
         dispatch(getProducts())
     }, [])
 
-    // console.log(props.location.state.name);
+    let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)
+    console.log(productsFilter);
 
     return (
         <div class={`${value.theme}`}>
@@ -26,10 +26,11 @@ function Cargo_services(props) {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-5">
-                            <img className="img-fluid w-100 h-100" src="img/carge.jpg" alt />
+                            <img className="img-fluid w-100 h-100" src="img/about.jpg" alt />
                         </div>
                         <div className="col-lg-7 py-5 py-lg-0">
-                            <h6 className="text-primary text-uppercase font-weight-bold">WAREHOUSING, STORAGE & DISTRIBUTION SERVICES</h6>
+                            <h6 className="text-primary text-uppercase font-weight-bold">ABOUT US</h6>
+                            <h1 className={`mb-4 ${value.theme}`}>Trusted &amp; Faster Logistic Service Provider</h1>
                             <p className="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
                             <ul className="list-inline">
                                 <li><h6 class={`${value.theme}`}><i className="far fa-dot-circle text-primary mr-3" />Best In Industry</h6>
@@ -90,43 +91,41 @@ function Cargo_services(props) {
                                                 </div>
                                             </div>
                                         </div>
-                                        {
-                                            // products.Products.filter((p) => {
-                                            //     if(p.category === "Cargo Storage"){
-                                            //         return(
-                                            //             console.log(p.name)
-                                            //         )
-                                            //     }
-                                            // })
-                                            // products.Products.map((p) => {
-                                            //     return (
-                                            // products.Products.filter((p1) => {
-                                            //     if (p1.name === "Cargo Storage") {
-                                            // console.log(p.category)
-                                            //     }
-                                            // })
-                                            // )
-                                            // })
-                                            // products.Products.filter((p) => {
-                                            //     return (
-                                                    // console.log(name)
-                                            //     )
-                                            // })
-                                            products.Products.filter((p,i) => {
-                                                if( p.category === props.location.state.name){
-                                                //    return(
-                                                    // return  <Products key={i} />;
-                                                    console.log(i,p.category);
-                                                    // console.log(p)
-                                                //    )
-                                                }else{
-                                                    // return(
-                                                        <Products />
-                                                    // )
-                                                }
-                                            })
-                                        }
-                                        {/* <Products /> */}
+                                        <div className='row'>
+                                            {
+                                                productsFilter.map((p) => {
+                                                    return (
+                                                        <div className="col-md-4 mb-5 height shadow-sm p-5 bg-body rounded">
+                                                            <div>
+                                                                <div className="product-title">
+                                                                    <span className='text-center d-block mb-2'>{p.category}</span>
+                                                                    <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
+                                                                    <div className="ratting text-center mt-3">
+                                                                        <i className="fa fa-star" />
+                                                                        <i className="fa fa-star" />
+                                                                        <i className="fa fa-star" />
+                                                                        <i className="fa fa-star" />
+                                                                        <i className="fa fa-star" />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="text-center mt-3">
+                                                                    <img src={p.Prof_img} width={90} height={90} className="mt-3" />
+                                                                </div>
+                                                                <div className="d-flex flex-column align-items-center py-4">
+                                                                    <div className="product-action p-1 mb-2">
+                                                                        <NavLink href="#" to={"/ProductDetalis"} onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></NavLink>
+                                                                        <a href="#" className="m-2"><i className="fa fa-heart" /></a>
+                                                                        <a href="#" className="m-2"><i className="fa fa-search" /></a>
+                                                                    </div>
+                                                                    <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
+                                                                    <NavLink href to="/ProductDetalis" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                                 {/* <div className="col-md-4 mb-5 height shadow-lg p-5 bg-body rounded">

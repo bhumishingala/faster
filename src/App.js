@@ -19,9 +19,6 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './redux/Store';
 import { SnackbarProvider } from 'notistack';
 import { PersistGate } from 'redux-persist/integration/react';
-import Air_services from './Container/services/Air_services';
-import Ocen_services from './Container/services/Ocen_services';
-import Land_services from './Container/services/Land_services';
 import Cargo_services from './Container/services/Cargo_services';
 import Getquote from './Container/quote/Getquote';
 import OrderNowServices from './Container/checkOut/OrderNowServices';
@@ -47,9 +44,6 @@ function App() {
               <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
               <PrivateRoute path={"/contact"} exact component={Contact} />
               <PublicRoute path={"/search"} exact component={Search} />
-              <PublicRoute path={"/AirSevices"} exact component={Air_services} />
-              <PublicRoute path={"/OcenSerivces"} exact component={Ocen_services} />
-              <PublicRoute path={"/LandServices"} exact component={Land_services} />
               <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
               <PublicRoute path={"/getquote"} exact component={Getquote} />
               <PrivateRoute path={"/orderNow"} exact component={OrderNowServices} />
