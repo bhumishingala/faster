@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
@@ -46,15 +46,13 @@ function ProductsDetalis(props) {
     });
 
     const OrderNow = (orderFilter) => {
-        history.push('/orderNow' , {orderFilter : orderFilter})
+        history.push('/orderNow', { orderFilter: orderFilter })
         console.log(orderFilter);
     }
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
     let productsFilter = products.Products.filter((p) => p.name === props.location.state.Prodetalis.name)
-    console.log(productsFilter);
-    console.log(props.location.state.Prodetalis.name, props.location.state.Prodetalis.category);
 
     return (
         <div>
@@ -66,15 +64,15 @@ function ProductsDetalis(props) {
                             <div className="product-detail-top">
                                 {
                                     category.category.map((cd) => {
-                                        if(cd.name === props.location.state.Prodetalis.category){
+                                        if (cd.name === props.location.state.Prodetalis.category) {
                                             return (
                                                 <div className="row align-items-center col-12">
-                                                    <div className="col-md-5 ml-5 margin1">
+                                                    <div className="col-md-4 margin1">
                                                         <div className="product-slider-single normal-slider">
                                                             <img src={cd.Prof_img} width={580} height={350} alt="Product Image" />
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-5 margin1 pl-3">
+                                                    <div className="col-md-5 pl-3">
                                                         <div className="product-content">
                                                             <div className="title"><h2 className={`${value.theme}`}>{cd.name}</h2></div>
                                                             <div className="ratting">
@@ -225,8 +223,8 @@ function ProductsDetalis(props) {
                                                                     <a href="#" className="m-2"><i className="fa fa-heart" /></a>
                                                                     <a href="#" className="m-2"><i className="fa fa-search" /></a>
                                                                 </div>
-                                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                                <a href onClick={() => {Click();OrderNow(pv)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                                                <h3 class={`${value.theme}`}><span>$</span>{pv.price}</h3>
+                                                                <a href onClick={() => { Click(); OrderNow(pv) }} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -234,178 +232,9 @@ function ProductsDetalis(props) {
                                             }
                                         })
                                     }
-                                    {/* <div className="col-lg-4 mb-5">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>Door-to-Door Services</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box2 mt-3">
-                                                <img className="air1 color" src="img/air1.png" alt />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="col-lg-4 mb-5">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>FULL CONTAINER LOAD (FCL)</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box2 mt-3">
-                                                <img className="air1 color" src="img/air2.png" alt />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="col-lg-4 mb-5">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>OUT OF GAUGE (OOG) FLAT RACKS</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box2 mt-3">
-                                                <img className="air1 color" src="img/air3.png" alt />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="col-lg-4">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>PROJECT CARGO ON-SITE DELIVERIES</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box2 mt-3">
-                                                <img className="air1 color" src="img/air5.png" alt />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="col-lg-4">
-                                        <div>
-                                            <div className="product-title">
-                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>CUSTOMS PROCESSING FORMALITIES</h5>
-                                                <div className="ratting text-center mt-3">
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                    <i className="fa fa-star" />
-                                                </div>
-                                            </div>
-                                            <div className="text-center box2 mt-3">
-                                                <img className="air1 color" src="img/air6.png" alt />
-                                            </div>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <div className="product-action p-1 mb-2">
-                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
-                                                </div>
-                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
-                        {/* Side Bar Start */}
-                        {/* <div className="col-lg-4 sidebar">
-                            <div className="sidebar-widget category">
-                                <h2 className={`title text-primary`}>Category</h2>
-                                <nav className="navbar">
-                                    <ul className="navbar-nav shadow-lg p-5 bg-body rounded">
-                                        <li className="nav-item">
-                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-ship text-primary pr-3" />Ocean &amp; Freight</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-truck text-primary pr-3" />Land &amp; Transport</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-store text-primary pr-3" />Cargo &amp; Storage</NavLink>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div className="sidebar-widget widget-slider">
-                                <div className="sidebar-slider normal-slider">
-                                    <div className="col-md-12 mb-5 shadow-lg p-5 bg-body rounded">
-                                        <div>
-                                            <div className="text-center box3 mb-4">
-                                                <img className="air1 color" src="img/air1.png" alt />
-                                            </div>
-                                            <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>Door-to-Door Services</h5>
-                                            <div className="d-flex flex-column align-items-center py-4">
-                                                <p>We can deliver your goods straight to your doorstep with utmost care through our vast network of agents and couriers around the world.</p>
-                                                <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* Side Bar End */}
                     </div>
                 </div>
             </div>

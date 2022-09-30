@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { getCart } from '../../redux/action/Cart_action';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function OrderNowServices(props) {
     const value = useContext(themeContext);
     const dispatch = useDispatch();
-    const category = useSelector(state => state.category)
+    // const category = useSelector(state => state.category)
+    const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
     const c = useSelector(state => state.counter);;
 
@@ -20,21 +22,27 @@ function OrderNowServices(props) {
         dispatch(decrementAction())
     }
 
+    console.log(cart.cart);
+
     let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
     console.log(orderFilter);
 
     console.log(props.location.state.orderFilter.name);
 
+    useEffect(() => {
+        dispatch(getCart());
+    },[])
+
     return (
         <div class={`${value.theme}`}>
             <div className="container-fluid py-5">
                 <h1 className="text-primary mb-4 text-center">Order Now</h1>
-                <div className="row px-xl-2">
+                <div className="row px-xl-5">
                     <div className="col-lg-8 table-responsive mb-5">
                         <table className="table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded">
                             <thead className="thead-dark">
                                 <tr>
-                                    <th>Category</th>
+                                    {/* <th>Category</th> */}
                                     <th>Services</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -44,7 +52,10 @@ function OrderNowServices(props) {
                             </thead>
                             <tbody className="white">
                                 <tr>
-                                    {
+                                    {/* {
+                                        cart.cart
+                                    } */}
+                                    {/* {
                                         category.category.map((orderC) => {
                                             if (orderC.name === props.location.state.orderFilter.category) {
                                                 return (
@@ -52,13 +63,14 @@ function OrderNowServices(props) {
                                                 )
                                             }
                                         })
-                                    }
+                                    } */}
                                     {
                                         orderFilter.map((orderS) => {
-                                            if (orderS.name === props.location.state.orderFilter.name) {
+                                            if (orderS.category === props.location.state.orderFilter.category) {
                                                 return (
                                                     <>
-                                                        <td className="align-middle">{orderS.name}</td>
+                                                    {console.log(orderS)}
+                                                    <td className="align-middle"><img src={orderS.Prof_img} alt style={{ width: 90 ,height : 90}} />{orderS.name}</td>
                                                         <td className="align-middle">${orderS.price}</td>
                                                         <td className="align-middle">
                                                             <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
