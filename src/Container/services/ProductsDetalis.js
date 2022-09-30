@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
-import { increment } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
+import { history } from '../../history';
 
 function ProductsDetalis(props) {
     const dispatch = useDispatch();
     const c = useSelector(state => state.counter);
+    const category = useSelector(state => state.category);
     const products = useSelector(state => state.products);
     const value = useContext(themeContext);
     const Click = () => {
@@ -44,68 +45,72 @@ function ProductsDetalis(props) {
         enableReinitialize: true
     });
 
+    const OrderNow = (orderFilter) => {
+        history.push('/orderNow' , {orderFilter : orderFilter})
+        console.log(orderFilter);
+    }
+
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
-    // let productsFilter = products.Products.filter((p) => p.category === props.location.state)
-    // console.log(productsFilter);
-    console.log(props.location.state.id);
+    let productsFilter = products.Products.filter((p) => p.name === props.location.state.Prodetalis.name)
+    console.log(productsFilter);
+    console.log(props.location.state.Prodetalis.name, props.location.state.Prodetalis.category);
 
     return (
         <div>
             {/* Product Detail Start */}
             <div className={`product-detail py-5 ${value.theme}`}>
                 <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-lg-8">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-12">
                             <div className="product-detail-top">
-                                {/* {
-                                    productsFilter.map((pd) => {
-                                        return ( */}
-                                            <div className="row align-items-center col-12">
-                                                <div className="col-md-5">
-                                                    <div className="product-slider-single normal-slider">
-                                                        <img alt="Product Image" />
+                                {
+                                    category.category.map((cd) => {
+                                        if(cd.name === props.location.state.Prodetalis.category){
+                                            return (
+                                                <div className="row align-items-center col-12">
+                                                    <div className="col-md-5 ml-5 margin1">
+                                                        <div className="product-slider-single normal-slider">
+                                                            <img src={cd.Prof_img} width={580} height={350} alt="Product Image" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="col-md-5 margin1 pl-3">
-                                                    <div className="product-content">
-                                                        <div className="title"><h2 className={`${value.theme}`}></h2></div>
-                                                        <div className="ratting">
-                                                            <i className="fa fa-star text-primary" />
-                                                            <i className="fa fa-star text-primary" />
-                                                            <i className="fa fa-star text-primary" />
-                                                            <i className="fa fa-star text-primary" />
-                                                            <i className="fa fa-star text-primary" />
-                                                        </div>
-                                                        <div className="price">
-                                                            <h4 className={`mt-3 ${value.theme}`}>Price:</h4>
-                                                            <p className='text-primary'>$99 <span>$149</span></p>
-                                                        </div>
-                                                        <div className="quantity mt-3">
-                                                            <h4 class={`${value.theme}`}>Quantity:</h4>
-                                                            <div class="input-group quantity mx-auto">
-                                                                <div class="input-group-btn">
-                                                                    <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                                                        <i class="fa fa-minus"></i>
-                                                                    </button>
-                                                                </div>
-                                                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                                                <div class="input-group-btn">
-                                                                    <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                                                        <i class="fa fa-plus"></i>
-                                                                    </button>
+                                                    <div className="col-md-5 margin1 pl-3">
+                                                        <div className="product-content">
+                                                            <div className="title"><h2 className={`${value.theme}`}>{cd.name}</h2></div>
+                                                            <div className="ratting">
+                                                                <i className="fa fa-star text-primary" />
+                                                                <i className="fa fa-star text-primary" />
+                                                                <i className="fa fa-star text-primary" />
+                                                                <i className="fa fa-star text-primary" />
+                                                                <i className="fa fa-star text-primary" />
+                                                            </div>
+                                                            <div className="price">
+                                                                <h4 className={`mt-3 ${value.theme}`}>Price:</h4>
+                                                                <p className='text-primary'>$99 <span>$149</span></p>
+                                                            </div>
+                                                            <div className="quantity mt-3">
+                                                                <h4 class={`${value.theme}`}>Quantity:</h4>
+                                                                <div class="input-group quantity mx-auto">
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <input type="text" class="form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="action mt-4">
-                                                            <NavLink to="/orderNow" className="btn" href="#"><i className="fa fa-shopping-cart" />Add to Cart</NavLink>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        {/* )
+                                            )
+                                        }
                                     })
-                                } */}
+                                }
                             </div>
                             <div className="row product-detail-bottom py-5">
                                 <div className="col-lg-12">
@@ -189,12 +194,47 @@ function ProductsDetalis(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="product py-5">
+                            <div className="product">
                                 <div className="section-header mb-5">
                                     <h1 class={`${value.theme}`}>Related Products</h1>
                                 </div>
                                 <div className="row align-items-center product-slider product-slider-3">
-                                    <div className="col-lg-4 mb-5">
+                                    {
+                                        productsFilter.map((pv) => {
+                                            if (pv.category === props.location.state.Prodetalis.category) {
+                                                return (
+                                                    <div className="col-lg-4 mb-5">
+                                                        <div>
+                                                            <div className="product-title">
+                                                                <span className='d-block text-center mb-3'>{pv.category}</span>
+                                                                <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{pv.name}</h5>
+                                                                <div className="ratting text-center mt-3">
+                                                                    <i className="fa fa-star" />
+                                                                    <i className="fa fa-star" />
+                                                                    <i className="fa fa-star" />
+                                                                    <i className="fa fa-star" />
+                                                                    <i className="fa fa-star" />
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-center mt-3">
+                                                                <img className="air1 color" src={pv.Prof_img} alt />
+                                                            </div>
+                                                            <div className="d-flex flex-column align-items-center py-4">
+                                                                <div className="product-action p-1 mb-2">
+                                                                    <a href="#" className="m-2"><i className="fa fa-cart-plus" /></a>
+                                                                    <a href="#" className="m-2"><i className="fa fa-heart" /></a>
+                                                                    <a href="#" className="m-2"><i className="fa fa-search" /></a>
+                                                                </div>
+                                                                <h3 class={`${value.theme}`}><span>$</span>99</h3>
+                                                                <a href onClick={() => {Click();OrderNow(pv)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+                                        })
+                                    }
+                                    {/* <div className="col-lg-4 mb-5">
                                         <div>
                                             <div className="product-title">
                                                 <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>Door-to-Door Services</h5>
@@ -219,8 +259,8 @@ function ProductsDetalis(props) {
                                                 <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-4 mb-5">
+                                    </div> */}
+                                    {/* <div className="col-lg-4 mb-5">
                                         <div>
                                             <div className="product-title">
                                                 <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>FULL CONTAINER LOAD (FCL)</h5>
@@ -245,8 +285,8 @@ function ProductsDetalis(props) {
                                                 <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-4 mb-5">
+                                    </div> */}
+                                    {/* <div className="col-lg-4 mb-5">
                                         <div>
                                             <div className="product-title">
                                                 <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>OUT OF GAUGE (OOG) FLAT RACKS</h5>
@@ -271,8 +311,8 @@ function ProductsDetalis(props) {
                                                 <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-4">
+                                    </div> */}
+                                    {/* <div className="col-lg-4">
                                         <div>
                                             <div className="product-title">
                                                 <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>PROJECT CARGO ON-SITE DELIVERIES</h5>
@@ -297,8 +337,8 @@ function ProductsDetalis(props) {
                                                 <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-4">
+                                    </div> */}
+                                    {/* <div className="col-lg-4">
                                         <div>
                                             <div className="product-title">
                                                 <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>CUSTOMS PROCESSING FORMALITIES</h5>
@@ -323,24 +363,24 @@ function ProductsDetalis(props) {
                                                 <NavLink href to="/orderNow" className="btn btn-primary py-2 px-4 my-2">Order Now</NavLink>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
                         {/* Side Bar Start */}
-                        <div className="col-lg-4 sidebar">
+                        {/* <div className="col-lg-4 sidebar">
                             <div className="sidebar-widget category">
                                 <h2 className={`title text-primary`}>Category</h2>
                                 <nav className="navbar">
                                     <ul className="navbar-nav shadow-lg p-5 bg-body rounded">
                                         <li className="nav-item">
-                                            <NavLink to="/AirSevices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
+                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink to="/OcenSerivces" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-ship text-primary pr-3" />Ocean &amp; Freight</NavLink>
+                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-ship text-primary pr-3" />Ocean &amp; Freight</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink to="/LandServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-truck text-primary pr-3" />Land &amp; Transport</NavLink>
+                                            <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-truck text-primary pr-3" />Land &amp; Transport</NavLink>
                                         </li>
                                         <li className="nav-item">
                                             <NavLink to="/cargoServices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-store text-primary pr-3" />Cargo &amp; Storage</NavLink>
@@ -364,7 +404,7 @@ function ProductsDetalis(props) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {/* Side Bar End */}
                     </div>
                 </div>
