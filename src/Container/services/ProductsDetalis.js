@@ -6,6 +6,7 @@ import { themeContext } from '../../contextapi/ThemeContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 import { history } from '../../history';
+import { addCart, getCart } from '../../redux/action/Cart_action';
 
 function ProductsDetalis(props) {
     const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function ProductsDetalis(props) {
 
     const OrderNow = (orderFilter) => {
         history.push('/orderNow', { orderFilter: orderFilter })
+        dispatch(addCart(orderFilter))
         console.log(orderFilter);
     }
 

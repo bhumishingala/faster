@@ -2,7 +2,7 @@ import * as ActionType from '../ActionType';
 
 export const getCart = (data) => (dispatch) => {
     dispatch({type : ActionType.GET_CART, payload: data})
-    console.log(data);
+    // console.log(name,category);
 }
 
 export const addCart = (data) => (dispatch) => {

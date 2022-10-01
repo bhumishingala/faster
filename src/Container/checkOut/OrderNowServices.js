@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
@@ -7,9 +7,10 @@ import { getCart } from '../../redux/action/Cart_action';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function OrderNowServices(props) {
+    const [addcart,setAddcart] = useState({});
     const value = useContext(themeContext);
     const dispatch = useDispatch();
-    // const category = useSelector(state => state.category)
+    const category = useSelector(state => state.category)
     const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
     const c = useSelector(state => state.counter);;
@@ -24,14 +25,14 @@ function OrderNowServices(props) {
 
     console.log(cart.cart);
 
-    let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
-    console.log(orderFilter);
+    // let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
+    // console.log(orderFilter);
 
-    console.log(props.location.state.orderFilter.name);
+    console.log(props.location.state.orderFilter);
 
     useEffect(() => {
         dispatch(getCart());
-    },[])
+    }, [])
 
     return (
         <div class={`${value.theme}`}>
@@ -42,7 +43,7 @@ function OrderNowServices(props) {
                         <table className="table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded">
                             <thead className="thead-dark">
                                 <tr>
-                                    {/* <th>Category</th> */}
+                                    <th>Category</th>
                                     <th>Services</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -51,26 +52,24 @@ function OrderNowServices(props) {
                                 </tr>
                             </thead>
                             <tbody className="white">
-                                <tr>
-                                    {/* {
-                                        cart.cart
-                                    } */}
-                                    {/* {
-                                        category.category.map((orderC) => {
-                                            if (orderC.name === props.location.state.orderFilter.category) {
-                                                return (
-                                                    <td className="align-middle"><img src={orderC.Prof_img} alt style={{ width: 80 }} />{orderC.name}</td>
-                                                )
-                                            }
-                                        })
-                                    } */}
-                                    {
-                                        orderFilter.map((orderS) => {
-                                            if (orderS.category === props.location.state.orderFilter.category) {
-                                                return (
-                                                    <>
-                                                    {console.log(orderS)}
-                                                    <td className="align-middle"><img src={orderS.Prof_img} alt style={{ width: 90 ,height : 90}} />{orderS.name}</td>
+                                {/* <tr> */}
+                                {
+                                    products.Products.map((orderS) => {
+                                        if (orderS.name === props.location.state.orderFilter.name) {
+                                            return (
+                                                <>
+                                                    <tr className='justify-content-center'>
+                                                        {
+                                                            category.category.map((orderC) => {
+                                                                if (orderC.name === props.location.state.orderFilter.category) {
+                                                                    return (
+                                                                        <td className="align-middle"><img src={orderC.Prof_img} alt style={{ width: 70 }} />{orderC.name}</td>
+                                                                    )
+                                                                }
+                                                            })
+                                                        }
+                                                        {console.log(orderS)}
+                                                        <td className="align-middle">{orderS.name}</td>
                                                         <td className="align-middle">${orderS.price}</td>
                                                         <td className="align-middle">
                                                             <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
@@ -94,12 +93,13 @@ function OrderNowServices(props) {
                                                         </td>
                                                         <td className="align-middle">$150</td>
                                                         <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                                    </>
-                                                )
-                                            }
-                                        })
-                                    }
-                                </tr>
+                                                    </tr>
+                                                </>
+                                            )
+                                        }
+                                    })
+                                }
+                                {/* </tr> */}
                                 {/* <tr>
                                     <td className="align-middle"><img src="img/ser1.jpg" alt style={{ width: 80 }} /> Air Freight</td>
                                     <td className="align-middle">fmghfjghg</td>
