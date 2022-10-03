@@ -2,7 +2,7 @@ import * as ActionType from '../ActionType';
 
 const initval = {
     isLoading : false,
-    cart : null,
+    cart : [],
     error : ''
 }
 

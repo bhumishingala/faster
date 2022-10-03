@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
-import { getCart } from '../../redux/action/Cart_action';
+import { addCart, getCart } from '../../redux/action/Cart_action';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function OrderNowServices(props) {
-    const [addcart,setAddcart] = useState({});
     const value = useContext(themeContext);
     const dispatch = useDispatch();
     const category = useSelector(state => state.category)
     const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
-    const c = useSelector(state => state.counter);;
+    const c = useSelector(state => state.counter);
 
     const increment = () => {
         dispatch(incrementACtion())
@@ -23,12 +22,16 @@ function OrderNowServices(props) {
         dispatch(decrementAction())
     }
 
-    console.log(cart.cart);
+    // console.log(dispatch(addCart(props.location.state.orderFilter)))
+
 
     // let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
     // console.log(orderFilter);
 
+    console.log(cart.cart);
+
     console.log(props.location.state.orderFilter);
+
 
     useEffect(() => {
         dispatch(getCart());
@@ -68,7 +71,6 @@ function OrderNowServices(props) {
                                                                 }
                                                             })
                                                         }
-                                                        {console.log(orderS)}
                                                         <td className="align-middle">{orderS.name}</td>
                                                         <td className="align-middle">${orderS.price}</td>
                                                         <td className="align-middle">

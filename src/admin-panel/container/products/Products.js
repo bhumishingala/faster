@@ -41,7 +41,7 @@ function Products(props) {
     };
 
     const columns = [
-        { field: "name", headerName: 'Name', width: 170 },
+        { field: "name", headerName: 'Name', width: 320 },
         { field: "category", headerName: 'Category name', width: 170 },
         { field: "price", headerName: 'Category price', width: 170 },
         {

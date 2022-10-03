@@ -48,13 +48,15 @@ function ProductsDetalis(props) {
 
     const OrderNow = (orderFilter) => {
         history.push('/orderNow', { orderFilter: orderFilter })
-        dispatch(addCart(orderFilter))
+        console.log(dispatch(addCart(orderFilter)))
         console.log(orderFilter);
     }
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
     let productsFilter = products.Products.filter((p) => p.name === props.location.state.Prodetalis.name)
+
+
 
     return (
         <div>
