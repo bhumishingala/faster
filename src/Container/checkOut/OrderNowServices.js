@@ -28,14 +28,23 @@ function OrderNowServices(props) {
     // let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
     // console.log(orderFilter);
 
-    console.log(cart.cart);
-
     console.log(props.location.state.orderFilter);
 
+    console.log(cart.cart);
 
-    useEffect(() => {
-        dispatch(getCart());
-    }, [])
+    let orderFilter = [];
+    cart.cart.map((c) => {
+        products.Products.map((p) => {
+            if(p.id === c.id){
+                orderFilter.push(c)
+            }
+        })
+    //    console.log(c.id)
+    })
+
+    // useEffect(() => {
+    //     dispatch(addCart())
+    // })
 
     return (
         <div class={`${value.theme}`}>
@@ -57,20 +66,13 @@ function OrderNowServices(props) {
                             <tbody className="white">
                                 {/* <tr> */}
                                 {
+                                    // orderFilter.map
                                     products.Products.map((orderS) => {
                                         if (orderS.name === props.location.state.orderFilter.name) {
                                             return (
                                                 <>
                                                     <tr className='justify-content-center'>
-                                                        {
-                                                            category.category.map((orderC) => {
-                                                                if (orderC.name === props.location.state.orderFilter.category) {
-                                                                    return (
-                                                                        <td className="align-middle"><img src={orderC.Prof_img} alt style={{ width: 70 }} />{orderC.name}</td>
-                                                                    )
-                                                                }
-                                                            })
-                                                        }
+                                                        <td className='align-middle'><img src={orderS.Prof_img} style={{ width: 100 }} /></td>
                                                         <td className="align-middle">{orderS.name}</td>
                                                         <td className="align-middle">${orderS.price}</td>
                                                         <td className="align-middle">

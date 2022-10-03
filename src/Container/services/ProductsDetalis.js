@@ -48,7 +48,7 @@ function ProductsDetalis(props) {
 
     const OrderNow = (orderFilter) => {
         history.push('/orderNow', { orderFilter: orderFilter })
-        console.log(dispatch(addCart(orderFilter)))
+        dispatch(addCart(orderFilter))
         console.log(orderFilter);
     }
 

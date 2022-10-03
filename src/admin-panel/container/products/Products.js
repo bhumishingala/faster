@@ -44,6 +44,7 @@ function Products(props) {
         { field: "name", headerName: 'Name', width: 320 },
         { field: "category", headerName: 'Category name', width: 170 },
         { field: "price", headerName: 'Category price', width: 170 },
+        { field: "services", headerName: 'Products Services', width: 170 },
         {
             field: "Prof_img",
             headerName: 'Profile Image',
@@ -73,6 +74,7 @@ function Products(props) {
         Prof_img: yup.string().required("Please Select Any Profile Image"),
         category: yup.string().required("Please Select any category."),
         price : yup.number("Please Enter Valid Number.").required("Please Enter Price."),
+        services : yup.string("Please Enter Your Services.")
     });
 
     const formik = useFormik({
@@ -80,7 +82,8 @@ function Products(props) {
             name: '',
             Prof_img: '',
             category: '',
-            price: ''
+            price: '',
+            services : ''
         },
         validationSchema: schema,
         onSubmit: values => {
@@ -199,7 +202,19 @@ function Products(props) {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            {errors.price && touched.price ? <p>{errors.price}</p> : ''}
+                             <TextField
+                                margin="dense"
+                                id="name"
+                                label="Products Services"
+                                type="text"
+                                name="services"
+                                fullWidth
+                                variant="standard"
+                                value={values.services}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.services && touched.services ? <p>{errors.services}</p> : ''}
                             <input
                                 id="name"
                                 type='file'
