@@ -26,6 +26,4 @@ export const DECREMENT_COUNTER = "DECREMENT_COUNTER";
 
 export const ADD_CART = "ADD_CART";
 export const GET_CART = "GET_CART";
-// export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
-// export const DETETE_PRODUCTS = "DETETE_PRODUCTS";
-// export const ERROR_PRODUCTS = "ERROR_PRODUCTS";
+export const DETELE_CART = "DELETE_CART";

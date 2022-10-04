@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
-import { addCart, getCart } from '../../redux/action/Cart_action';
+import { addCart, deleteCart, getCart } from '../../redux/action/Cart_action';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
 function OrderNowServices(props) {
@@ -14,37 +14,44 @@ function OrderNowServices(props) {
     const products = useSelector(state => state.products)
     const c = useSelector(state => state.counter);
 
-    const increment = () => {
-        dispatch(incrementACtion())
+    const increment = (orderC) => {
+        dispatch(incrementACtion(orderC))
+        console.log(orderC.services);
     }
 
-    const decrement = () => {
-        dispatch(decrementAction())
+    const decrement = (orderC) => {
+        dispatch(decrementAction(orderC))
+        // console.log(orderC.services);
     }
 
-    // console.log(dispatch(addCart(props.location.state.orderFilter)))
+    // console.log(props.location.state.orderFilter);
 
+    // console.log(cart.cart);
 
-    // let orderFilter = products.Products.filter((p) => p.name === props.location.state.orderFilter.name)
-    // console.log(orderFilter);
+    // let orderFilter = [];
+    // cart.cart.map((c) => {
+        // products.Products.map((p) => {
+            // if (c.id === p.id) {
+                // return(
 
-    console.log(props.location.state.orderFilter);
-
-    console.log(cart.cart);
-
-    let orderFilter = [];
-    cart.cart.map((c) => {
-        products.Products.map((p) => {
-            if(p.id === c.id){
-                orderFilter.push(c)
-            }
-        })
-    //    console.log(c.id)
-    })
-
-    // useEffect(() => {
-    //     dispatch(addCart())
+                    // orderFilter.push(p.filter((orderF) => orderF.id === p.id))
+                    const orderFilter = cart.cart.filter((orderF) => orderF.id !== c.id)
+                    // console.log(c.id === p.id)
+                    // console.log(orderFilter.push(products.Products))
+                // )
+                // console.log(orderFilter.push(c));
+            // }
+            // console.log(p.id);
+            // else{
+                // return c;
+                // console.log(c);
+            // }
+        // })
+        // console.log(c.id)
+        console.log(orderFilter);
     // })
+
+
 
     return (
         <div class={`${value.theme}`}>
@@ -66,42 +73,75 @@ function OrderNowServices(props) {
                             <tbody className="white">
                                 {/* <tr> */}
                                 {
-                                    // orderFilter.map
-                                    products.Products.map((orderS) => {
-                                        if (orderS.name === props.location.state.orderFilter.name) {
-                                            return (
-                                                <>
-                                                    <tr className='justify-content-center'>
-                                                        <td className='align-middle'><img src={orderS.Prof_img} style={{ width: 100 }} /></td>
-                                                        <td className="align-middle">{orderS.name}</td>
-                                                        <td className="align-middle">${orderS.price}</td>
-                                                        <td className="align-middle">
-                                                            <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                                                <FormGroup style={{ width: 100 }}>
-                                                                    <div class="input-group quantity mx-auto">
-                                                                        <div class="input-group-btn">
-                                                                            <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                                                                <i class="fa fa-minus"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                        <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                                                        <div class="input-group-btn">
-                                                                            <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                                                                <i class="fa fa-plus"></i>
-                                                                            </button>
-                                                                        </div>
+                                    orderFilter.map((orderC) => {
+                                        return (
+                                            <>
+                                                <tr className='justify-content-center'>
+                                                    <td className='align-middle'><img src={orderC.Prof_img} style={{ width: 100 }} /></td>
+                                                    <td className="align-middle">{orderC.name}</td>
+                                                    <td className="align-middle">${orderC.price}</td>
+                                                    <td className="align-middle">
+                                                        <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
+                                                            <FormGroup style={{ width: 100 }}>
+                                                                <div class="input-group quantity mx-auto">
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement(orderC)}>
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
                                                                     </div>
-                                                                </FormGroup>
-                                                            </div>
+                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                                    <div class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC)}>
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </FormGroup>
+                                                        </div>
 
-                                                        </td>
-                                                        <td className="align-middle">$150</td>
-                                                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                                    </tr>
-                                                </>
-                                            )
-                                        }
+                                                    </td>
+                                                    <td className="align-middle">$150</td>
+                                                    <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={() => dispatch(deleteCart(orderC.id))}><i class="fa fa-times"></i></button></td>
+                                                </tr>
+                                            </>
+                                        )
+                                        // console.log(c);
                                     })
+                                    // products.Products.map((orderS) => {
+                                    //     if (orderS.name === props.location.state.orderFilter.name) {
+                                    //         return (
+                                    //             <>
+                                    //                 <tr className='justify-content-center'>
+                                    //                     <td className='align-middle'><img src={orderS.Prof_img} style={{ width: 100 }} /></td>
+                                    //                     <td className="align-middle">{orderS.name}</td>
+                                    //                     <td className="align-middle">${orderS.price}</td>
+                                    //                     <td className="align-middle">
+                                    //                         <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
+                                    //                             <FormGroup style={{ width: 100 }}>
+                                    //                                 <div class="input-group quantity mx-auto">
+                                    //                                     <div class="input-group-btn">
+                                    //                                         <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
+                                    //                                             <i class="fa fa-minus"></i>
+                                    //                                         </button>
+                                    //                                     </div>
+                                    //                                     <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                    //                                     <div class="input-group-btn">
+                                    //                                         <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
+                                    //                                             <i class="fa fa-plus"></i>
+                                    //                                         </button>
+                                    //                                     </div>
+                                    //                                 </div>
+                                    //                             </FormGroup>
+                                    //                         </div>
+
+                                    //                     </td>
+                                    //                     <td className="align-middle">$150</td>
+                                    //                     <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
+                                    //                 </tr>
+                                    //             </>
+                                    //         )
+                                    //     }
+                                    // })
                                 }
                                 {/* </tr> */}
                                 {/* <tr>

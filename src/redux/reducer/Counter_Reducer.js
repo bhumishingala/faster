@@ -9,7 +9,11 @@ export const CounterReducer = (state=initval,action) => {
         case ActionType.INCREMENT_COUNTER :
             return{
                 ...state,
-                counter : state.counter+1
+                counter : state.counter.map((inc) => {
+                    if(inc.id === action.payload.id){
+                        return state.cart + 1;
+                    }
+                })
             }
         case ActionType.DECREMENT_COUNTER :
             return{

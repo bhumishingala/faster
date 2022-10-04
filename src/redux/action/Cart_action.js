@@ -1,6 +1,10 @@
 import * as ActionType from '../ActionType';
 
 export const addCart = (data) => (dispatch) => {
-    dispatch({ type: ActionType.ADD_CART, payload: {id : data.id,ser : data.services} })
-    // console.log({id : data.id,ser : data.services ,category : data.category});
+    dispatch({ type: ActionType.ADD_CART, payload: data})
+}
+
+export const deleteCart = (data) => (dispatch) => {
+    console.log("data");
+    dispatch({type : ActionType.DETELE_CART , payload : data})
 }
