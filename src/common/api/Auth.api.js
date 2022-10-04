@@ -10,7 +10,7 @@ export const SignUpApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
 
-                onAuthStateChanged(auth, (user) => {
+                onAuthStateChanged(auth, (user) => {                    
                     sendEmailVerification(auth.currentUser)
                         .then(() => {
                             resolve({ payload: "Check Your Email" });
