@@ -1,24 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Redirect, Route } from 'react-router-dom';
 import Header from '../component/header/Header';
 import Footer from '../component/footer/Footer';
-import { Redirect, Route } from 'react-router-dom';
 
-function PublicRoute({ component: Component, resticted = false, ...rest }) {
-    let auth = useSelector(state => state.auth)
-
+function ClientRoute({ component: Component, ...rest }) {
+    let auth = useSelector(state => state.auth);
     return (
-        <Route  {...rest} render={props => (
-            auth.user !== null && resticted ?
+        <Route {...rest} render={props => (
+            auth.user !== null ?
                 <>
                     <Header />
-                    <Redirect to="/" />
+                    <Component {...props} />
                     <Footer />
                 </>
                 :
                 <>
                     <Header />
-                    <Component {...props} />
+                    <Redirect to="/login" />
                     <Footer />
                 </>
         )}
@@ -27,4 +26,4 @@ function PublicRoute({ component: Component, resticted = false, ...rest }) {
     );
 }
 
-export default PublicRoute;
+export default ClientRoute;

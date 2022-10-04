@@ -1,5 +1,7 @@
+import { async } from "@firebase/util";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { auth } from "../../firebase";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 export const SignUpApi = (data) => {
     console.log('SignUpApi', data);
@@ -10,14 +12,35 @@ export const SignUpApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
 
-                onAuthStateChanged(auth, (user) => {                    
+                onAuthStateChanged(auth, (user) => {
                     sendEmailVerification(auth.currentUser)
                         .then(() => {
                             resolve({ payload: "Check Your Email" });
+                            const uid = user.uid;
                         })
                         .catch((e) => {
                             reject({ payload: e })
                         })
+                });
+            })
+            .then((dataAfterEmail) => {
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        if (user.emailVerified) {
+                            resolve({ payload: "SignUp Successfully." })
+                        } else {
+                            resolve({ payload: "Please Verfiy Your Email id." });
+                            await setDoc(doc(db, "user", user.uid), {
+                                email: data.email,
+                                role: "user",
+                                emailVerified: user.emailVerified
+                            })
+                                .then(() => console.log("user Add"))
+                                .catch((error) => console.log(error.code))
+                        }
+                    } else {
+                        console.log("SomeThing Went Wrong.");
+                    }
                 });
             })
             .catch((error) => {
@@ -38,11 +61,22 @@ export const SignInApi = (data) => {
 
     return new Promise((resolve, reject) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
                 const user = userCredential.user;
 
                 if (user.emailVerified) {
-                    resolve({ payload: user });
+                    const userRef = doc(db, "user", user.uid)
+
+                    await updateDoc(userRef, {
+                        emailVerified: true
+                    })
+
+                    const userRefGet = doc(db, "user", user.uid)
+                    const userSnap = await getDoc(userRefGet);
+
+                    console.log({ id: userSnap.id, ...userSnap.data() });
+
+                    resolve({ payload: { id: userSnap.id, ...userSnap.data() } });
                 } else {
                     reject({ payload: "First Is Email Varify." });
                 }
