@@ -8,11 +8,11 @@ import { history } from './history';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <Router history={history}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </BrowserRouter>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
