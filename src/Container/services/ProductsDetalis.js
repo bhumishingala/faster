@@ -10,7 +10,7 @@ import { addCart } from '../../redux/action/Cart_action';
 
 function ProductsDetalis(props) {
     const dispatch = useDispatch();
-    const c = useSelector(state => state.counter);
+    // const c = useSelector(state => state.counter);
     const category = useSelector(state => state.category);
     const products = useSelector(state => state.products);
     const value = useContext(themeContext);
@@ -96,7 +96,7 @@ function ProductsDetalis(props) {
                                                                             <i class="fa fa-minus"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <input type="text" class="form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                                    <input type="text" class="form-control-sm bg-secondary border-0 text-center" />
                                                                     <div class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
                                                                             <i class="fa fa-plus"></i>

@@ -12,11 +12,10 @@ function OrderNowServices(props) {
     const category = useSelector(state => state.category)
     const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
-    const c = useSelector(state => state.counter);
+    // const c = useSelector(state => state.counter);
 
     const increment = (orderC) => {
         dispatch(incrementACtion(orderC))
-        console.log(orderC.services);
     }
 
     const decrement = (orderC) => {
@@ -30,25 +29,30 @@ function OrderNowServices(props) {
 
     // let orderFilter = [];
     // cart.cart.map((c) => {
-        // products.Products.map((p) => {
-            // if (c.id === p.id) {
-                // return(
+    // products.Products.map((p) => {
+    // if (c.id === p.id) {
+    // return(
 
-                    // orderFilter.push(p.filter((orderF) => orderF.id === p.id))
-                    const orderFilter = cart.cart.filter((orderF) => orderF.id !== c.id)
-                    // console.log(c.id === p.id)
-                    // console.log(orderFilter.push(products.Products))
-                // )
-                // console.log(orderFilter.push(c));
-            // }
-            // console.log(p.id);
-            // else{
-                // return c;
-                // console.log(c);
-            // }
-        // })
-        // console.log(c.id)
-        console.log(orderFilter);
+    // orderFilter.push(p.filter((orderF) => orderF.id === p.id))
+    // const orderFilter = cart.cart.filter((orderF) => orderF.name === c.name)
+    // cart.cart.map((c) => {
+        // return(
+            //    const orderFilter = cart.cart.filter((orderF) => orderF.name === c.name)
+        // )
+    // })
+    // console.log(c.id === p.id)
+    // console.log(orderFilter.push(products.Products))
+    // )
+    // console.log(orderFilter.push(c));
+    // }
+    // console.log(p.id);
+    // else{
+    // return c;
+    // console.log(c);
+    // }
+    // })
+    // console.log(c.id)
+    // console.log(orderFilter);
     // })
 
 
@@ -71,9 +75,8 @@ function OrderNowServices(props) {
                                 </tr>
                             </thead>
                             <tbody className="white">
-                                {/* <tr> */}
                                 {
-                                    orderFilter.map((orderC) => {
+                                    cart.cart.map((orderC) => {
                                         return (
                                             <>
                                                 <tr className='justify-content-center'>
@@ -89,7 +92,7 @@ function OrderNowServices(props) {
                                                                             <i class="fa fa-minus"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
+                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center"  defaultValue={1} value={orderC.services} />
                                                                     <div class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC)}>
                                                                             <i class="fa fa-plus"></i>
@@ -100,142 +103,18 @@ function OrderNowServices(props) {
                                                         </div>
 
                                                     </td>
-                                                    <td className="align-middle">$150</td>
+                                                    <td className="align-middle">${orderC.price}</td>
                                                     <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={() => dispatch(deleteCart(orderC.id))}><i class="fa fa-times"></i></button></td>
                                                 </tr>
                                             </>
                                         )
-                                        // console.log(c);
                                     })
-                                    // products.Products.map((orderS) => {
-                                    //     if (orderS.name === props.location.state.orderFilter.name) {
-                                    //         return (
-                                    //             <>
-                                    //                 <tr className='justify-content-center'>
-                                    //                     <td className='align-middle'><img src={orderS.Prof_img} style={{ width: 100 }} /></td>
-                                    //                     <td className="align-middle">{orderS.name}</td>
-                                    //                     <td className="align-middle">${orderS.price}</td>
-                                    //                     <td className="align-middle">
-                                    //                         <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                    //                             <FormGroup style={{ width: 100 }}>
-                                    //                                 <div class="input-group quantity mx-auto">
-                                    //                                     <div class="input-group-btn">
-                                    //                                         <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                    //                                             <i class="fa fa-minus"></i>
-                                    //                                         </button>
-                                    //                                     </div>
-                                    //                                     <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                    //                                     <div class="input-group-btn">
-                                    //                                         <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                    //                                             <i class="fa fa-plus"></i>
-                                    //                                         </button>
-                                    //                                     </div>
-                                    //                                 </div>
-                                    //                             </FormGroup>
-                                    //                         </div>
-
-                                    //                     </td>
-                                    //                     <td className="align-middle">$150</td>
-                                    //                     <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                    //                 </tr>
-                                    //             </>
-                                    //         )
-                                    //     }
-                                    // })
                                 }
-                                {/* </tr> */}
-                                {/* <tr>
-                                    <td className="align-middle"><img src="img/ser1.jpg" alt style={{ width: 80 }} /> Air Freight</td>
-                                    <td className="align-middle">fmghfjghg</td>
-                                    <td className="align-middle">$200</td>
-                                    <td className="align-middle">
-                                        <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                            <FormGroup style={{ width: 100 }}>
-                                                <div class="input-group quantity mx-auto">
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                                            <i class="fa fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </FormGroup>
-                                        </div>
-
-                                    </td>
-                                    <td className="align-middle">$150</td>
-                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                </tr> */}
-                                {/* <tr>
-                                    <td className="align-middle"><img src="img/ser1.jpg" alt style={{ width: 80 }} /> Air Freight</td>
-                                    <td className="align-middle">fmghfjghg</td>
-                                    <td className="align-middle">$200</td>
-                                    <td className="align-middle">
-                                        <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                            <FormGroup style={{ width: 100 }}>
-                                                <div class="input-group quantity mx-auto">
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                                            <i class="fa fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </FormGroup>
-                                        </div>
-
-                                    </td>
-                                    <td className="align-middle">$150</td>
-                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                </tr> */}
-                                {/* <tr>
-                                    <td className="align-middle"><img src="img/ser1.jpg" alt style={{ width: 80 }} /> Air Freight</td>
-                                    <td className="align-middle">fmghfjghg</td>
-                                    <td className="align-middle">$200</td>
-                                    <td className="align-middle">
-                                        <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                            <FormGroup style={{ width: 100 }}>
-                                                <div class="input-group quantity mx-auto">
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement()}>
-                                                            <i class="fa fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={c.counter} />
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment()}>
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </FormGroup>
-                                        </div>
-
-                                    </td>
-                                    <td className="align-middle">$150</td>
-                                    <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                                </tr> */}
                             </tbody>
                         </table>
                     </div>
                     <div className={`col-lg-4 ${value.theme}`}>
                         <form className="mb-30" action>
-                            <div className="input-group">
-                                <input type="text" className="white form-control border-0 p-4" placeholder="Coupon Code" />
-                                <div className="input-group-append">
-                                    <button className="btn btn-primary">Apply Coupon</button>
-                                </div>
-                            </div>
                         </form>
                         <h5 className="section-title position-relative text-uppercase my-4"><span className={`pr-3 ${value.theme}`}>Cart Summary</span></h5>
                         <div className="bg-light p-30 mb-5 white">

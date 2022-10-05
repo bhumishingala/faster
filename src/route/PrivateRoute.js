@@ -7,13 +7,21 @@ function PrivateRoute({ component: Component, ...rest }) {
     const auth = useSelector(state => state.auth)
     return (
         <div>
-            <Route {...rest} render={props => (
+            {/* <Route {...rest} render={props => (
                 auth.user !== null && auth.user.role === "admin" ?
                     <>
                         <Layout>
                             <Component {...props} />
                         </Layout>
                     </>
+                    :
+                    <Redirect to="/login" />
+            )}
+
+            /> */}
+            <Route {...rest} render={props => (
+                auth.user !== null ?
+                    <Component {...props} />
                     :
                     <Redirect to="/login" />
             )}

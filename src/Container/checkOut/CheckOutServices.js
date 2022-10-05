@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 
 function CheckOutServices(props) {
+    // const [cart, setCart] = useState([]);
     const value = useContext(themeContext);
+    // const cartTotal = cart.reduce((total, { price = 0 }) => total + price, 0);
+    // console.log(cartTotal);
 
     let schema = yup.object().shape({
         fname: yup.string().required("Please Enter First Name."),
