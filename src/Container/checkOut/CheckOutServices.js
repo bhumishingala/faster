@@ -44,6 +44,15 @@ function CheckOutServices(props) {
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
+
+    console.log(props.location.state.checkOutOrder);
+
+    let subTotal = 0
+    function productTotal(price, services) {
+        subTotal = subTotal + Number(price)
+        return Number(price)
+    }
+
     return (
         <div class={`${value.theme}`}>
             {/* Checkout Start */}
@@ -121,11 +130,17 @@ function CheckOutServices(props) {
                         <div className={`shadow-lg p-3 mb-5 bg-body rounded p-30 mb-5 ${value.theme}`}>
                             <div className="border-bottom">
                                 <h6 className="mb-3">Products</h6>
-                                <div className="d-flex justify-content-between">
-                                    <p>Product Name 1</p>
-                                    <p>$150</p>
-                                </div>
-                                <div className="d-flex justify-content-between">
+                                {
+                                    props.location.state.checkOutOrder.map((ch) => {
+                                        return (
+                                            <div className="d-flex justify-content-between">
+                                                <p>{ch.name}</p>
+                                                <p>${ch.price}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                {/* <div className="d-flex justify-content-between">
                                     <p>Product Name 2</p>
                                     <p>$150</p>
                                 </div>
@@ -136,12 +151,12 @@ function CheckOutServices(props) {
                                 <div className="d-flex justify-content-between">
                                     <p>Product Name 4</p>
                                     <p>$150</p>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="border-bottom pt-3 pb-2">
                                 <div className="d-flex justify-content-between mb-3">
                                     <h6 class={`${value.theme}`}>Subtotal</h6>
-                                    <h6 class={`${value.theme}`}>$150</h6>
+                                    <h6 class={`${value.theme}`}>${subTotal}</h6>
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <h6 className={`font-weight-medium ${value.theme}`}>Shipping</h6>
@@ -151,7 +166,7 @@ function CheckOutServices(props) {
                             <div className="pt-2">
                                 <div className="d-flex justify-content-between mt-2">
                                     <h5 class={`${value.theme}`}>Total</h5>
-                                    <h5 class={`${value.theme}`}>$160</h5>
+                                    <h5 class={`${value.theme}`}>${subTotal + 10}</h5>
                                 </div>
                             </div>
                         </div>

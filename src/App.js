@@ -36,29 +36,7 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeContext>
-            <Header />
-            <Switch>
-              <PublicRoute path={"/"} exact component={Home} />
-              <PublicRoute path={"/aboutus"} exact component={AboutUs} />
-              <PublicRoute path={"/services"} exact component={Services} />
-              <PrivateRoute path={"/price"} exact component={Price} />
-              <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
-              <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
-              <PrivateRoute path={"/contact"} exact component={Contact} />
-              <PublicRoute path={"/search"} exact component={Search} />
-              <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
-              <PublicRoute path={"/getquote"} exact component={Getquote} />
-              <PrivateRoute path={"/orderNow"} exact component={OrderNowServices} />
-              <PrivateRoute path={"/checkOut"} exact component={CheckOutServices} />
-              <PublicRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
-              <PublicRoute path={"/login"} exact resticted="true" component={Login} />
-              <Layout>
-                <PrivateRoute path={"/Categary"} exact component={Category} />
-                <PrivateRoute path={"/Products"} exact component={Products} />
-              </Layout>
-            </Switch>
-            <Footer />
-            {/* <AppRoute /> */}
+            <AppRoute />
           </ThemeContext>
         </PersistGate>
       </Provider>

@@ -22,30 +22,31 @@ import PublicRoute from './PublicRoute';
 import ClientRoute from './ClientRoute';
 import PrivateRoute from './PrivateRoute';
 import { history } from '../history';
+import Layout from '../admin-panel/compoent/layout/Layout';
 
 function AppRoute(props) {
     return (
-        <Router history={history}>
-             <Switch>
-              <PublicRoute path={"/"} exact component={Home} />
-              <PublicRoute path={"/aboutus"} exact component={AboutUs} />
-              <PublicRoute path={"/services"} exact component={Services} />
-              <ClientRoute path={"/price"} exact component={Price} />
-              <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
-              <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
-              <ClientRoute path={"/contact"} exact component={Contact} />
-              <PublicRoute path={"/search"} exact component={Search} />
-              <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
-              <PublicRoute path={"/getquote"} exact component={Getquote} />
-              <ClientRoute path={"/orderNow"} exact component={OrderNowServices} />
-              <ClientRoute path={"/checkOut"} exact component={CheckOutServices} />
-              <PublicRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
-              <PublicRoute path={"/login"} exact resticted="true" component={Login} />
+        <Switch>
+            <PublicRoute path={"/"} exact component={Home} />
+            <PublicRoute path={"/aboutus"} exact component={AboutUs} />
+            <PublicRoute path={"/services"} exact component={Services} />
+            <ClientRoute path={"/price"} exact component={Price} />
+            <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
+            <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
+            <ClientRoute path={"/contact"} exact component={Contact} />
+            <PublicRoute path={"/search"} exact component={Search} />
+            <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
+            <PublicRoute path={"/getquote"} exact component={Getquote} />
+            <ClientRoute path={"/orderNow"} exact component={OrderNowServices} />
+            <ClientRoute path={"/checkOut"} exact component={CheckOutServices} />
+            <PublicRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
+            <PublicRoute path={"/login"} exact resticted="true" component={Login} />
 
-                <PrivateRoute path={"/Categary"} exact component={Category} />
-                <PrivateRoute path={"/Products"} exact component={Products} />
-            </Switch>
-        </Router>
+            <Layout>
+                <PublicRoute path={"/Categary"} exact component={Category} />
+                <PublicRoute path={"/Products"} exact component={Products} />
+            </Layout>
+        </Switch>
     );
 }
 

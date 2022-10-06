@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
+import { history } from '../../history';
 import { addCart, deleteCart, getCart } from '../../redux/action/Cart_action';
 import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 
@@ -12,50 +13,35 @@ function OrderNowServices(props) {
     const category = useSelector(state => state.category)
     const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
-    // const c = useSelector(state => state.counter);
 
-    const increment = (orderC) => {
-        dispatch(incrementACtion(orderC))
+    const increment = (id) => {
+        dispatch(incrementACtion(id))
     }
 
-    const decrement = (orderC) => {
-        dispatch(decrementAction(orderC))
-        // console.log(orderC.services);
+    const decrement = (id) => {
+        dispatch(decrementAction(id))
     }
 
-    // console.log(props.location.state.orderFilter);
+    // console.log(cart.cart.services);
+    const orderFilter = []
+    products.Products.map((p) => {
+        cart.cart.map((c) => {
+            if (p.id === c.id) {
+                orderFilter.push({ ...p, services: c.services })
+            }
+        })
+    })
+    console.log(orderFilter);
 
-    // console.log(cart.cart);
+    let subTotal = 0
+    function productTotal(price, services) {
+        subTotal = subTotal + Number(price * services)
+        return Number(price * services)
+    }
 
-    // let orderFilter = [];
-    // cart.cart.map((c) => {
-    // products.Products.map((p) => {
-    // if (c.id === p.id) {
-    // return(
-
-    // orderFilter.push(p.filter((orderF) => orderF.id === p.id))
-    // const orderFilter = cart.cart.filter((orderF) => orderF.name === c.name)
-    // cart.cart.map((c) => {
-        // return(
-            //    const orderFilter = cart.cart.filter((orderF) => orderF.name === c.name)
-        // )
-    // })
-    // console.log(c.id === p.id)
-    // console.log(orderFilter.push(products.Products))
-    // )
-    // console.log(orderFilter.push(c));
-    // }
-    // console.log(p.id);
-    // else{
-    // return c;
-    // console.log(c);
-    // }
-    // })
-    // console.log(c.id)
-    // console.log(orderFilter);
-    // })
-
-
+    const checkOut = (checkOutOrder) => {
+        history.push('/checkOut' , {checkOutOrder : checkOutOrder})
+    }
 
     return (
         <div class={`${value.theme}`}>
@@ -76,7 +62,7 @@ function OrderNowServices(props) {
                             </thead>
                             <tbody className="white">
                                 {
-                                    cart.cart.map((orderC) => {
+                                    orderFilter.map((orderC, i) => {
                                         return (
                                             <>
                                                 <tr className='justify-content-center'>
@@ -88,13 +74,13 @@ function OrderNowServices(props) {
                                                             <FormGroup style={{ width: 100 }}>
                                                                 <div class="input-group quantity mx-auto">
                                                                     <div class="input-group-btn">
-                                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement(orderC)}>
+                                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement(orderC.id)}>
                                                                             <i class="fa fa-minus"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center"  defaultValue={1} value={orderC.services} />
+                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={orderC.services} />
                                                                     <div class="input-group-btn">
-                                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC)}>
+                                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC.id)}>
                                                                             <i class="fa fa-plus"></i>
                                                                         </button>
                                                                     </div>
@@ -103,7 +89,7 @@ function OrderNowServices(props) {
                                                         </div>
 
                                                     </td>
-                                                    <td className="align-middle">${orderC.price}</td>
+                                                    <td className="align-middle">${productTotal(orderC.price, orderC.services)}</td>
                                                     <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={() => dispatch(deleteCart(orderC.id))}><i class="fa fa-times"></i></button></td>
                                                 </tr>
                                             </>
@@ -114,14 +100,12 @@ function OrderNowServices(props) {
                         </table>
                     </div>
                     <div className={`col-lg-4 ${value.theme}`}>
-                        <form className="mb-30" action>
-                        </form>
                         <h5 className="section-title position-relative text-uppercase my-4"><span className={`pr-3 ${value.theme}`}>Cart Summary</span></h5>
                         <div className="bg-light p-30 mb-5 white">
                             <div className="border-bottom p-3">
                                 <div className="d-flex justify-content-between mb-3">
                                     <h6>Subtotal</h6>
-                                    <h6>$150</h6>
+                                    <h6>${subTotal}</h6>
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <h6 className="font-weight-medium">Shipping</h6>
@@ -131,9 +115,9 @@ function OrderNowServices(props) {
                             <div className="p-3">
                                 <div className="d-flex justify-content-between mt-2">
                                     <h5>Total</h5>
-                                    <h5>$160</h5>
+                                    <h5>${subTotal + 10}</h5>
                                 </div>
-                                <NavLink to="/checkOut" className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</NavLink>
+                                <a onClick={() => checkOut(orderFilter)} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>

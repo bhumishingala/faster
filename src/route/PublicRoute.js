@@ -9,27 +9,19 @@ function PublicRoute({ component: Component, resticted = false, ...rest }) {
     let auth = useSelector(state => state.auth)
 
     return (
-        // <Route  {...rest} render={props => (
-        //     auth.user !== null && resticted ?
-        //         <>
-        //             <Header />
-        //             <Redirect to="/" />
-        //             <Footer />
-        //         </>
-        //         :
-        //         <>
-        //             <Header />
-        //             <Component {...props} />
-        //             <Footer />
-        //         </>
-        // )}
-
-        // />
         <Route  {...rest} render={props => (
-            isLogin() && resticted ?
-                <Redirect to="/" />
+            auth.user !== null && resticted ?
+                <>
+                    <Header />
+                    <Redirect to="/" />
+                    <Footer />
+                </>
                 :
-                <Component {...props} />
+                <>
+                    <Header />
+                    <Component {...props} />
+                    <Footer />
+                </>
         )}
 
         />

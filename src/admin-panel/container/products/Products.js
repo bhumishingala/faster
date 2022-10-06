@@ -74,7 +74,7 @@ function Products(props) {
         Prof_img: yup.string().required("Please Select Any Profile Image"),
         category: yup.string().required("Please Select any category."),
         price : yup.number("Please Enter Valid Number.").required("Please Enter Price."),
-        services : yup.string("Please Enter Your Services.")
+        services : yup.string().required("Please Enter Your Services.")
     });
 
     const formik = useFormik({
@@ -129,8 +129,6 @@ function Products(props) {
         dispatch(getProducts());
     }, [])
 
-    console.log(products.Products.length);
-
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
@@ -176,7 +174,7 @@ function Products(props) {
                                         null
                                 }
                             </Select>
-                            {errors.category_name && touched.category_name ? <p>{errors.category_name}</p> : ''}
+                            {errors.category && touched.category ? <p>{errors.category}</p> : ''}
                             <TextField
                                 margin="dense"
                                 id="name"
@@ -202,6 +200,7 @@ function Products(props) {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
+                            {errors.price && touched.price ? <p>{errors.price}</p> : ''}
                              <TextField
                                 margin="dense"
                                 id="name"
