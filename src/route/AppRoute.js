@@ -22,7 +22,6 @@ import PublicRoute from './PublicRoute';
 import ClientRoute from './ClientRoute';
 import PrivateRoute from './PrivateRoute';
 import { history } from '../history';
-import Layout from '../admin-panel/compoent/layout/Layout';
 
 function AppRoute(props) {
     return (
@@ -42,10 +41,8 @@ function AppRoute(props) {
             <PublicRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />
             <PublicRoute path={"/login"} exact resticted="true" component={Login} />
 
-            <Layout>
-                <PublicRoute path={"/Categary"} exact component={Category} />
-                <PublicRoute path={"/Products"} exact component={Products} />
-            </Layout>
+            <PrivateRoute path={"/Categary"} exact component={Category} />
+            <PrivateRoute path={"/Products"} exact component={Products} />
         </Switch>
     );
 }

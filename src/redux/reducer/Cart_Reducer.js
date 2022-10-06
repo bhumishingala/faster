@@ -6,12 +6,33 @@ const initval = {
 }
 
 export const cartReducer = (state = initval, action) => {
-    console.log(state.cart,action.payload);
+    console.log(action.type,action.payload.cart);
     switch (action.type) {
         case ActionType.ADD_CART:
+            if(state.count == 0 ){
+                let cartInit = {
+                    id : action.payload.id,
+                    services : 1
+                }
+            }else{
+                let check = false;
+                state.cart.map((c,i) => {
+                    if(c.id === action.payload.id){
+                        state.cart[i].services++;
+                        check = true;
+                    }
+                })
+                if(!check){
+                    let CartValue = {
+                        ...state,
+                        id : action.payload.id,
+                        services : 1 
+                    }
+                    state.cart.push(CartValue)
+                }
+            }
             return {
-                ...state,
-                cart: state.cart.concat(action.payload),
+                ...state,   
             }
         case ActionType.INCREMENT_COUNTER:
             state.count++

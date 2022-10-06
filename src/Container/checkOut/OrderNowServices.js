@@ -22,7 +22,7 @@ function OrderNowServices(props) {
         dispatch(decrementAction(id))
     }
 
-    // console.log(cart.cart.services);
+    console.log(cart.cart);
     const orderFilter = []
     products.Products.map((p) => {
         cart.cart.map((c) => {
@@ -62,7 +62,7 @@ function OrderNowServices(props) {
                             </thead>
                             <tbody className="white">
                                 {
-                                    orderFilter.map((orderC, i) => {
+                                    createSagaMiddleware.cart.map((orderC, i) => {
                                         return (
                                             <>
                                                 <tr className='justify-content-center'>
@@ -117,7 +117,7 @@ function OrderNowServices(props) {
                                     <h5>Total</h5>
                                     <h5>${subTotal + 10}</h5>
                                 </div>
-                                <a onClick={() => checkOut(orderFilter)} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
+                                <a onClick={() => checkOut()} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>

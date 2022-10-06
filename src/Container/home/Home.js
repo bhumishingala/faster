@@ -34,7 +34,6 @@ function Home() {
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
-    console.log(category.category.length);
 
 
     return (
