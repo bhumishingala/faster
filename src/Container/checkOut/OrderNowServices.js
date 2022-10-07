@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { FormGroup, Input } from 'reactstrap';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { history } from '../../history';
-import { addCart, deleteCart, getCart } from '../../redux/action/Cart_action';
-import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
+import { addCart, decrementAction, deleteCart, getCart, incrementAction } from '../../redux/action/Cart_action';
 
 function OrderNowServices(props) {
     const value = useContext(themeContext);
@@ -15,7 +14,7 @@ function OrderNowServices(props) {
     const products = useSelector(state => state.products)
 
     const increment = (id) => {
-        dispatch(incrementACtion(id))
+        dispatch(incrementAction(id))
     }
 
     const decrement = (id) => {
@@ -41,6 +40,7 @@ function OrderNowServices(props) {
 
     const checkOut = (checkOutOrder) => {
         history.push('/checkOut' , {checkOutOrder : checkOutOrder})
+        console.log(checkOutOrder);
     }
 
     return (
@@ -62,10 +62,10 @@ function OrderNowServices(props) {
                             </thead>
                             <tbody className="white">
                                 {
-                                    createSagaMiddleware.cart.map((orderC, i) => {
+                                    orderFilter.map((orderC, i) => {
                                         return (
                                             <>
-                                                <tr className='justify-content-center'>
+                                                <tr className='justify-content-center' key={i}>
                                                     <td className='align-middle'><img src={orderC.Prof_img} style={{ width: 100 }} /></td>
                                                     <td className="align-middle">{orderC.name}</td>
                                                     <td className="align-middle">${orderC.price}</td>
@@ -117,7 +117,7 @@ function OrderNowServices(props) {
                                     <h5>Total</h5>
                                     <h5>${subTotal + 10}</h5>
                                 </div>
-                                <a onClick={() => checkOut()} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
+                                <a onClick={() => checkOut(orderFilter)} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>

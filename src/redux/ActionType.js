@@ -27,3 +27,4 @@ export const DECREMENT_COUNTER = "DECREMENT_COUNTER";
 export const ADD_CART = "ADD_CART";
 export const GET_CART = "GET_CART";
 export const DETELE_CART = "DELETE_CART";
+export const CHECKOUT_CART = "CHECKOUT_CART";

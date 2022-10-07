@@ -4,13 +4,11 @@ import { Form, Formik, useFormik } from 'formik';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementAction, incrementACtion } from '../../redux/action/Counter_action';
 import { history } from '../../history';
-import { addCart } from '../../redux/action/Cart_action';
+import { addCart, decrementAction, incrementAction } from '../../redux/action/Cart_action';
 
 function ProductsDetalis(props) {
     const dispatch = useDispatch();
-    // const c = useSelector(state => state.counter);
     const category = useSelector(state => state.category);
     const products = useSelector(state => state.products);
     const value = useContext(themeContext);
@@ -19,7 +17,7 @@ function ProductsDetalis(props) {
     }
 
     const increment = () => {
-        dispatch(incrementACtion())
+        dispatch(incrementAction())
     }
 
     const decrement = () => {
@@ -47,7 +45,7 @@ function ProductsDetalis(props) {
     });
 
     const OrderNow = (orderFilter) => {
-        history.push('/orderNow', { orderFilter: orderFilter }, dispatch(addCart([orderFilter])))
+        history.push('/orderNow', { orderFilter : orderFilter  }, dispatch(addCart(orderFilter)))
         console.log(orderFilter);
     }
 
