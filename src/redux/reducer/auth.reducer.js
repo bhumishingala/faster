@@ -7,6 +7,7 @@ const initVal = {
 }
 
 export const authReducer = (state = initVal, action) => {
+    console.log(action.payload);
     switch(action.type){
         case ActionType.SIGNEDIN_USER : 
             return {

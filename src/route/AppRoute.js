@@ -9,9 +9,8 @@ import Category from '../admin-panel/container/category/Category';
 import ProductsDetalis from '../Container/services/ProductsDetalis';
 import Products from '../admin-panel/container/products/Products';
 import Home from '../Container/home/Home';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import AboutUs from '../Container/aboutus/AboutUs';
-import Services from '../Container/services/Services';
 import Price from '../Container/price/Price';
 import Bloggrid from '../Container/blog-grid/Bloggrid';
 import Blogdetail from '../Container/blog-detail/Blogdetail';
@@ -21,14 +20,14 @@ import Login from '../Container/login/Login';
 import PublicRoute from './PublicRoute';
 import ClientRoute from './ClientRoute';
 import PrivateRoute from './PrivateRoute';
-import { history } from '../history';
+import ServicesPage from '../Container/services/Services';
 
 function AppRoute(props) {
     return (
         <Switch>
             <PublicRoute path={"/"} exact component={Home} />
             <PublicRoute path={"/aboutus"} exact component={AboutUs} />
-            <PublicRoute path={"/services"} exact component={Services} />
+            <PublicRoute path={"/services"} exact component={ServicesPage} />
             <ClientRoute path={"/price"} exact component={Price} />
             <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
             <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />

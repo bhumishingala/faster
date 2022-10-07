@@ -40,7 +40,6 @@ function OrderNowServices(props) {
 
     const checkOut = (checkOutOrder) => {
         history.push('/checkOut' , {checkOutOrder : checkOutOrder})
-        console.log(checkOutOrder);
     }
 
     return (

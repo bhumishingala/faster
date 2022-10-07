@@ -18,10 +18,10 @@ function* Sign_Up(action) {
 function* Sign_in(action) {
   try {
     const user = yield call(SignInApi, action.payload);
-    yield put(signedInAction(user))
+    yield put(signedInAction(user.payload))
     history.push('/');
     yield put(setAlert({ text: "Login Is SuccessFully", color: "success" }))
-    console.log(user);
+    console.log("546778900987654123456789053456785456464345454455465465465425121365404540485798/78/70",user.payload);
   } catch (e) {
     yield put(setAlert({ text: e.payload, color: "error" }))
     console.log(e);

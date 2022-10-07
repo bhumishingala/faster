@@ -1,9 +1,7 @@
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext } from 'react';
-import List from '../../component/list/List';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
-import { NavLink } from 'react-router-dom';
 
 function Services(props) {
     const value = useContext(themeContext);
@@ -46,7 +44,7 @@ function Services(props) {
             </div>
             {/* Header End */}
             {/* Services Start */}
-            <div className="container-fluid pt-5">
+            {/* <div className="container-fluid pt-5">
                 <div className="container">
                     <div className="text-center pb-2">
                         <h6 className="text-primary text-uppercase font-weight-bold">Our Services</h6>
@@ -87,7 +85,8 @@ function Services(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <Services />
             {/* Services End */}
             {/*  Quote Request Start */}
             <div className="container-fluid  mt-5 pb-5">

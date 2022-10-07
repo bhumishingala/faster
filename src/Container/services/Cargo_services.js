@@ -17,8 +17,8 @@ function Cargo_services(props) {
         dispatch(getProducts())
     }, [])
 
-    let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)
-    console.log(props.location.state.name);
+    let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)  
+    console.log(productsFilter);
 
     const productsDetails = (Prodetalis) => {
         history.push('/ProductDetalis' , {Prodetalis:Prodetalis})
@@ -100,35 +100,37 @@ function Cargo_services(props) {
                                         <div className='row'>
                                             {
                                                 productsFilter.map((p) => {
-                                                    return (
-                                                        <div className="col-md-4 mb-5 height shadow-sm p-5 bg-body rounded">
-                                                            <div>
-                                                                <div className="product-title">
-                                                                    <span className='text-center d-block mb-2'>{p.category}</span>
-                                                                    <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
-                                                                    <div className="ratting text-center mt-3">
-                                                                        <i className="fa fa-star" />
-                                                                        <i className="fa fa-star" />
-                                                                        <i className="fa fa-star" />
-                                                                        <i className="fa fa-star" />
-                                                                        <i className="fa fa-star" />
+                                                    // if(p.category === props.location.state.productsView.name){
+                                                        return (
+                                                            <div className="col-md-4 mb-5 height shadow-sm p-5 bg-body rounded">
+                                                                <div>
+                                                                    <div className="product-title">
+                                                                        <span className='text-center d-block mb-2'>{p.category}</span>
+                                                                        <h5 className={`text-center text-primary text-uppercase font-weight-bold`}>{p.name}</h5>
+                                                                        <div className="ratting text-center mt-3">
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                            <i className="fa fa-star" />
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div className="text-center mt-3">
-                                                                    <img src={p.Prof_img} width={90} height={90} className="mt-3" />
-                                                                </div>
-                                                                <div className="d-flex flex-column align-items-center py-4">
-                                                                    <div className="product-action p-1 mb-2">
-                                                                        <a href="#" onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></a>
-                                                                        <a href="#" className="m-2"><i className="fa fa-heart" /></a>
-                                                                        <a href="#" className="m-2"><i className="fa fa-search" /></a>
+                                                                    <div className="text-center mt-3">
+                                                                        <img src={p.Prof_img} width={90} height={90} className="mt-3" />
                                                                     </div>
-                                                                    <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
-                                                                    <a href  onClick={() =>{Click();productsDetails(p)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                                                    <div className="d-flex flex-column align-items-center py-4">
+                                                                        <div className="product-action p-1 mb-2">
+                                                                            <a href="#" onClick={() => Click()} className="m-2"><i className="fa fa-cart-plus" /></a>
+                                                                            <a href="#" className="m-2"><i className="fa fa-heart" /></a>
+                                                                            <a href="#" className="m-2"><i className="fa fa-search" /></a>
+                                                                        </div>
+                                                                        <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
+                                                                        <a href  onClick={() =>{Click();productsDetails(p)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    )
+                                                        )
+                                                    // }
                                                 })
                                             }
                                         </div>

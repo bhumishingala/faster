@@ -2,41 +2,32 @@ import * as ActionType from '../ActionType';
 
 const initval = {
     cart: [],
-    count: 0
 }
 
 export const cartReducer = (state = initval, action) => {
-    console.log(action.type,action.payload);
+    console.log("cartReducercartReducer", action.type, action.payload, state.cart);
     switch (action.type) {
         case ActionType.ADD_CART:
-            if(state.count == 0 ){
-                let cartInit = {
-                    id : action.payload.id,
-                    services : 1
+            let c = state.cart.find((c) => c.id === action.payload.id)
+            if (c) {
+                c.services++;
+                return {
+                    ...state,
+                    cart: state.cart.map((a) => {
+                        if (a.id === c.id) {
+                            return c
+                        } else {
+                            return a
+                        }
+                    })
                 }
-            }else{
-                let check = false;
-                state.cart.map((c,i) => {
-                    if(c.id === action.payload.id){
-                        state.cart[i].services++;
-                        check = true;
-                    }
-                })
-                if(!check){
-                    let CartValue = {
-                        ...state,
-                        id : action.payload.id,
-                        services : 1 
-                    }
-                    state.cart.push(CartValue)
+            } else {
+                return {
+                    ...state,
+                    cart: state.cart.concat(action.payload)
                 }
-            }
-            return {
-                ...state,   
-                // cart : action.payload
             }
         case ActionType.INCREMENT_COUNTER:
-            state.count++
             return {
                 ...state,
                 cart: state.cart.map((c) => {
@@ -51,7 +42,6 @@ export const cartReducer = (state = initval, action) => {
                 }).filter((c) => c.services !== 0)
             }
         case ActionType.DECREMENT_COUNTER:
-            state.count--
             return {
                 ...state,
                 cart: state.cart.map((c) => {
@@ -71,10 +61,10 @@ export const cartReducer = (state = initval, action) => {
                 cart: state.cart.filter((c) => c.id !== action.payload)
             }
 
-        case ActionType.CHECKOUT_CART :
+        case ActionType.CHECKOUT_CART:
             return {
                 ...state,
-                cart : action.payload
+                cart: action.payload
             }
         default:
             return state;
