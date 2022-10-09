@@ -5,10 +5,9 @@ import { themeContext } from '../../contextapi/ThemeContext';
 import { history } from '../../history';
 import { getProducts } from '../../redux/action/Products_action';
 
-function Cargo_services(props) {
+function Services(props) {
     const value = useContext(themeContext);
     const products = useSelector(state => state.products);
-    const category = useSelector(state => state.category);
     const dispatch = useDispatch();
     const Click = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -18,16 +17,11 @@ function Cargo_services(props) {
         dispatch(getProducts())
     }, [])
 
-    let productsFilter = [];
-    products.Products.map((p) => {
-        if (p.category === "Air Freight") {
-            productsFilter.push(p)
-        }
-    })
+    let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)
     console.log(productsFilter);
 
     const productsDetails = (Prodetalis) => {
-        history.push('/ProductDetalis', { Prodetalis: Prodetalis })
+        history.push('/ProductDetalis' , {Prodetalis:Prodetalis})
         console.log(Prodetalis);
     }
 
@@ -64,6 +58,45 @@ function Cargo_services(props) {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className={`product-view-top ${value.theme}`}>
+                                        <div className="row">
+                                            <div className="col-md-4 pb-5">
+                                                <div className="product-search">
+                                                    <input type="email" defaultValue="Search" />
+                                                    <button><i className="fa fa-search" /></button>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <div className={`product-short ${value.theme}`}>
+                                                    <div className="dropdown">
+                                                        <div className="dropdown-toggle" data-toggle="dropdown">Product short by</div>
+                                                        <div className="dropdown-menu dropdown-menu-right">
+                                                            <a href="#" className="dropdown-item">Newest</a>
+                                                            <a href="#" className="dropdown-item">Popular</a>
+                                                            <a href="#" className="dropdown-item">Most sale</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className={`col-md-4 ${value.theme}`}>
+                                                <div className="product-price-range">
+                                                    <div className="dropdown">
+                                                        <div className="dropdown-toggle" data-toggle="dropdown">Product price range</div>
+                                                        <div className="dropdown-menu dropdown-menu-right">
+                                                            <a href="#" className="dropdown-item">$0 to $50</a>
+                                                            <a href="#" className="dropdown-item">$51 to $100</a>
+                                                            <a href="#" className="dropdown-item">$101 to $150</a>
+                                                            <a href="#" className="dropdown-item">$151 to $200</a>
+                                                            <a href="#" className="dropdown-item">$201 to $250</a>
+                                                            <a href="#" className="dropdown-item">$251 to $300</a>
+                                                            <a href="#" className="dropdown-item">$301 to $350</a>
+                                                            <a href="#" className="dropdown-item">$351 to $400</a>
+                                                            <a href="#" className="dropdown-item">$401 to $450</a>
+                                                            <a href="#" className="dropdown-item">$451 to $500</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className='row'>
                                             {
                                                 productsFilter.map((p) => {
@@ -91,7 +124,7 @@ function Cargo_services(props) {
                                                                         <a href="#" className="m-2"><i className="fa fa-search" /></a>
                                                                     </div>
                                                                     <h3 class={`${value.theme}`}><span>$</span>{p.price}</h3>
-                                                                    <a href onClick={() => { Click(); productsDetails(p) }} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
+                                                                    <a href  onClick={() =>{Click();productsDetails(p)}} className="btn btn-primary py-2 px-4 my-2">Order Now</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -110,7 +143,7 @@ function Cargo_services(props) {
                                 <nav className="navbar">
                                     <ul className="navbar-nav shadow-lg p-5 bg-body rounded">
                                         <li className="nav-item">
-                                            <NavLink to="/AirSevices" onClick={() => { Click() }} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
+                                            <NavLink to="/AirSevices" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x text-primary fa-plane pr-3" />Air &amp; Freight</NavLink>
                                         </li>
                                         <li className="nav-item">
                                             <NavLink to="/OcenSerivces" onClick={() => Click()} className="nav-link text-white" href="#"><i className="fa fa-2x fa-ship text-primary pr-3" />Ocean &amp; Freight</NavLink>
@@ -145,10 +178,12 @@ function Cargo_services(props) {
                     </div>
                 </div>
             </div>
-            {/* Product List End */}6
+            {/* Product List End */}
+            {/* Pricing Plan Start */}
+            {/* Pricing Plan End */}
             <a href="#" className="btn btn-lg btn-primary back-to-top"><i className="fa fa-angle-double-up" /></a>
         </div>
     );
 }
 
-export default Cargo_services;
+export default Services;

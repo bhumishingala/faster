@@ -2,6 +2,7 @@ import * as ActionType from '../ActionType';
 
 const initval = {
     cart: [],
+    count : 0
 }
 
 export const cartReducer = (state = initval, action) => {
@@ -28,6 +29,7 @@ export const cartReducer = (state = initval, action) => {
                 }
             }
         case ActionType.INCREMENT_COUNTER:
+            state.count++
             return {
                 ...state,
                 cart: state.cart.map((c) => {
@@ -42,6 +44,7 @@ export const cartReducer = (state = initval, action) => {
                 }).filter((c) => c.services !== 0)
             }
         case ActionType.DECREMENT_COUNTER:
+            state.count--
             return {
                 ...state,
                 cart: state.cart.map((c) => {
@@ -60,11 +63,10 @@ export const cartReducer = (state = initval, action) => {
                 ...state,
                 cart: state.cart.filter((c) => c.id !== action.payload)
             }
-
-        case ActionType.CHECKOUT_CART:
-            return {
+        case ActionType.EMPTY_CART :
+            return{
                 ...state,
-                cart: action.payload
+                cart : []
             }
         default:
             return state;

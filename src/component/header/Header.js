@@ -1,18 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { themeContext } from '../../contextapi/ThemeContext';
 import Alert from '../alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOutAction } from '../../redux/action/auth_action';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge } from '@mui/material';
 
 function Header(props) {
     const value = useContext(themeContext);
-
+    const cart = useSelector(state => state.cart)
+    const [CartCounter, setCartCounter] = useState(0);
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth)
 
     console.log(auth);
+
+//   cart.cart.map((c) => {
+//     console.log( cartCount += c.services);
+//   })
+    // useEffect(() => {
+    //   let cartCount = 0;
+    //   cart.cart.map((c) => {
+    //     cartCount += c.services;
+    //   });
+    //   setCartCounter(cartCount);
+    // //   let wishCount = 0;
+    // //   wish.forEach((item) => {
+    // //     wishCount += item.toCountWish;
+    // //   });
+    // //   setWishCounter(wishCount);
+    // }, [CartCounter,setCartCounter,cart.cart.services])
+    // console.log(CartCounter);
+  
 
     return (
         <div>
@@ -81,7 +102,11 @@ function Header(props) {
                         <NavLink className="text-primary px-2" to="/search">
                             <SearchIcon />
                         </NavLink>
-                        <NavLink href to="/getquote" className="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</NavLink>
+                        <NavLink href to="/orderNow">
+                            <Badge badgeContent={4} color="warning">
+                                <ShoppingCartIcon color="bg-primary" />
+                            </Badge>
+                        </NavLink>
                         {
                             auth.user === null ?
                                 <NavLink to="/login" className="ml-3 btn btn-primary py-2 d-none d-lg-block">

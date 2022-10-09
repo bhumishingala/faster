@@ -1,8 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-// import { history } from './history';
 import Cargo_services from '../Container/services/Cargo_services';
-import Getquote from '../Container/quote/Getquote';
 import OrderNowServices from '../Container/checkOut/OrderNowServices';
 import CheckOutServices from '../Container/checkOut/CheckOutServices';
 import Category from '../admin-panel/container/category/Category';
@@ -20,21 +18,22 @@ import Login from '../Container/login/Login';
 import PublicRoute from './PublicRoute';
 import ClientRoute from './ClientRoute';
 import PrivateRoute from './PrivateRoute';
-import ServicesPage from '../Container/services/Services';
+import Services from '../Container/services/servicesAdd.js/Services';
+import ServicesView from '../Container/services/ServicesView'
 
 function AppRoute(props) {
     return (
         <Switch>
             <PublicRoute path={"/"} exact component={Home} />
             <PublicRoute path={"/aboutus"} exact component={AboutUs} />
-            <PublicRoute path={"/services"} exact component={ServicesPage} />
+            <PublicRoute path={"/services"} exact component={Services} />
+            <PublicRoute path={"/servicesView"} exact component={ServicesView} />
             <ClientRoute path={"/price"} exact component={Price} />
             <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
             <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
             <ClientRoute path={"/contact"} exact component={Contact} />
             <PublicRoute path={"/search"} exact component={Search} />
             <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
-            <PublicRoute path={"/getquote"} exact component={Getquote} />
             <ClientRoute path={"/orderNow"} exact component={OrderNowServices} />
             <ClientRoute path={"/checkOut"} exact component={CheckOutServices} />
             <PublicRoute path={"/ProductDetalis"} exact component={ProductsDetalis} />

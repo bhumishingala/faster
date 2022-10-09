@@ -39,7 +39,7 @@ function OrderNowServices(props) {
     }
 
     const checkOut = (checkOutOrder) => {
-        history.push('/checkOut' , {checkOutOrder : checkOutOrder})
+        history.push('/checkOut', { checkOutOrder: checkOutOrder })
     }
 
     return (
@@ -48,54 +48,62 @@ function OrderNowServices(props) {
                 <h1 className="text-primary mb-4 text-center">Order Now</h1>
                 <div className="row px-xl-5">
                     <div className="col-lg-8 table-responsive mb-5">
-                        <table className="table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded">
-                            <thead className="thead-dark">
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Services</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody className="white">
-                                {
-                                    orderFilter.map((orderC, i) => {
-                                        return (
-                                            <>
-                                                <tr className='justify-content-center' key={i}>
-                                                    <td className='align-middle'><img src={orderC.Prof_img} style={{ width: 100 }} /></td>
-                                                    <td className="align-middle">{orderC.name}</td>
-                                                    <td className="align-middle">${orderC.price}</td>
-                                                    <td className="align-middle">
-                                                        <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
-                                                            <FormGroup style={{ width: 100 }}>
-                                                                <div class="input-group quantity mx-auto">
-                                                                    <div class="input-group-btn">
-                                                                        <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement(orderC.id)}>
-                                                                            <i class="fa fa-minus"></i>
-                                                                        </button>
+                        <table className={`table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded ${value.theme}`}>
+                            {
+                                orderFilter.length > 0 ?
+                                    <>
+                                        <thead className="thead-dark">
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>Services</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="white">
+                                            {
+                                                orderFilter.map((orderC, i) => {
+                                                    return (
+                                                        <>
+                                                            <tr className='justify-content-center' key={i}>
+                                                                <td className='align-middle'><img src={orderC.Prof_img} style={{ width: 100 }} /></td>
+                                                                <td className="align-middle">{orderC.name}</td>
+                                                                <td className="align-middle">${orderC.price}</td>
+                                                                <td className="align-middle">
+                                                                    <div className="input-group quantity mx-auto mt-3" style={{ width: 100 }}>
+                                                                        <FormGroup style={{ width: 100 }}>
+                                                                            <div class="input-group quantity mx-auto">
+                                                                                <div class="input-group-btn">
+                                                                                    <button class="btn btn-sm btn-primary btn-minus" onClick={() => decrement(orderC.id)}>
+                                                                                        <i class="fa fa-minus"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={orderC.services} />
+                                                                                <div class="input-group-btn">
+                                                                                    <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC.id)}>
+                                                                                        <i class="fa fa-plus"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </FormGroup>
                                                                     </div>
-                                                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value={orderC.services} />
-                                                                    <div class="input-group-btn">
-                                                                        <button class="btn btn-sm btn-primary btn-plus" onClick={() => increment(orderC.id)}>
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </FormGroup>
-                                                        </div>
 
-                                                    </td>
-                                                    <td className="align-middle">${productTotal(orderC.price, orderC.services)}</td>
-                                                    <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={() => dispatch(deleteCart(orderC.id))}><i class="fa fa-times"></i></button></td>
-                                                </tr>
-                                            </>
-                                        )
-                                    })
-                                }
-                            </tbody>
+                                                                </td>
+                                                                <td className="align-middle">${productTotal(orderC.price, orderC.services)}</td>
+                                                                <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={() => dispatch(deleteCart(orderC.id))}><i class="fa fa-times"></i></button></td>
+                                                            </tr>
+                                                        </>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </>
+                                    :
+                                    <h3 className={`${value.theme}`}>Cart is Empty</h3>
+
+                            }
                         </table>
                     </div>
                     <div className={`col-lg-4 ${value.theme}`}>
