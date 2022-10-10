@@ -52,7 +52,6 @@ function OrderNowServices(props) {
                         <table className={`table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded ${value.theme}`}>
                             {
                                 orderFilter.length > 0 ?
-                                    checkout.checkUser == null ? 
                                     <>
                                         <thead className="thead-dark">
                                             <tr>
@@ -102,8 +101,6 @@ function OrderNowServices(props) {
                                             }
                                         </tbody>
                                     </>
-                                    : 
-                                    orderFilter.length == 0
                                     :
                                     <h3 className={`${value.theme}`}>Cart is Empty</h3>
 

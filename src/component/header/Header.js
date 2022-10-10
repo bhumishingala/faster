@@ -71,27 +71,12 @@ function Header(props) {
                             <NavLink className="nav-item nav-link" to="/aboutus">About</NavLink>
                             <NavLink className="nav-item nav-link" to="/services">Service</NavLink>
                             <NavLink className="nav-item nav-link" to="/price">Price</NavLink>
-                            <div className="nav-item dropdown">
-                                <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div className="dropdown-menu rounded-0 m-0">
-                                    <NavLink className="dropdown-item" to="/blog-grid">Blog Grid</NavLink>
-                                    <NavLink className="dropdown-item" to="/blog-detail">Blog Detail</NavLink>
-                                </div>
-                            </div>
                             <NavLink className="nav-item nav-link" to="/contact">Contact</NavLink>
                         </div>
                         <NavLink href to="/orderNow">
-                            {
-                                checkout.checkUser == null ?
-                                    <Badge badgeContent={cart.cart.length} color="warning">
-                                        <ShoppingCartIcon color="bg-primary" />
-                                    </Badge>
-                                    :
-                                    <Badge badgeContent={0} color="warning">
-                                        <ShoppingCartIcon color="bg-primary" />
-                                    </Badge>
-
-                            }
+                            <Badge badgeContent={cart.cart.length} color="warning">
+                                <ShoppingCartIcon color="bg-primary" />
+                            </Badge>
                         </NavLink>
                         {
                             auth.user === null ?

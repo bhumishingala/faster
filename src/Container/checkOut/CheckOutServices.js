@@ -79,52 +79,52 @@ function CheckOutServices(props) {
                                                     <div className="col-md-6 form-group">
                                                         <label class={`${value.theme}`}>First Name</label>
                                                         <input className="form-control" type="text" placeholder="John" name="fname" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.fname && touched.fname ? <p>{errors.fname}</p> : ''}
+                                                        {errors.fname && touched.fname ? <p className='text-danger'>{errors.fname}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>Last Name</label>
                                                         <input className="form-control" type="text" placeholder="Doe" name="lname" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.lname && touched.lname ? <p>{errors.lname}</p> : ''}
+                                                        {errors.lname && touched.lname ? <p className='text-danger'>{errors.lname}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>E-mail</label>
                                                         <input className="form-control" type="text" placeholder="example@email.com" name="email" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.email && touched.email ? <p>{errors.email}</p> : ''}
+                                                        {errors.email && touched.email ? <p className='text-danger'>{errors.email}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>Mobile No</label>
                                                         <input className="form-control" type="text" placeholder="+123 456 789" name="phone" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.phone && touched.phone ? <p>{errors.phone}</p> : ''}
+                                                        {errors.phone && touched.phone ? <p className='text-danger'>{errors.phone}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>Address Line 1</label>
                                                         <input className="form-control" type="text" placeholder="123 Street" name="Address1" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.Address1 && touched.Address1 ? <p>{errors.Address1}</p> : ''}
+                                                        {errors.Address1 && touched.Address1 ? <p className='text-danger'>{errors.Address1}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>Address Line 2</label>
                                                         <input className="form-control" type="text" placeholder="123 Street" name="Address2" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.Address2 && touched.Address2 ? <p>{errors.Address2}</p> : ''}
+                                                        {errors.Address2 && touched.Address2 ? <p className='text-danger'>{errors.Address2}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>Country</label>
                                                         <input className="form-control" type="text" placeholder="123 Street" name="country" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.country && touched.country ? <p>{errors.country}</p> : ''}
+                                                        {errors.country && touched.country ? <p className='text-danger'>{errors.country}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>City</label>
                                                         <input className="form-control" type="text" placeholder="New York" name="city" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.city && touched.city ? <p>{errors.city}</p> : ''}
+                                                        {errors.city && touched.city ? <p className='text-danger'>{errors.city}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>State</label>
                                                         <input className="form-control" type="text" placeholder="New York" name="state" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.state && touched.state ? <p>{errors.state}</p> : ''}
+                                                        {errors.state && touched.state ? <p className='text-danger'>{errors.state}</p> : ''}
                                                     </div>
                                                     <div className="col-md-6 form-group">
                                                         <label>ZIP Code</label>
                                                         <input className="form-control" type="text" placeholder={123} name="zipcode" onChange={handleChange} onBlur={handleBlur} />
-                                                        {errors.zipcode && touched.zipcode ? <p>{errors.zipcode}</p> : ''}
+                                                        {errors.zipcode && touched.zipcode ? <p className='text-danger'>{errors.zipcode}</p> : ''}
                                                     </div>
                                                     <div className="margin justify-content-center"><button type="submit" className="btn btn-primary py-2 px-4 d-none d-lg-block">Place Order</button></div>
                                                 </div>
@@ -178,7 +178,7 @@ function CheckOutServices(props) {
                                                             <label class="custom-control-label" for="banktransfer">Cash on Delivery</label>
                                                         </div>
                                                     </div>
-                                                    {errors.payment && touched.payment ? <p>{errors.payment}</p> : ''}
+                                                    {errors.payment && touched.payment ? <p className='text-danger'>{errors.payment}</p> : ''}
                                                 </div>
                                             </div>
                                         </div>
