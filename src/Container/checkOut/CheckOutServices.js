@@ -140,7 +140,7 @@ function CheckOutServices(props) {
                                                             return (
                                                                 <div className="d-flex justify-content-between">
                                                                     <p>{ch.name}</p>
-                                                                    <p>${productTotal(ch.price, ch.services)}</p>
+                                                                    <p className='ml-5'>${productTotal(ch.price, ch.services)}</p>
                                                                 </div>
                                                             )
                                                         })

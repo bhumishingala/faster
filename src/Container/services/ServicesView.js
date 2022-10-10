@@ -19,6 +19,7 @@ function Services(props) {
 
     let productsFilter = products.Products.filter((p) => p.category === props.location.state.name)
     console.log(productsFilter);
+    console.log(props.location.state.name);
 
     const productsDetails = (Prodetalis) => {
         history.push('/ProductDetalis' , {Prodetalis:Prodetalis})

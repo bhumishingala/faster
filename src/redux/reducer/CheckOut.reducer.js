@@ -12,11 +12,6 @@ export const checkoutReducer = (state = initval,action) => {
                 ...state,
                 checkUser : action.payload
             }
-        case ActionType.CHECKOUT_CART_EMPTY :
-            return {
-                ...state,
-                checkUser : null
-            }
         default :
             return state
     }

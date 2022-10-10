@@ -15,7 +15,3 @@ export const CheckOutAction = (data) => async(dispatch)=> {
         console.log(e);
     }
 }
-
-export const checkOutEmpty = () => (dispatch) => {
-    dispatch({type : ActionType.CHECKOUT_CART_EMPTY})
-}

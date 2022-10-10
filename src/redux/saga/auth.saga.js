@@ -21,7 +21,7 @@ function* Sign_in(action) {
     yield put(signedInAction(user.payload))
     history.push('/');
     yield put(setAlert({ text: "Login Is SuccessFully", color: "success" }))
-    console.log("546778900987654123456789053456785456464345454455465465465425121365404540485798/78/70",user.payload);
+    console.log(user.payload);
   } catch (e) {
     yield put(setAlert({ text: e.payload, color: "error" }))
     console.log(e);

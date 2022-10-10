@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
 import { themeContext } from '../../contextapi/ThemeContext';
 import Alert from '../alert/Alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,29 +10,11 @@ import { Badge } from '@mui/material';
 function Header(props) {
     const value = useContext(themeContext);
     const cart = useSelector(state => state.cart)
-    const [CartCounter, setCartCounter] = useState(0);
+    const checkout = useSelector(state => state.checkOut)
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth)
 
     console.log(auth);
-
-//   cart.cart.map((c) => {
-//     console.log( cartCount += c.services);
-//   })
-    // useEffect(() => {
-    //   let cartCount = 0;
-    //   cart.cart.map((c) => {
-    //     cartCount += c.services;
-    //   });
-    //   setCartCounter(cartCount);
-    // //   let wishCount = 0;
-    // //   wish.forEach((item) => {
-    // //     wishCount += item.toCountWish;
-    // //   });
-    // //   setWishCounter(wishCount);
-    // }, [CartCounter,setCartCounter,cart.cart.services])
-    // console.log(CartCounter);
-  
 
     return (
         <div>
@@ -99,13 +80,18 @@ function Header(props) {
                             </div>
                             <NavLink className="nav-item nav-link" to="/contact">Contact</NavLink>
                         </div>
-                        <NavLink className="text-primary px-2" to="/search">
-                            <SearchIcon />
-                        </NavLink>
                         <NavLink href to="/orderNow">
-                            <Badge badgeContent={4} color="warning">
-                                <ShoppingCartIcon color="bg-primary" />
-                            </Badge>
+                            {
+                                checkout.checkUser == null ?
+                                    <Badge badgeContent={cart.cart.length} color="warning">
+                                        <ShoppingCartIcon color="bg-primary" />
+                                    </Badge>
+                                    :
+                                    <Badge badgeContent={0} color="warning">
+                                        <ShoppingCartIcon color="bg-primary" />
+                                    </Badge>
+
+                            }
                         </NavLink>
                         {
                             auth.user === null ?

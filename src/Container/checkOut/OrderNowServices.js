@@ -9,7 +9,8 @@ import { addCart, decrementAction, deleteCart, getCart, incrementAction } from '
 function OrderNowServices(props) {
     const value = useContext(themeContext);
     const dispatch = useDispatch();
-    const category = useSelector(state => state.category)
+    const category = useSelector(state => state.category);
+    const checkout = useSelector(state => state.checkOut)
     const cart = useSelector(state => state.cart)
     const products = useSelector(state => state.products)
 
@@ -38,7 +39,7 @@ function OrderNowServices(props) {
         return Number(price * services)
     }
 
-    const checkOut = (checkOutOrder) => {
+    const checkOutUser = (checkOutOrder) => {
         history.push('/checkOut', { checkOutOrder: checkOutOrder })
     }
 
@@ -51,6 +52,7 @@ function OrderNowServices(props) {
                         <table className={`table table-light table-borderless table-hover text-center mb-0 hadow-lg p-3 mb-5 bg-body rounded ${value.theme}`}>
                             {
                                 orderFilter.length > 0 ?
+                                    checkout.checkUser == null ? 
                                     <>
                                         <thead className="thead-dark">
                                             <tr>
@@ -100,6 +102,8 @@ function OrderNowServices(props) {
                                             }
                                         </tbody>
                                     </>
+                                    : 
+                                    orderFilter.length == 0
                                     :
                                     <h3 className={`${value.theme}`}>Cart is Empty</h3>
 
@@ -124,7 +128,7 @@ function OrderNowServices(props) {
                                     <h5>Total</h5>
                                     <h5>${subTotal + 10}</h5>
                                 </div>
-                                <a onClick={() => checkOut(orderFilter)} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
+                                <a onClick={() => checkOutUser(orderFilter)} className="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
                             </div>
                         </div>
                     </div>

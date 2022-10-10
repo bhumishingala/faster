@@ -13,7 +13,6 @@ import Price from '../Container/price/Price';
 import Bloggrid from '../Container/blog-grid/Bloggrid';
 import Blogdetail from '../Container/blog-detail/Blogdetail';
 import Contact from '../Container/contact/Contact';
-import Search from '../Container/search/Search';
 import Login from '../Container/login/Login';
 import PublicRoute from './PublicRoute';
 import ClientRoute from './ClientRoute';
@@ -32,7 +31,6 @@ function AppRoute(props) {
             <PublicRoute path={"/blog-grid"} exact component={Bloggrid} />
             <PublicRoute path={"/blog-detail"} exact component={Blogdetail} />
             <ClientRoute path={"/contact"} exact component={Contact} />
-            <PublicRoute path={"/search"} exact component={Search} />
             <PublicRoute path={"/cargoServices"} exact component={Cargo_services} />
             <ClientRoute path={"/orderNow"} exact component={OrderNowServices} />
             <ClientRoute path={"/checkOut"} exact component={CheckOutServices} />

@@ -30,4 +30,3 @@ export const DETELE_CART = "DELETE_CART";
 export const EMPTY_CART = "EMPTY_CART";
 
 export const CHECKOUT_CART = "CHECKOUT_CART";
-export const CHECKOUT_CART_EMPTY = "CHECKOUT_CART_EMPTY";

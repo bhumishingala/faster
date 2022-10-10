@@ -1,7 +1,6 @@
 import { Form, Formik, useFormik } from 'formik';
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import * as yup from 'yup';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { history } from '../../history';

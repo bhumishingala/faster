@@ -2,7 +2,6 @@ import * as ActionType from '../ActionType';
 
 const initval = {
     cart: [],
-    count : 0
 }
 
 export const cartReducer = (state = initval, action) => {
@@ -29,44 +28,44 @@ export const cartReducer = (state = initval, action) => {
                 }
             }
         case ActionType.INCREMENT_COUNTER:
-            state.count++
-            return {
-                ...state,
-                cart: state.cart.map((c) => {
-                    if (c.id === action.payload) {
-                        return {
-                            id: c.id,
-                            services: c.services + 1
+            let cIn = state.cart.find((c) => c.id === action.payload)
+            if (cIn) {
+                cIn.services++;
+                return {
+                    ...state,
+                    cart: state.cart.map((a) => {
+                        if (a.id === cIn.id) {
+                            return cIn
+                        } else {
+                            return a
                         }
-                    } else {
-                        return c;
-                    }
-                }).filter((c) => c.services !== 0)
+                    }).filter((a) => a.services !== 0)
+                }
             }
         case ActionType.DECREMENT_COUNTER:
-            state.count--
-            return {
-                ...state,
-                cart: state.cart.map((c) => {
-                    if (c.id === action.payload) {
-                        return {
-                            id: c.id,
-                            services: c.services - 1
+            let cDe = state.cart.find((c) => c.id === action.payload)
+            if (cDe) {
+                cDe.services--;
+                return {
+                    ...state,
+                    cart: state.cart.map((a) => {
+                        if (a.id === cDe.id) {
+                            return cDe
+                        } else {
+                            return a
                         }
-                    } else {
-                        return c;
-                    }
-                }).filter((c) => c.services !== 0)
+                    }).filter((a) => a.services !== 0)
+                }
             }
         case ActionType.DETELE_CART:
             return {
                 ...state,
                 cart: state.cart.filter((c) => c.id !== action.payload)
             }
-        case ActionType.EMPTY_CART :
-            return{
+        case ActionType.EMPTY_CART:
+            return {
                 ...state,
-                cart : []
+                cart: []
             }
         default:
             return state;
