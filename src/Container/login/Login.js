@@ -49,15 +49,6 @@ function Login(props) {
     let schema = yup.object().shape(schemaObj);
 
     const insertData = (values) => {
-        // let LocalData = JSON.parse(localStorage.getItem("user"));
-
-        // if (LocalData === null) {
-        //     localStorage.setItem("user", JSON.stringify([values]));
-        // } else {
-        //     LocalData.push(values);
-        //     localStorage.setItem("user", JSON.stringify(LocalData));
-        // }
-
         dispatch(signUpAction(values));
 
         console.log(values);
@@ -90,8 +81,6 @@ function Login(props) {
     });
 
     const { handleChange, errors, handleSubmit, handleBlur, touched } = formik;
-
-    // console.log(errors);
 
     return (
         <section id="appointment" className={`appointment margin ${value.theme}`}>

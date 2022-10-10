@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../contextapi/ThemeContext';
 import { history } from '../../history';
 import { addCart } from '../../redux/action/Cart_action';
-import ProductsDetalis from '../services/ProductsDetalis';
 
 function Price(props) {
     const dispatch = useDispatch();
